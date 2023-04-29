@@ -1,10 +1,9 @@
 import React from "react";
-import type { FC } from "react";
+
+// import { warpBubble } from "./bubbleWarp";
 
 export const useBubblesAnimation = () => {
   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
-    console.log("canvas", canvas);
-
     if (canvas) {
       const ctx = canvas.getContext("2d");
       canvas.width = window.innerWidth;
@@ -76,9 +75,19 @@ export const useBubblesAnimation = () => {
           const directionY =
             Math.random() * 0.2 * Math.cos(Math.random() * 180);
           const color = colors[Math.floor(Math.random() * colors.length)];
-          particlesArray.push(
-            new Particle(x, y, directionX, directionY, size, color ?? "#FFEB3B")
+
+          const particle = new Particle(
+            x,
+            y,
+            directionX,
+            directionY,
+            size,
+            color ?? "#FFEB3B"
           );
+
+          // warpBubble(particle);
+
+          particlesArray.push(particle);
         }
       }
       function animate() {
