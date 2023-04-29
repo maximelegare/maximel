@@ -9,9 +9,13 @@ export const BubblesCanvas = () => {
   useEffect(() => {
     if (canvasRef.current) {
       animateBubblesOnCanvas(canvasRef.current);
-      
     }
-  }, [ animateBubblesOnCanvas]);
+  }, [animateBubblesOnCanvas]);
 
-  return <canvas className="block h-screen w-screen" ref={canvasRef}></canvas>;
+  return (
+    <canvas
+      className="absolute left-0 top-0 h-full w-full"
+      ref={canvasRef}
+    ></canvas>
+  );
 };

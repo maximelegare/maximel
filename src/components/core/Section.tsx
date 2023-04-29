@@ -1,11 +1,22 @@
 import type { ReactElement, FC } from "react";
 
-type Props = { children: ReactElement; styles?: string  };
+type Props = {
+  children: ReactElement;
+  styles?: string;
+  noContainerElement?: ReactElement;
+};
 
-export const Section: FC<Props> = ({ children, styles }) => {
+export const Section: FC<Props> = ({
+  children,
+  styles,
+  noContainerElement,
+}) => {
   return (
-    <section className={`min-h-screen flex justify-center ${styles ? styles : ""}`}>
+    <section
+      className={`flex min-h-screen justify-center ${styles ? styles : ""}`}
+    >
       <div className="container">{children}</div>
+      {noContainerElement}
     </section>
   );
 };

@@ -18,14 +18,11 @@ import { BubblesCanvas } from "./BubblesCanvas";
 export const Hero = () => {
   const { t } = useTranslation("common");
 
-
-
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
-    <Section styles="gradiant">
-      <BubblesCanvas />
+    <Section styles="gradiant" noContainerElement={<BubblesCanvas />}>
+      <div>hello</div>
     </Section>
   );
 };
-

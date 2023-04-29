@@ -2,9 +2,7 @@ import React from "react";
 import type { FC } from "react";
 
 export const useBubblesAnimation = () => {
-  
   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
-
     console.log("canvas", canvas);
 
     if (canvas) {
@@ -73,8 +71,10 @@ export const useBubblesAnimation = () => {
           const size = Math.random() * 20 + 5;
           const x = Math.random() * (canvas.width - size * 2) + size;
           const y = Math.random() * (canvas.height - size * 2) + size;
-          const directionX = Math.random() * 1 - 0.5;
-          const directionY = Math.random() * 1 - 0.5;
+          const directionX =
+            Math.random() * 0.2 * Math.sin(Math.random() * 180);
+          const directionY =
+            Math.random() * 0.2 * Math.cos(Math.random() * 180);
           const color = colors[Math.floor(Math.random() * colors.length)];
           particlesArray.push(
             new Particle(x, y, directionX, directionY, size, color ?? "#FFEB3B")
