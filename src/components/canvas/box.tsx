@@ -2,20 +2,10 @@ import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Box as NativeBox } from '@react-three/drei'
 
-import { useAnimations, useGLTF } from '@react-three/drei'
+import { Mesh } from 'three'
 
-import type { Mesh } from 'three'
-
-import type {FC} from "react"
-
-interface Props {
-  speed:number;
-  factor:number;
-  url?:string;
-}
-
-export const Box:FC<Props> = ({speed, factor, url, ...props}) => {
-  const mesh = useRef<Mesh>(null) 
+export const Box = (props:any) => {
+  const mesh = useRef<Mesh>()
 
   const [hovered, setHover] = useState(false)
   const [active, setActive] = useState(false)
@@ -24,6 +14,7 @@ export const Box:FC<Props> = ({speed, factor, url, ...props}) => {
     if(mesh.current) mesh.current.rotation.x = mesh.current.rotation.y += 0.01})
 
   return (
+
     <NativeBox
       args={[1, 1, 1]}
       {...props}
@@ -40,7 +31,6 @@ export const Box:FC<Props> = ({speed, factor, url, ...props}) => {
     </NativeBox>
   )
 }
-
 
 
 
