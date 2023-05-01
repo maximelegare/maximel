@@ -13,6 +13,10 @@ import { api } from "~/utils/api";
 import { useRecoilState } from "recoil";
 import { counterAtomState } from "atoms/counterAtom";
 
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Box from "../../canvas/box";
+
 export const Hero = () => {
   const { t } = useTranslation("common");
 
@@ -23,6 +27,15 @@ export const Hero = () => {
   return (
     <Section styles="gradiant">
       <div className=" flex h-full flex-col items-center pt-[15%]">
+        <Canvas camera={{ position: [0, 0, 35] }}>
+          <ambientLight intensity={2} />
+          <pointLight position={[40, 40, 40]} />
+          <Box position={[10, 0, 0]} />
+          <Box position={[-10, 0, 0]} />
+          <Box position={[0, 10, 0]} />
+          <Box position={[0, -10, 0]} />
+          <OrbitControls />
+        </Canvas>
         <div
           data-aos="zoom-in"
           data-aos-duration="500"
@@ -54,7 +67,7 @@ export const Hero = () => {
           data-aos-duration="600"
           data-aos-delay="700"
         >
-          <div className="mt-14 flex items-center gap-4 rounded-lg border-[1px] border-base p-5">
+          <div className="border-base mt-14 flex items-center gap-4 rounded-lg border-[1px] p-5">
             <h3 className="text-3xl">{counterState}</h3>
             <Button
               handleClick={() => setCounterState(counterState + 1)}
@@ -68,4 +81,3 @@ export const Hero = () => {
     </Section>
   );
 };
-

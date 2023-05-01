@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "next-i18next.config.js", "src/utils/i18n.js" ],
+, "next-i18next.config.js", "src/utils/i18n.js", "src/pages/index.js" ],
   "exclude": ["node_modules"]
 }
