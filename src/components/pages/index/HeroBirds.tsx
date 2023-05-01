@@ -4,6 +4,8 @@ import { OrbitControls } from "@react-three/drei";
 import { Box } from "~/components/canvas/box";
 // import Bird from '../components/Bird'
 
+import { Physics } from "@react-three/cannon";
+
 export function Boxes() {
   const boxes = useMemo(
     () =>
@@ -16,14 +18,14 @@ export function Boxes() {
         //   Math.round(Math.random() * 2)
         // ];
         // const speed = bird === "stork" ? 0.5 : bird === "flamingo" ? 2 : 5;
-        const speed = 2
+        const speed = 2;
         // const factor =
         //   bird === "stork"
         //     ? 0.5 + Math.random()
         //     : bird === "flamingo"
         //     ? 0.25 + Math.random()
         //     : 1 + Math.random() - 0.5;
-        const factor = 0.25
+        const factor = 0.25;
 
         return {
           key: index,
@@ -31,7 +33,7 @@ export function Boxes() {
           rotation: [0, x > 0 ? Math.PI : 0, 0],
           speed,
           factor,
-            url: `/glb/stork.glb`,
+          url: `/glb/stork.glb`,
         };
       }),
     []
@@ -42,25 +44,18 @@ export function Boxes() {
       <ambientLight intensity={2} />
       <pointLight position={[40, 40, 40]} />
       <OrbitControls />
-      <Suspense fallback={null}>
-        {boxes.map((props) => (
-          //   <Bird {...props} key={props.key} />
-          <Box {...props} key={props.key} />
-        ))}
-      </Suspense>
+      <Physics>
+        <Suspense fallback={null}>
+          <Box position={[-2, -0.5, -3]} />
+        </Suspense>
+      </Physics>
     </Canvas>
   );
 }
 
-
-
 import React from "react";
 
 // import { warpBubble } from "./bubbleWarp";
-
-
-
-
 
 // export const useBubblesAnimation = () => {
 //   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
@@ -168,5 +163,3 @@ import React from "react";
 //     animateBubblesOnCanvas,
 //   };
 // };
-
-

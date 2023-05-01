@@ -1,36 +1,80 @@
-import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { Box as NativeBox } from '@react-three/drei'
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import { useRef } from "react";
+import type { GroupProps } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 
-import { Mesh } from 'three'
+import { type Displace as DisplaceType } from "lamina/vanilla";
 
-export const Box = (props:any) => {
-  const mesh = useRef<Mesh>()
+import { MathUtils } from "three";
 
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
+import { useMemo } from "react";
 
-  useFrame(() => {
-    if(mesh.current) mesh.current.rotation.x = mesh.current.rotation.y += 0.01})
+import type { Vector3 } from "three";
+
+import { Mesh } from "three";
+
+import type { DisplaceProps } from "lamina/types";
+
+export const Box = ({
+  displaceProps,
+  ...props
+}: GroupProps & {
+  displaceProps?: DisplaceProps;
+}) => {
+  // const [ref, api] = useSphere(
+  //   () => ({ args: [2], mass: 0 }),
+  //   useRef<Mesh>(null)
+  // );
+
+  // const [hovered, setHover] = useState(false);
+  // const [active, setActive] = useState(false);
+
+  // const values:any = useRef([0, 0]);
+
+  const ref = useRef<Mesh>(null!);
+  // const rand = useMemo(() => Math.random(), []);
+  const strength = useRef(0);
+  const displaceRef = useRef<
+    DisplaceType & { strength: number; offset: Vector3 }
+  >(null!);
+
+  useFrame(({ clock }, dt) => {
+    ref.current.position.y = Math.sin(clock.elapsedTime + 3 * 100) * 0.5 - 0.2;
+    ref.current.position.x = Math.cos(clock.elapsedTime + 3 * 100) * 0.5 - 0.2;
+
+    if (
+      displaceRef.current &&
+      displaceRef.current.strength !== strength.current
+    ) {
+      displaceRef.current.strength = MathUtils.lerp(
+        displaceRef.current.strength, //
+        strength.current,
+        0.1
+      );
+    }
+
+    if (strength.current > 0) {
+      displaceRef.current.offset.x += 0.3 * dt;
+    }
+  });
+
+  // useFrame(() => {
+  //   values.current[0] = lerp(values.current[0], (values.current[0] * Math.PI) / 5, 0.2)
+  //   values.current[1] = lerp(values.current[1], (values.current[1] * Math.PI) / 5, 0.2)
+  //   api.position.set(state.mouse.x * 10, state.mouse.y * 5, 0);
+  // });
 
   return (
-
-    <NativeBox
-      args={[1, 1, 1]}
-      {...props}
-      ref={mesh}
-      scale={active ? [6, 6, 6] : [5, 5, 5]}
-      onClick={() => setActive(!active)}
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-    >
+    <mesh ref={ref}>
+      <sphereBufferGeometry args={[2, 64, 64]} />
       <meshStandardMaterial
         attach="material"
-        color={hovered ? '#2b6c76' : '#720b23'}
+        // color={hovered ? "#2b6c76" : "#720b23"}
       />
-    </NativeBox>
-  )
-}
-
-
-
+    </mesh>
+  );
+};
