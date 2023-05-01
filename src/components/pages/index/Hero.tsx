@@ -25,9 +25,10 @@ export const Hero = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
-    <Section styles="gradiant">
-      <div className=" flex h-full flex-col items-center pt-[15%]">
-        <Canvas camera={{ position: [0, 0, 35] }}>
+    <Section
+      styles="gradiant"
+      noContainerElements={
+        <Canvas className="" camera={{ position: [0, 0, 35] }}>
           <ambientLight intensity={2} />
           <pointLight position={[40, 40, 40]} />
           <Box position={[10, 0, 0]} />
@@ -36,6 +37,9 @@ export const Hero = () => {
           <Box position={[0, -10, 0]} />
           <OrbitControls />
         </Canvas>
+      }
+    >
+      <div className="flex h-full flex-col items-center pt-[15%]">
         <div
           data-aos="zoom-in"
           data-aos-duration="500"
