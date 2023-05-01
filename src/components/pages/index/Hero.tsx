@@ -15,7 +15,7 @@ import { counterAtomState } from "atoms/counterAtom";
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Box from "../../canvas/box";
+import { Boxes } from "./HeroBirds";
 
 export const Hero = () => {
   const { t } = useTranslation("common");
@@ -27,17 +27,7 @@ export const Hero = () => {
   return (
     <Section
       styles="gradiant"
-      noContainerElements={
-        <Canvas className="" camera={{ position: [0, 0, 35] }}>
-          <ambientLight intensity={2} />
-          <pointLight position={[40, 40, 40]} />
-          <Box position={[10, 0, 0]} />
-          <Box position={[-10, 0, 0]} />
-          <Box position={[0, 10, 0]} />
-          <Box position={[0, -10, 0]} />
-          <OrbitControls />
-        </Canvas>
-      }
+      noContainerElements={<Boxes />}
     >
       <div className="flex h-full flex-col items-center pt-[15%]">
         <div
