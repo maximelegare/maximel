@@ -7,15 +7,17 @@ import { useRef } from "react";
 import type { GroupProps } from "@react-three/fiber";
 import { useFrame } from "@react-three/fiber";
 
+import { useState } from "react";
+
 import { type Displace as DisplaceType } from "lamina/vanilla";
 
-import { MathUtils } from "three";
+import { lerp } from "three/src/math/MathUtils";
 
 import { useMemo } from "react";
 
 import type { Vector3 } from "three";
 
-import { Mesh } from "three";
+import type { Mesh } from "three";
 
 import type { DisplaceProps } from "lamina/types";
 
@@ -30,7 +32,7 @@ export const Box = ({
   //   useRef<Mesh>(null)
   // );
 
-  // const [hovered, setHover] = useState(false);
+  const [hovered, setHover] = useState(false);
   // const [active, setActive] = useState(false);
 
   // const values:any = useRef([0, 0]);
@@ -43,14 +45,18 @@ export const Box = ({
   >(null!);
 
   useFrame(({ clock }, dt) => {
-    ref.current.position.y = Math.sin(clock.elapsedTime + 3 * 100) * 0.5 - 0.2;
-    ref.current.position.x = Math.cos(clock.elapsedTime + 3 * 100) * 0.5 - 0.2;
+    ref.current.position.y = clock.elapsedTime + Math.random() * 180 * (Math.sin(clock.elapsedTime + 3 * 100) * 0.5 - 0.2) / 200;
+    // ref.current.position.y =
+    //   Math.random() * 0.2 * Math.sin(clock.elapsedTime + Math.random() * 180);
+    ref.current.position.x = clock.elapsedTime + Math.random() * 180 * (Math.cos(clock.elapsedTime + 3 * 100) * 0.5 - 0.2) / 200;
+    // ref.current.position.x =
+    //   Math.random() * 0.2 * Math.cos(clock.elapsedTime + Math.random() * 180);
 
     if (
       displaceRef.current &&
       displaceRef.current.strength !== strength.current
     ) {
-      displaceRef.current.strength = MathUtils.lerp(
+      displaceRef.current.strength = lerp(
         displaceRef.current.strength, //
         strength.current,
         0.1
@@ -73,7 +79,7 @@ export const Box = ({
       <sphereBufferGeometry args={[2, 64, 64]} />
       <meshStandardMaterial
         attach="material"
-        // color={hovered ? "#2b6c76" : "#720b23"}
+        color={hovered ? "#2b6c76" : "#720b23"}
       />
     </mesh>
   );
