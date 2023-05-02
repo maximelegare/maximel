@@ -15,8 +15,10 @@ export const Section: FC<Props> = ({
     <section
       className={`flex min-h-screen justify-center ${styles ? styles : ""}`}
     >
-      <div className="container">{children}</div>
-      <div className="z-20 absolute left-0 top-0 h-full w-full">
+      <div className="container z-30">
+        {children}
+      </div>
+      <div className="absolute left-0 top-0 z-20 h-full w-full">
         {noContainerElements}
       </div>
     </section>

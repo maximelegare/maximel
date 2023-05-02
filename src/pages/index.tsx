@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Hero } from "~/components/pages/index/Hero";
+import { Projects } from "~/components/pages/index/Projects";
 
 
 
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
     <>
       <main>
         <Hero />
-        
+        <Projects />        
       </main>
     </>
   );

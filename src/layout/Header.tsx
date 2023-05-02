@@ -34,7 +34,7 @@ export const Header: FC = () => {
         data-aos-duration="800"
         data-aos-easing="ease-in-out-back"
         data-aos-delay="900"
-        className={`fixed flex h-16  w-full justify-center`}
+        className={`fixed flex h-16 z-50 w-full justify-center`}
       >
         <div className="container flex items-center justify-between">
           <SvgWrapper width="w-16" svgComponent={<Logo />} />
