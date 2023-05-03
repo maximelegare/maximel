@@ -43,7 +43,6 @@ export function Boxes() {
     <Canvas camera={{ position: [0, 0, 35] }}>
       <ambientLight intensity={2} />
       <pointLight position={[40, 40, 40]} />
-      <OrbitControls />
       <Physics>
         <Suspense fallback={null}>
           <Box position={[-2, -0.5, -3]} />
