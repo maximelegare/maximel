@@ -1,6 +1,6 @@
 import supportedLanguages from './supportedLanguages'
 
-export default {
+const localeBlockContent = {
   name: 'localeBlockContent',
   type: 'object',
   fieldsets: [
@@ -17,3 +17,5 @@ export default {
     fieldset: lang.isDefault ? null : 'translations',
   })),
 }
+
+export default localeBlockContent

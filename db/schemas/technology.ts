@@ -1,6 +1,6 @@
 import { FaReact as icon } from "react-icons/fa";
 
-export default {
+const technology = {
   name: "technology",
   title: "Technology",
   type: "document",
@@ -15,6 +15,15 @@ export default {
       name: "image",
       title: "Image",
       type: "image",
+      fields:[
+        {
+          name:'alt',
+          title:"Alt",
+          type:"string"
+        }
+      ]
     },
   ],
 };
+
+export default technology

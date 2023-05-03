@@ -6,6 +6,7 @@ import { z } from "zod";
  */
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  SANITY_PROJECT_ID:z.string()
 });
 
 /**
@@ -31,7 +32,8 @@ const client = z.object(
 const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-  NEXT_PUBLIC_SANITY_PROJECT_ID:process.env.SANITY_PROJECT_ID
+  NEXT_PUBLIC_SANITY_PROJECT_ID:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  SANITY_PROJECT_ID:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 };
 
 // Don't touch the part below

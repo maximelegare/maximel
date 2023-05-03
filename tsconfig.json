@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "next-i18next.config.js", "src/utils/i18n.js", "src/utils/sanity.js" ],
+, "next-i18next.config.js", "src/utils/i18n.js", "src/utils/sanity.js", "db/schemas/schema.js", "db/schemas/technology.js", "db/schemas/project.js" ],
   "exclude": ["node_modules"]
 }

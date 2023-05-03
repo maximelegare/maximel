@@ -1,6 +1,6 @@
 import { GrProjects as icon } from "react-icons/gr";
 
-export default {
+const project = {
   name: "project",
   title: "Project",
   type: "document",
@@ -56,41 +56,67 @@ export default {
       name: "logo",
       title: "Logo",
       type: "image",
-      options:{
-        hotspot:true
-      }
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
     },
-  
+
     {
       name: "images",
       title: "Images",
       type: "array",
       of: [
         {
+          name: "image",
           type: "image",
           options: {
             hotspot: true,
           },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
         },
       ],
     },
   ],
-  preview: {
-    select: {
-      title: "title",
-      date: "releaseDate",
-      subtitle:"subtitle",
-      media: "logo",
-      castName0: "castMembers.0.person.name",
-      castName1: "castMembers.1.person.name",
-    },
-    prepare({title, media, subtitle}) {
-
-      return {
-        title: `${title.toLowerCase()}`,
-        media,
-        subtitle:`${subtitle?? ""}`
-      };
-    },
-  },
+  // preview: {
+  //   select: {
+  //     title: "title",
+  //     date: "releaseDate",
+  //     subtitle: "subtitle",
+  //     media: "logo",
+  //     castName0: "castMembers.0.person.name",
+  //     castName1: "castMembers.1.person.name",
+  //   },
+  //   prepare({
+  //     title,
+  //     media,
+  //     subtitle,
+  //   }: {
+  //     title: string;
+  //     media: string;
+  //     subtitle: string;
+  //   }) {
+  //     return {
+  //       title: `${title.toLowerCase()}`,
+  //       media,
+  //       subtitle: `${subtitle ?? ""}`,
+  //     };
+  //   },
+  // },
 };
+
+
+
+export default project;
