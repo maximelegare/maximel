@@ -16,20 +16,22 @@ export const projectRouter = createTRPCRouter({
         
 
 
-    //   const result = projectSchemaArray.safeParse(res)
-      
-        
-
-    //   if(result.success){
-    //     console.log("[ZOD]: Data is Valid")
-    //   }else{
-    //     console.log("data is not valid")
-    //     console.log(result.error)
-    //   }
-
       return {
-        res: "hello"
-      };
+        res:projectSchemaArray.parse(res)
+      }
+      
+      // if(result.success){
+      //   console.log("[ZOD]: Data is Valid!")
+      //   return {
+      //     res:projectSchemaArray.parse(res)
+      //   }
+      // }else{
+      //   console.log("data is not valid")
+      //   return {
+      //     res:result
+      //   }
+        
+      // }
     }),
 });
 

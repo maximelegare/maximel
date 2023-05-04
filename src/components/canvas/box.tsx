@@ -71,8 +71,8 @@ export const Box = ({
           />
         </mesh>
       );
-      this.deltaY = Math.random() * 0.2;
-      this.deltaX = Math.random() * 0.2;
+      this.deltaY = Math.random() * 0.1;
+      this.deltaX = Math.random() * 0.1;
     }
   }
 
@@ -91,20 +91,18 @@ export const Box = ({
     // this.y += this.directionY;
     const currentBubble = bubble.ref.current;
 
-
-    if (
-      currentBubble.position.x + bubble.size > window.innerHeight ||
-      currentBubble.position.x - bubble.size < 0
-    ) {
-      bubble.deltaX = -bubble.deltaX;
-    }
-    if (
-      currentBubble.position.y + bubble.size > window.innerWidth ||
-      currentBubble.position.y - bubble.size < 0
-    ) {
-      bubble.deltaY = -bubble.deltaY;
-    }
-
+    // if (
+    //   currentBubble.position.x + bubble.size > window.innerHeight ||
+    //   currentBubble.position.x - bubble.size < 0
+    // ) {
+    //   bubble.deltaX = -bubble.deltaX;
+    // }
+    // if (
+    //   currentBubble.position.y + bubble.size > window.innerWidth ||
+    //   currentBubble.position.y - bubble.size < 0
+    // ) {
+    //   bubble.deltaY = -bubble.deltaY;
+    // }
 
     bubble.ref.current.position.y += bubble.deltaY;
 
@@ -117,20 +115,20 @@ export const Box = ({
     // ref.current.position.x =
     //   Math.random() * 0.2 * Math.cos(clock.elapsedTime + Math.random() * 180);
 
-    if (
-      displaceRef.current &&
-      displaceRef.current.strength !== strength.current
-    ) {
-      displaceRef.current.strength = lerp(
-        displaceRef.current.strength, //
-        strength.current,
-        0.1
-      );
-    }
+    // if (
+    //   displaceRef.current &&
+    //   displaceRef.current.strength !== strength.current
+    // ) {
+    //   displaceRef.current.strength = lerp(
+    //     displaceRef.current.strength, //
+    //     strength.current,
+    //     0.1
+    //   );
+    // }
 
-    if (strength.current > 0) {
-      displaceRef.current.offset.x += 0.3 * dt;
-    }
+    // if (strength.current > 0) {
+    //   displaceRef.current.offset.x += 0.3 * dt;
+    // }
   });
 
   useEffect(() => {
@@ -143,5 +141,5 @@ export const Box = ({
   //   api.position.set(state.mouse.x * 10, state.mouse.y * 5, 0);
   // });
 
-  return bubble.element;
+  return <>{bubble.element}</>;
 };

@@ -5,7 +5,7 @@ const getQuery = (type: string, lang: string) => {
           _id,
           title,
           subtitle,
-          slug,
+          "slug":slug.current,
           overview,
           body,
           logo{"imageUrl":asset->url},

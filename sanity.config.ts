@@ -2,6 +2,8 @@ import { defineConfig } from "sanity";
 import { env } from "~/env.mjs";
 import { deskTool } from "sanity/desk";
 
+import { visionTool } from "@sanity/vision";
+
 // import project from "db/schemas/project";
 // import technology from "db/schemas/technology";
 // import localeBlockContent from "db/schemas/locale/localeBlockContent";
@@ -15,7 +17,7 @@ const config = defineConfig({
   title: "maximel portfolio",
   apiVersion: "2023-05-03",
   basePath: "/admin",
-  plugins: [deskTool()],
+  plugins: [deskTool(), visionTool()],
   schema: { types: schemas },
 });
 
