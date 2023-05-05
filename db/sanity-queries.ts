@@ -9,8 +9,8 @@ const getQuery = (type: string, lang: string) => {
           overview,
           body,
           logo{"imageUrl":asset->url},
-          images[]{"imageUrl":asset->url},
-          technologies[]->{"imageUrl": image.asset->url, title}
+          "images":myImage[]->{"imageUrl":asset->url, bigImage, alt},
+          technologies[]->{"imageUrl": image.asset->url, "alt":image}
         }`;
       }
       default: {

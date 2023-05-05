@@ -67,7 +67,6 @@ const project = {
         },
       ],
     },
-
     {
       name: "images",
       title: "Images",
@@ -75,6 +74,7 @@ const project = {
       of: [
         {
           name: "image",
+          title: "Image",
           type: "image",
           options: {
             hotspot: true,
@@ -84,6 +84,12 @@ const project = {
               name: "alt",
               title: "Alt",
               type: "string",
+            },
+            {
+              name: "bigImage",
+              title: "Big image",
+              type: "boolean",
+              initialValue: false,
             },
           ],
         },
@@ -116,7 +122,5 @@ const project = {
   //   },
   // },
 };
-
-
 
 export default project;

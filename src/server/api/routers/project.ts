@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from "zod";
 
@@ -13,7 +14,7 @@ export const projectRouter = createTRPCRouter({
     .input(z.object({ lang: z.string() }))
     .query(async ({ input: { lang } }) => {
       const res = await getData()
-        
+      console.log(res[0])  
 
 
       return {

@@ -8,7 +8,7 @@ const projectSchema = z.object({
   slug: z.string(),
   overview: z.any(),
   body: z.any(),
-  images: z.array(z.object({ imageUrl: z.string() })),
+  images: z.array(z.object({ imageUrl: z.string(), bigImage:z.boolean() })),
   technologies: z.array(z.object({ imageUrl: z.string(), title: z.string() })),
 });
 

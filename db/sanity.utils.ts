@@ -13,14 +13,14 @@ export async function getData() {
 
   return await client.fetch(
     groq`*[_type == "project"]{
-    _id,
-    title,
-    subtitle,
-    "slug":slug.current,
-    overview,
-    body,
-    logo{"imageUrl":asset->url},
-    images[]{"imageUrl":asset->url},
-    technologies[]->{"imageUrl": image.asset->url, title}
-  }`);
+      _id,
+      title,
+      subtitle,
+      "slug":slug.current,
+      overview,
+      body,
+      logo{"imageUrl":asset->url},
+      images[]{"imageUrl":asset->url, alt, bigImage},
+      technologies[]->{"imageUrl": image.asset->url, title}
+    }`);
 }

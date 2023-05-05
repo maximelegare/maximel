@@ -14,9 +14,9 @@ import { useRouter } from "next/router";
 export const Projects = () => {
   const { locale } = useRouter();
 
-  const { data } = api.project.allProjects.useQuery({ lang: locale ?? "" });
+  const { data } = api.project.allProjects.useQuery({ lang: "fr" });
 
-  if(!data?.res) return <div>no data</div>
+  if (!data?.res) return <div>no data</div>;
 
   return (
     <Section styles="gradiant " bluredBackground>
@@ -26,19 +26,31 @@ export const Projects = () => {
           title="One music player to rule them all"
           icon={<GiDeathStar />}
         />
-        <div className="grid grid-cols-2 gap-4">
-          <Card
-            styles="col-span-2"
-            imageUrl="/maximel/public/assets/img/hodei.png"
+
+        <div className="grid grid-cols-2 gap-4 grid-rows-2">
+          <Card imageUrl={data.res[0]?.images[0]?.imageUrl} styles="col-span-2"/>
+          <BigTitle
+            smallTitle="Star of the show"
+            title="One music player to rule them all"
+            icon={<GiDeathStar />}
           />
-          <Card imageUrl={data?.res[0]?.images[0]?.imageUrl ?? ""} />
-          <Card imageUrl="/maximel/public/assets/img/hodei.png" />
+          <Card imageUrl={""} />
+          {/* <Card imageUrl={""} /> */}
+
+          {/* {data.res[0]?.images.map((img, idx) => {
+            console.log(img.bigImage);
+            return (
+              <div key={idx}>
+                <Card
+                  styles="col-span-2"
+                  imageUrl={img.imageUrl}
+                />
+              </div>
+            );
+          })} */}
+
+          {/* <Card imageUrl="/maximel/public/assets/img/hodei.png" /> */}
         </div>
-        <BigTitle
-          smallTitle="Star of the show"
-          title="One music player to rule them all"
-          icon={<GiDeathStar />}
-        />
         {/* <div className="grid grid-cols-2 gap-4">
           <Card styles="col-span-2" imageUrl="/maximel/public/assets/img/hodei.png" />
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />

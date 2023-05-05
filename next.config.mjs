@@ -42,6 +42,9 @@ const config = {
     locales: ["en", "fr"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["cdn.sanity.io"],
+  },
 
   /**
    * If you have `experimental: { appDir: true }` set, then you must comment the below `i18n` config
