@@ -11,6 +11,11 @@ import { api } from "~/utils/api";
 
 import { useRouter } from "next/router";
 
+import { Button } from "~/components/core/Button";
+import { AiOutlineGithub } from "react-icons/ai";
+import {BsGlobe} from "react-icons/bs"
+
+
 export const Projects = () => {
   const { locale } = useRouter();
 
@@ -18,8 +23,17 @@ export const Projects = () => {
 
   if (!data?.res) return <div>no data</div>;
 
+  const starOfShowButtons = [
+    <Button key={0} variant="icon">
+      <AiOutlineGithub />
+    </Button>,
+    <Button key={1} variant="icon">
+      <BsGlobe />
+    </Button>,
+  ];
+
   return (
-    <Section styles="gradiant " bluredBackground>
+    <Section styles="bg-black" bluredBackground>
       <>
         <BigTitle
           smallTitle="Star of the show"
@@ -27,14 +41,34 @@ export const Projects = () => {
           icon={<GiDeathStar />}
         />
 
-        <div className="grid grid-cols-2 gap-4 grid-rows-2">
-          <Card imageUrl={data.res[0]?.images[0]?.imageUrl} styles="col-span-2"/>
+        <div className="grid grid-cols-2 grid-rows-4 gap-x-4">
+          <Card
+            imageUrl={data.res[0]?.images[0]?.imageUrl}
+            styles="col-span-2"
+          />
           <BigTitle
             smallTitle="Star of the show"
             title="One music player to rule them all"
             icon={<GiDeathStar />}
+            buttons={starOfShowButtons}
+            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui
+            praesentium harum porro animi, tenetur est consequuntur, earum
+            odio vel laudantium officiis corporis amet deserunt ad ipsum
+            molestias nulla vitae labore facilis, blanditiis non. Harum fugiat
+            consectetur non laboriosam possimus."
           />
-          <Card imageUrl={""} />
+          <Card imageUrl={""} styles="gradiant mt-4" gradiantBorder />
+          <Card imageUrl="/maximel/public/assets/img/hodei.png" />
+          <BigTitle
+            smallTitle="Star of the show"
+            title="One music player to rule them all"
+            icon={<GiDeathStar />}
+            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui
+            praesentium harum porro animi, tenetur est consequuntur, earum
+            odio vel laudantium officiis corporis amet deserunt ad ipsum
+            molestias nulla vitae labore facilis, blanditiis non. Harum fugiat
+            consectetur non laboriosam possimus."
+          />
           {/* <Card imageUrl={""} /> */}
 
           {/* {data.res[0]?.images.map((img, idx) => {
@@ -56,7 +90,6 @@ export const Projects = () => {
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
         </div> */}
-        <Card imageUrl="/maximel/public/assets/img/hodei.png" />
       </>
     </Section>
   );
