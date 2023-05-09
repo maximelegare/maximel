@@ -57,7 +57,7 @@ export const Projects = () => {
             molestias nulla vitae labore facilis, blanditiis non. Harum fugiat
             consectetur non laboriosam possimus."
           />
-          <Card imageUrl={""} styles="gradiant mt-4" gradiantBorder />
+          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder />
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
           <BigTitle
             smallTitle="Star of the show"

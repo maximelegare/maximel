@@ -44,7 +44,7 @@ export const Card: FC<Props> = ({
             </div>
             <div>
               <h2>{title}</h2>
-              <h3>{description}</h3>
+              <h3 className="text-gradiant">{description}</h3>
             </div>
           </div>
           {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}

@@ -8,23 +8,61 @@ body {
   @apply text-base;
 }
 
-
 /**
 * All the gradiants for tailwind go in a class.
 */
 
-.gradiant{
+:root {
+  --primary-gradiant-color: 90deg, #0de7da 3%, #2de282 95%;
+}
+
+.gradiant {
   @apply bg-gradient-to-tl from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95%;
 }
 
-.l{
-  background-color: #4f617e;
+.to-b-gradiant {
+  @apply bg-gradient-to-b from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95%;
 }
 
+.to-b-gradiant-reverse {
+  @apply bg-gradient-to-b from-[#3d1381] from-20% via-[#39155a] via-60% to-[#3c1155] to-95%;
+}
+
+.gradiant-text{
+  @apply  bg-gradient-to-r from-[#0de7da] from-5%  to-[#2de282] to-95% inline-block text-transparent bg-clip-text;
+}
+
+
+.l {
+  background-color: #4f617e;
+}
 
 /**
 * Data AOS Custom Animations
 */
+
+.text-gradiant {
+  background-image: -webkit-linear-gradient(
+    var(--primary-gradiant-color)
+  ); /* For Chrome and Safari */
+  background-image: -moz-linear-gradient(
+    var(--primary-gradiant-color)
+  ); /* For old Fx (3.6 to 15) */
+  background-image: -ms-linear-gradient(
+    var(--primary-gradiant-color)
+  ); /* For pre-releases of IE 10*/
+  background-image: -o-linear-gradient(
+    var(--primary-gradiant-color)
+  ); /* For old Opera (11.1 to 12.0) */
+  background-image: linear-gradient(
+    var(--primary-gradiant-color)
+  ); /* Standard syntax; must be last */
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  opacity: 1;
+}
 
 [data-aos="fade-left-custom"] {
   opacity: 0;

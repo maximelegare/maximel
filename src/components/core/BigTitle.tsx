@@ -22,7 +22,7 @@ export const BigTitle: FC<Props> = ({
       <div className="flex flex-col gap-6">
         <div className="flex">
           <div className="flex w-3 flex-col items-center gap-2">
-            <div className="h-[100px] w-[3px]  bg-white"></div>
+            <div className="h-[100px] w-[3px] to-b-gradiant"></div>
           </div>
         </div>
         <div className="flex gap-6">
@@ -30,7 +30,7 @@ export const BigTitle: FC<Props> = ({
             <div className="flex w-3 flex-col items-center gap-6">
               <span className="text-3xl">{icon}</span>
 
-              <div className="h-full w-[3px]  bg-white"></div>
+              <div className="h-full w-[3px]  to-b-gradiant-reverse"></div>
             </div>
           </div>
           <div>
@@ -47,7 +47,7 @@ export const BigTitle: FC<Props> = ({
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
                 data-aos-easing="ease-out"
-                className="mt-2  text-5xl"
+                className="mt-2  text-5xl gradiant-text"
               >
                 {title}
               </h1>
