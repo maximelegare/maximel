@@ -14,7 +14,11 @@ const project = {
     {
       name: "subtitle",
       title: "Subtitle",
-      type: "string",
+      type: "object",
+      fields:[
+        { name: "hasBoldText", title: "Has bold text", type: "boolean", initialValue: false}, 
+        { name: "text", title: "Subtitle", type: "localeBlockContent" }, 
+      ]
     },
     {
       name: "slug",

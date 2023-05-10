@@ -19,7 +19,7 @@ import {BsGlobe} from "react-icons/bs"
 export const Projects = () => {
   const { locale } = useRouter();
 
-  const { data } = api.project.allProjects.useQuery({ lang: "fr" });
+  const { data } = api.project.allProjects.useQuery({ lang:"fr" });
 
   if (!data?.res) return <div>no data</div>;
 

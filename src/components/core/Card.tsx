@@ -23,7 +23,7 @@ export const Card: FC<Props> = ({
   return (
     <article
       className={`flex-grow ${styles ? styles : ""} rounded-lg   ${
-        gradiantBorder ? "p-1" : "outline outline-1 outline-gray-800"
+        gradiantBorder ? "p-1" : ""
       }`}
     >
       <div

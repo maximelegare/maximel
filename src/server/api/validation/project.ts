@@ -4,7 +4,7 @@ const projectSchema = z.object({
   _id: z.string(),
   title: z.string(),
   logo: z.object({ imageUrl: z.string() }),
-  subtitle: z.string(),
+  subtitle: z.object({ text: z.any(), hasBoldText:z.boolean() }),
   slug: z.string(),
   overview: z.any(),
   body: z.any(),
