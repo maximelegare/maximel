@@ -59,6 +59,7 @@ export const Projects = () => {
             smallTitle="Star of the show"
             title="One music player to rule them all"
             icon={<GiDeathStar />}
+            
             subtitle={data.res[0]?.subtitle}
           />
           {/* <Card imageUrl={""} /> */}

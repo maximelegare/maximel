@@ -2,13 +2,21 @@ import { array, z } from "zod";
 
 export type BlockContentModel = z.infer<typeof ProjectSchema.shape.subtitle>
 
+
+
+const lang = ['fr','en'] as const;
+
+export type Lang = (typeof lang)[number];
+
+
+
 const ProjectSchema = z.object({
   _id: z.string(),
   title: z.string(),
   logo: z.object({ imageUrl: z.string() }),
   subtitle: z.object({
     text: z.record(
-      z.enum(["fr", "en"]),
+      z.enum(lang),
       z.array(
         z.object({
           style: z.string(),
