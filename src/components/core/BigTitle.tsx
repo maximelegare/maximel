@@ -1,12 +1,15 @@
 import React from "react";
 import type { FC, ReactNode } from "react";
 import type { ReactElement } from "react";
+import { BlockContent } from "./BlockContent";
+
+import type { BlockContentModel } from "~/server/api/validation/project";
 
 interface Props {
   smallTitle: string;
   title: string;
   icon: ReactNode;
-  text?: string;
+  subtitle?: BlockContentModel;
   buttons?: ReactElement[];
 }
 
@@ -14,7 +17,7 @@ export const BigTitle: FC<Props> = ({
   smallTitle,
   title,
   icon,
-  text,
+  subtitle,
   buttons,
 }) => {
   return (
@@ -35,7 +38,8 @@ export const BigTitle: FC<Props> = ({
           </div>
           <div>
             <div className="pb-[200px]">
-              <h2
+              
+              {/* <h2
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
                 data-aos-easing="ease-out"
@@ -51,7 +55,8 @@ export const BigTitle: FC<Props> = ({
               >
                 {title}
               </h1>
-              <h4 className="mt-6 justify-self-stretch">{text}</h4>
+              <h4 className="mt-6 justify-self-stretch">{text}</h4> */}
+              <BlockContent subtitle={subtitle}/>
               <div className="flex gap-2 mt-6">{buttons?.map((el, idx) => (
                 <div key={idx}>
                   {el}

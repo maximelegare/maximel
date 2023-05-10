@@ -51,11 +51,7 @@ export const Projects = () => {
             title="One music player to rule them all"
             icon={<GiDeathStar />}
             buttons={starOfShowButtons}
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui
-            praesentium harum porro animi, tenetur est consequuntur, earum
-            odio vel laudantium officiis corporis amet deserunt ad ipsum
-            molestias nulla vitae labore facilis, blanditiis non. Harum fugiat
-            consectetur non laboriosam possimus."
+            subtitle={data.res[0]?.subtitle}
           />
           <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder />
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
@@ -63,11 +59,7 @@ export const Projects = () => {
             smallTitle="Star of the show"
             title="One music player to rule them all"
             icon={<GiDeathStar />}
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui
-            praesentium harum porro animi, tenetur est consequuntur, earum
-            odio vel laudantium officiis corporis amet deserunt ad ipsum
-            molestias nulla vitae labore facilis, blanditiis non. Harum fugiat
-            consectetur non laboriosam possimus."
+            subtitle={data.res[0]?.subtitle}
           />
           {/* <Card imageUrl={""} /> */}
 

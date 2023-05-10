@@ -6,21 +6,18 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 import { getData } from "db/sanity.utils";
 
-import { projectSchemaArray } from "../validation/project";
-
+import { ProjectSchemaArray } from "../validation/project";
 
 export const projectRouter = createTRPCRouter({
   allProjects: publicProcedure
     .input(z.object({ lang: z.string() }))
     .query(async ({ input: { lang } }) => {
-      const res = await getData()
-      console.log(res[0])  
-
+      const res = await getData("products", lang);
 
       return {
-        res:projectSchemaArray.parse(res)
-      }
-      
+        res: ProjectSchemaArray.parse(res),
+      };
+
       // if(result.success){
       //   console.log("[ZOD]: Data is Valid!")
       //   return {
@@ -31,10 +28,7 @@ export const projectRouter = createTRPCRouter({
       //   return {
       //     res:result
       //   }
-        
+
       // }
     }),
 });
-
-
-

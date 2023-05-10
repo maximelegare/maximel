@@ -1,16 +1,20 @@
-const getQuery = (type: string, lang: string) => {
-    switch (type) {
+export type Query = "products" 
+
+const getQuery = (query: Query, lang: string) => {
+    switch (query) {
       case "products": {
         return `*[_type == "project"]{
           _id,
           title,
-          subtitle,
+          subtitle{text{${lang}[]{
+            style, children[]{text, marks}
+          }}, hasBoldText},
           "slug":slug.current,
           overview,
           body,
           logo{"imageUrl":asset->url},
-          "images":myImage[]->{"imageUrl":asset->url, bigImage, alt},
-          technologies[]->{"imageUrl": image.asset->url, "alt":image}
+          images[]{"imageUrl":asset->url, alt, bigImage},
+          technologies[]->{"imageUrl": image.asset->url, title}
         }`;
       }
       default: {
@@ -22,5 +26,4 @@ const getQuery = (type: string, lang: string) => {
   };
   
   export { getQuery };
-  
   
