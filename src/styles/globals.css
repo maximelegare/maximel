@@ -33,37 +33,33 @@ body {
 }
 
 
-.l {
-  background-color: #4f617e;
+
+.text-gradiant {
+  background-image: -webkit-linear-gradient(
+    var(--primary-gradiant-color)
+    ); /* For Chrome and Safari */
+    background-image: -moz-linear-gradient(
+      var(--primary-gradiant-color)
+      ); /* For old Fx (3.6 to 15) */
+      background-image: -ms-linear-gradient(
+        var(--primary-gradiant-color)
+        ); /* For pre-releases of IE 10*/
+  background-image: -o-linear-gradient(
+    var(--primary-gradiant-color)
+    ); /* For old Opera (11.1 to 12.0) */
+    background-image: linear-gradient(
+    var(--primary-gradiant-color)
+    ); /* Standard syntax; must be last */
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  opacity: 1;
 }
 
 /**
 * Data AOS Custom Animations
 */
-
-.text-gradiant {
-  background-image: -webkit-linear-gradient(
-    var(--primary-gradiant-color)
-  ); /* For Chrome and Safari */
-  background-image: -moz-linear-gradient(
-    var(--primary-gradiant-color)
-  ); /* For old Fx (3.6 to 15) */
-  background-image: -ms-linear-gradient(
-    var(--primary-gradiant-color)
-  ); /* For pre-releases of IE 10*/
-  background-image: -o-linear-gradient(
-    var(--primary-gradiant-color)
-  ); /* For old Opera (11.1 to 12.0) */
-  background-image: linear-gradient(
-    var(--primary-gradiant-color)
-  ); /* Standard syntax; must be last */
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  opacity: 1;
-}
-
 [data-aos="fade-left-custom"] {
   opacity: 0;
   transform: translate(20px);

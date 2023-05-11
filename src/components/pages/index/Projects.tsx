@@ -41,14 +41,13 @@ export const Projects = () => {
           icon={<GiDeathStar />}
         />
 
-        <div className="grid grid-cols-2 grid-rows-4 gap-x-4">
           <Card
             imageUrl={data.res[0]?.images[0]?.imageUrl}
-            styles="col-span-2"
           />
+        <div className="grid grid-cols-2 grid-rows-4 gap-x-4">
           <BigTitle
             smallTitle="Star of the show"
-            title="One music player to rule them all"
+            title={data.res[0]?.title}
             icon={<GiDeathStar />}
             buttons={starOfShowButtons}
             subtitle={data.res[0]?.subtitle}

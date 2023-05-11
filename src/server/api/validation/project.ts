@@ -2,11 +2,9 @@ import { array, z } from "zod";
 
 export type BlockContentModel = z.infer<typeof ProjectSchema.shape.subtitle>
 
+import { lang } from "db/schemas/locale/supportedLanguages";
 
 
-const lang = ['fr','en'] as const;
-
-export type Lang = (typeof lang)[number];
 
 
 

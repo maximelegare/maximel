@@ -7,7 +7,7 @@ import type { BlockContentModel } from "~/server/api/validation/project";
 
 interface Props {
   smallTitle: string;
-  title: string;
+  title?: string;
   icon: ReactNode;
   subtitle?: BlockContentModel;
   buttons?: ReactElement[];
@@ -47,20 +47,21 @@ export const BigTitle: FC<Props> = ({
               >
                 {smallTitle}
               </h2>
+              <h4 className="mt-6 justify-self-stretch">{text}</h4> */}
               <h1
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
                 data-aos-easing="ease-out"
-                className="mt-2  text-5xl gradiant-text"
+                className="text-lg mb-1 font-medium"
               >
                 {title}
               </h1>
-              <h4 className="mt-6 justify-self-stretch">{text}</h4> */}
               <BlockContent data={subtitle}/>
               <div className="flex gap-2 mt-6">{buttons?.map((el, idx) => (
                 <div key={idx}>
                   {el}
                 </div>))}</div>
+              
             </div>
           </div>
         </div>
@@ -68,3 +69,5 @@ export const BigTitle: FC<Props> = ({
     </div>
   );
 };
+
+
