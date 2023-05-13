@@ -13,13 +13,13 @@ import { useRouter } from "next/router";
 
 import { Button } from "~/components/core/Button";
 import { AiOutlineGithub } from "react-icons/ai";
-import {BsGlobe} from "react-icons/bs"
-
+import { BsGlobe } from "react-icons/bs";
+import { Media } from "~/components/core/Media";
 
 export const Projects = () => {
   const { locale } = useRouter();
 
-  const { data } = api.project.allProjects.useQuery({ lang:"fr" });
+  const { data } = api.project.allProjects.useQuery({ lang: "fr" });
 
   if (!data?.res) return <div>no data</div>;
 
@@ -41,9 +41,7 @@ export const Projects = () => {
           icon={<GiDeathStar />}
         />
 
-          <Card
-            imageUrl={data.res[0]?.images[0]?.imageUrl}
-          />
+        <Card imageUrl={data.res[0]?.images[0]?.imageUrl} />
         <div className="grid grid-cols-2 grid-rows-4 gap-x-4">
           <BigTitle
             smallTitle="Star of the show"
@@ -58,9 +56,15 @@ export const Projects = () => {
             smallTitle="Star of the show"
             title="One music player to rule them all"
             icon={<GiDeathStar />}
-            
             subtitle={data.res[0]?.subtitle}
           />
+          <div className="mt-6 flex gap-2">
+            {data.res[0]?.links?.map(({ href, type }, idx) => (
+              <div key={idx}>
+                <Media href={href} type={type} />
+              </div>
+            ))}
+          </div>
           {/* <Card imageUrl={""} /> */}
 
           {/* {data.res[0]?.images.map((img, idx) => {

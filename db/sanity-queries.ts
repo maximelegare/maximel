@@ -6,7 +6,7 @@ const getQuery = (query: Query, lang: string) => {
         return `*[_type == "project"]{
           _id,
           title,
-          subtitle{text{${lang}[]{
+          subtitle{text{fr[]{
             style, children[]{text, marks}
           }}, hasBoldText},
           "slug":slug.current,
@@ -14,7 +14,8 @@ const getQuery = (query: Query, lang: string) => {
           body,
           logo{"imageUrl":asset->url},
           images[]{"imageUrl":asset->url, alt, bigImage},
-          technologies[]->{"imageUrl": image.asset->url, title}
+          technologies[]->{"imageUrl": image.asset->url, title}, 
+          links[]{href, type} 
         }`;
       }
       default: {

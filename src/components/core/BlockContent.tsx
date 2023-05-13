@@ -27,10 +27,10 @@ export const BlockContent: FC<Props> = ({ data, highlightColor }) => {
   const getLineStyle = (size: Size) => {
     switch (size as string) {
       case "h1": {
-        return "text-3xl font-semibold pb-3";
+        return "h1 pb-5";
       }
-      case "h4": {
-        return "text-base font-semibold pb-3";
+      case "p": {
+        return "p pb-3";
       }
       default: {
         return "text-sm";

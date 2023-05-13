@@ -31,6 +31,8 @@ const ProjectSchema = z.object({
   body: z.any(),
   images: z.array(z.object({ imageUrl: z.string(), bigImage: z.boolean() })),
   technologies: z.array(z.object({ imageUrl: z.string(), title: z.string() })),
+  links:z.array(z.object({href:z.string(), type:z.string()}))
+
 });
 
 const ProjectSchemaArray = z.array(ProjectSchema);

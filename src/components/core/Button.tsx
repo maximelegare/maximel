@@ -7,6 +7,7 @@ interface Props {
   href?: string;
   styles?: string;
   children: ReactNode;
+  targetBlank?: boolean;
   handleClick?: () => any;
 }
 
@@ -15,6 +16,7 @@ export const Button: FC<Props> = ({
   variant,
   styles,
   href,
+  targetBlank,
   handleClick,
 }) => {
   const getClasses = (variant?: string) => {
@@ -31,6 +33,7 @@ export const Button: FC<Props> = ({
     <>
       {href ? (
         <Link
+          target={targetBlank ? "_blank" : ""}
           className={`${getClasses(variant)} ${
             styles ?? ""
           } btn-outline btn-sm btn`}

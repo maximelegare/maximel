@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Separator = () => {
+export const Separator = ({color = "gradiant"}:{color?:string}) => {
   return (
     <div className="py-3">
-      <hr className="w-10 rounded-full border-0 border-t-4 border-solid border-teal-200" />
+      <div className={`w-10 h-2 rounded-full ${color}`} />
     </div>
   );
 };

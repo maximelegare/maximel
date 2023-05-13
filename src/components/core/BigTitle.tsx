@@ -57,10 +57,10 @@ export const BigTitle: FC<Props> = ({
                 {title}
               </h1>
               <BlockContent data={subtitle}/>
-              <div className="flex gap-2 mt-6">{buttons?.map((el, idx) => (
+              {/* <div className="flex gap-2 mt-6">{buttons?.map((el, idx) => (
                 <div key={idx}>
                   {el}
-                </div>))}</div>
+                </div>))}</div> */}
               
             </div>
           </div>

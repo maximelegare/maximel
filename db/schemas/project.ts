@@ -57,6 +57,23 @@ const project = {
       ],
     },
     {
+      name:"links",
+      title:"Links",
+      type:"array",
+      of:[
+        {
+          name:"link",
+          title:"Link",
+          type:"object",
+          fields:[
+            {name:"type", title:"Type", type:"string"},
+            {name:"href", title:"href", type:"string"},
+          ]
+          
+        }
+      ]
+    },
+    {
       name: "logo",
       title: "Logo",
       type: "image",

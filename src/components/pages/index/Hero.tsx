@@ -43,7 +43,7 @@ export const Hero = () => {
           </h3>
         </div>
         <div data-aos="fade-up-custom" data-aos-easing="ease-in-out-back">
-          <h1 className="text-center text-4xl">
+          <h1 className="text-center">
             {t("index.hero.this-is-my")}{" "}
             <span className="font-display text-6xl text-accent">
               {t("index.hero.template")}
