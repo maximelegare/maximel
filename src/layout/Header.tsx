@@ -41,7 +41,7 @@ export const Header: FC = () => {
           <ul className="flex gap-2">
             {headerLinks.map((el, idx) => (
               <li key={idx} className="" suppressContentEditableWarning>
-                <Button styles="btn-base" href={el.route}>
+                <Button styles="btn-base" outline href={el.route}>
                   {t(el.title)}
                 </Button>
               </li>
@@ -50,7 +50,7 @@ export const Header: FC = () => {
             <Dropdown
               trigger={{
                 triggerTitle: <FaGlobeAmericas />,
-                triggerStyles: "btn-base btn-circle w-8",
+                triggerStyles: "btn-base btn-circle w-8 btn-outline",
               }}
               content={{ items: mapLocales ?? [] }}
             />

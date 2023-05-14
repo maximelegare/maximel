@@ -8,6 +8,7 @@ interface Props {
   styles?: string;
   children: ReactNode;
   targetBlank?: boolean;
+  outline?: boolean;
   handleClick?: () => any;
 }
 
@@ -17,15 +18,16 @@ export const Button: FC<Props> = ({
   styles,
   href,
   targetBlank,
+  outline,
   handleClick,
 }) => {
   const getClasses = (variant?: string) => {
     switch (variant) {
       case "icon": {
-        return "btn-circle btn-sm text-lg";
+        return `btn-circle btn-sm text-lg hover:bg-[#3c1155]`;
       }
       default: {
-        return "w-24";
+        return `w-24`;
       }
     }
   };
@@ -34,9 +36,8 @@ export const Button: FC<Props> = ({
       {href ? (
         <Link
           target={targetBlank ? "_blank" : ""}
-          className={`${getClasses(variant)} ${
-            styles ?? ""
-          } btn-outline btn-sm btn`}
+          className={`${getClasses(variant)} ${styles ?? ""}
+           ${outline ? "btn-outline" : ""}  btn-sm btn`}
           href={href}
         >
           {children}
@@ -44,9 +45,9 @@ export const Button: FC<Props> = ({
       ) : (
         <button
           onClick={handleClick}
-          className={`${getClasses(variant)} ${
-            styles ?? ""
-          } btn-outline btn-sm btn`}
+          className={`${getClasses(variant)} ${styles ?? ""} ${
+            outline ? "btn-outline" : ""
+          } btn-sm btn`}
         >
           {children}
         </button>

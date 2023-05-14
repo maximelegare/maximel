@@ -1,11 +1,10 @@
 import { array, z } from "zod";
 
 export type BlockContentModel = z.infer<typeof ProjectSchema.shape.subtitle>
+export type LinksModel = z.infer<typeof ProjectSchema.shape.links>
+
 
 import { lang } from "db/schemas/locale/supportedLanguages";
-
-
-
 
 
 const ProjectSchema = z.object({

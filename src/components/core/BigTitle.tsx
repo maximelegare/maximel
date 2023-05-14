@@ -2,15 +2,19 @@ import React from "react";
 import type { FC, ReactNode } from "react";
 import type { ReactElement } from "react";
 import { BlockContent } from "./BlockContent";
+import { Media } from "./Media";
 
-import type { BlockContentModel } from "~/server/api/validation/project";
+import type {
+  BlockContentModel,
+  LinksModel,
+} from "~/server/api/validation/project";
 
 interface Props {
   smallTitle: string;
   title?: string;
   icon: ReactNode;
   subtitle?: BlockContentModel;
-  buttons?: ReactElement[];
+  buttons?: LinksModel;
 }
 
 export const BigTitle: FC<Props> = ({
@@ -25,7 +29,7 @@ export const BigTitle: FC<Props> = ({
       <div className="flex flex-col gap-6">
         <div className="flex">
           <div className="flex w-3 flex-col items-center gap-2">
-            <div className="h-[100px] w-[3px] to-b-gradiant"></div>
+            <div className="to-b-gradiant h-[100px] w-[3px]"></div>
           </div>
         </div>
         <div className="flex gap-6">
@@ -33,12 +37,11 @@ export const BigTitle: FC<Props> = ({
             <div className="flex w-3 flex-col items-center gap-6">
               <span className="text-3xl">{icon}</span>
 
-              <div className="h-full w-[3px]  to-b-gradiant-reverse"></div>
+              <div className="to-b-gradiant-reverse h-full  w-[3px]"></div>
             </div>
           </div>
           <div>
             <div className="pb-[200px]">
-              
               {/* <h2
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
@@ -52,16 +55,18 @@ export const BigTitle: FC<Props> = ({
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
                 data-aos-easing="ease-out"
-                className="text-lg mb-1 font-medium"
+                className="mb-1 text-lg font-medium"
               >
                 {title}
               </h1>
-              <BlockContent data={subtitle}/>
-              {/* <div className="flex gap-2 mt-6">{buttons?.map((el, idx) => (
-                <div key={idx}>
-                  {el}
-                </div>))}</div> */}
-              
+              <BlockContent data={subtitle} />
+              <div className="mt-6 flex gap-2">
+                {buttons?.map(({ href, type }, idx) => (
+                  <div key={idx}>
+                    <Media href={href} type={type} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -69,5 +74,3 @@ export const BigTitle: FC<Props> = ({
     </div>
   );
 };
-
-

@@ -47,10 +47,10 @@ export const Projects = () => {
             smallTitle="Star of the show"
             title={data.res[0]?.title}
             icon={<GiDeathStar />}
-            buttons={starOfShowButtons}
             subtitle={data.res[0]?.subtitle}
+            buttons={data.res[0]?.links}
           />
-          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder />
+          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder/>
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
           <BigTitle
             smallTitle="Star of the show"
@@ -58,13 +58,7 @@ export const Projects = () => {
             icon={<GiDeathStar />}
             subtitle={data.res[0]?.subtitle}
           />
-          <div className="mt-6 flex gap-2">
-            {data.res[0]?.links?.map(({ href, type }, idx) => (
-              <div key={idx}>
-                <Media href={href} type={type} />
-              </div>
-            ))}
-          </div>
+          
           {/* <Card imageUrl={""} /> */}
 
           {/* {data.res[0]?.images.map((img, idx) => {

@@ -32,6 +32,7 @@ body {
   @apply  bg-gradient-to-r from-[#0de7da] from-5%  to-[#2de282] to-95% inline-block text-transparent bg-clip-text;
 }
 
+
 h1, .h1{
   @apply text-4xl;
 }
@@ -46,6 +47,10 @@ h3, .h3{
 
 p, .p{}
 
+
+.clip-path{
+  clip-path: polygon(0% 0%, 0 81%, 100% 31%, 100% 0);
+}
 
 
 .text-gradiant {
