@@ -1,31 +1,39 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from "react";
+import { useState } from "react";
+
 import type { FC } from "react";
 import Image from "next/image";
 import { Button } from "./Button";
-import { When } from "react-if";
+import { When, If, Then, Else } from "react-if";
+import { ReactNode } from "react";
+
+import { BsArrowRightShort } from "react-icons/bs";
+// import styles from "../../styles/filpCard.module.scss"
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  technologies?: string[] | undefined;
   imageUrl: string | undefined;
   styles?: string | undefined;
   gradiantBorder?: boolean;
   clipPath?: string;
+  circleHover?: boolean;
+  children?: ReactNode;
+  handleFlipCard?: () => any;
 }
 
 export const Card: FC<Props> = ({
-  title,
-  technologies,
-  description,
+  circleHover,
   imageUrl,
   styles,
   clipPath,
   gradiantBorder = false,
+  children,
+  handleFlipCard
 }) => {
   return (
     <article
-      className={`${styles ? styles : ""} rounded-lg   ${
+      className={`${styles ? styles : ""} h-full w-full rounded-lg ${
         gradiantBorder ? "p-1" : ""
       }`}
     >
@@ -34,21 +42,33 @@ export const Card: FC<Props> = ({
           gradiantBorder ? "bg-black" : ""
         } ${clipPath ?? ""}`}
       >
-        <div className="relative block h-full w-full overflow-hidden">
-          <div className=" gradiant absolute bottom-3 right-3 z-[1] h-20 w-20 rounded-full transition-all duration-700 ease-in-out hover:scale-[25] "></div>
-          <div className="relative">
-            <div className="z-20">
-              <When condition={imageUrl}>
-                <Image
-                  className="rounded-lg"
-                  src={imageUrl ?? ""}
-                  alt=""
-                  width={1800}
-                  height={0}
-                ></Image>
-              </When>
-              <div>hello</div>
+        <div className=" relative block h-full w-full overflow-hidden">
+          <If condition={imageUrl}>
+            <Then>
+              <Image
+                className="rounded-lg"
+                src={imageUrl ?? ""}
+                alt=""
+                width={1800}
+                height={0}
+              ></Image>
+            </Then>
+            <Else>
+              <div className="relative z-[2]">{children}</div>
+            </Else>
+          </If>
+          <When condition={circleHover === true}>
+            <div className="group">
+              <div className="gradiant absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]"></div>
+              <div className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full" onClick={handleFlipCard}>
+                <div className="flex items-center" data-aos="fade-right-custom">
+                  <BsArrowRightShort className="text-4xl" />
+                </div>
+              </div>
             </div>
+          </When>
+          <div className="relative">
+            <div className="z-20"></div>
             {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}
           </div>
         </div>
@@ -57,20 +77,25 @@ export const Card: FC<Props> = ({
   );
 };
 
-<div className="overflow-hidden">
-  <a
-    href="#"
-    className="ag-courses-item_link relative block overflow-hidden bg-[#121212] px-5 py-8"
-  >
-    <div className="absolute -right-20 -top-20 z-[1] h-32 w-32 rounded-full bg-[#f9b234] transition-all duration-500 ease-in-out hover:scale-[25] "></div>
+export const FlipCard: FC<Props> = (props) => {
+  const [flipState, setFlipState] = useState(false);
 
-    <div className="relative z-[2]">
-      UI/Web&amp;Graph design for teenagers 11-17&#160;years old
+  return (
+    <div>
+      <div className="flip-card">
+        <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
+          <div className="flip-card-front">
+            <Card {...props} handleFlipCard={() => setFlipState(true)}>
+              {props.children}
+            </Card>
+          </div>
+          <div className="flip-card-back">
+            <h1>John Doe</h1>
+            <p>Architect & Engineer</p>
+            <p>We love that guy</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div className="relative z-[2]">
-      Start:
-      <span className="relative z-[2]">04.11.2022</span>
-    </div>
-  </a>
-</div>;
+  );
+};

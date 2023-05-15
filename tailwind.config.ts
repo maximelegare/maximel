@@ -1,4 +1,27 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type Config } from "tailwindcss";
+
+import plugin from "tailwindcss/plugin";
+
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+const backfaceVisibility = plugin(function({addUtilities}:{addUtilities:any}) {
+  addUtilities({
+    '.backface-visible': {
+      'backface-visibility': 'visible',
+      '-moz-backface-visibility': 'visible',
+      '-webkit-backface-visibility': 'visible',
+      '-ms-backface-visibility': 'visible'
+    },
+    '.backface-hidden': {
+      'backface-visibility': 'hidden',
+      '-moz-backface-visibility': 'hidden',
+      '-webkit-backface-visibility': 'hidden',
+      '-ms-backface-visibility': 'hidden'
+    }
+  })
+});
 
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -38,5 +61,5 @@ export default {
       "dark",
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@kamona/tailwindcss-perspective"), backfaceVisibility],
 } satisfies Config;

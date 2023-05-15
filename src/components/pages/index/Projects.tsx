@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { Section } from "~/components/core/Section";
 
-import { Card } from "~/components/core/Card";
+import { Card, FlipCard } from "~/components/core/Card";
 import { BigTitle } from "~/components/core/BigTitle";
 import { GiDeathStar } from "react-icons/gi";
 
@@ -50,7 +50,7 @@ export const Projects = () => {
             subtitle={data.res[0]?.subtitle}
             buttons={data.res[0]?.links}
           />
-          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder />
+          <FlipCard imageUrl={""} styles="gradiant mt-8" gradiantBorder circleHover/>
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
           <BigTitle
             smallTitle="Star of the show"
