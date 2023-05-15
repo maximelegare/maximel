@@ -50,7 +50,7 @@ export const Projects = () => {
             subtitle={data.res[0]?.subtitle}
             buttons={data.res[0]?.links}
           />
-          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder/>
+          <Card imageUrl={""} styles="gradiant mt-8" gradiantBorder />
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
           <BigTitle
             smallTitle="Star of the show"
@@ -58,20 +58,19 @@ export const Projects = () => {
             icon={<GiDeathStar />}
             subtitle={data.res[0]?.subtitle}
           />
-          
           {/* <Card imageUrl={""} /> */}
 
           {/* {data.res[0]?.images.map((img, idx) => {
             console.log(img.bigImage);
             return (
               <div key={idx}>
-                <Card
-                  styles="col-span-2"
-                  imageUrl={img.imageUrl}
-                />
+              <Card
+              styles="col-span-2"
+              imageUrl={img.imageUrl}
+              />
               </div>
-            );
-          })} */}
+              );
+            })} */}
 
           {/* <Card imageUrl="/maximel/public/assets/img/hodei.png" /> */}
         </div>
