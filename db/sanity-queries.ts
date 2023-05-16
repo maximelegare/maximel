@@ -7,7 +7,7 @@ const getQuery = (query: Query, lang: string) => {
           _id,
           title,
           styles,
-          subtitle{text{fr[]{
+          headline{text{fr[]{
             style, children[]{text, marks}
           }}, hasBoldText},
           "slug":slug.current,

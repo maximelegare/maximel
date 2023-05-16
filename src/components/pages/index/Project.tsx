@@ -25,7 +25,7 @@ export const Project: FC<Props> = ({ data }) => {
             smallTitle="Star of the show"
             title={data.title}
             //   icon={<GiDeathStar />}
-            subtitle={data.subtitle}
+            subtitle={data.headline}
             logo={data.logo}
           />
         </div>
@@ -36,7 +36,7 @@ export const Project: FC<Props> = ({ data }) => {
             logo={data.logo}
             smallTitle="Star of the show"
             title={data.title}
-            subtitle={data.subtitle}
+            subtitle={data.headline}
             buttons={data.links}
           />
           <FlipCard

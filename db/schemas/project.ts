@@ -34,12 +34,11 @@ const project = {
       type: "string",
     },
     {
-      name: "subtitle",
-      title: "Subtitle",
+      name: "headline",
+      title: "Headline",
       type: "object",
       fields:[
-        { name: "hasBoldText", title: "Has bold text", type: "boolean", initialValue: false}, 
-        { name: "text", title: "Subtitle", type: "localeBlockContent" }, 
+        { name: "text", title: "Headline", type: "localeBlockContent" }, 
       ]
     },
     {

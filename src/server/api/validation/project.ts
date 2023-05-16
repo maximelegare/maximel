@@ -1,6 +1,6 @@
 import {  z } from "zod";
 
-export type BlockContentModel = z.infer<typeof ProjectSchema.shape.subtitle>
+export type BlockContentModel = z.infer<typeof ProjectSchema.shape.headline>
 export type LinksModel = z.infer<typeof ProjectSchema.shape.links>
 
 import { lang } from "db/schemas/locale/supportedLanguages";
@@ -13,7 +13,7 @@ const ProjectSchema = z.object({
   styles:z.object({textAccent:z.string(), accent:z.string()}),
   title: z.string(),
   logo: z.object({ imageUrl: z.string(), alt:z.string() }),
-  subtitle: z.object({
+  headline: z.object({
     text: z.record(
       z.enum(lang),
       z.array(
@@ -25,7 +25,6 @@ const ProjectSchema = z.object({
         })
       )
     ),
-    hasBoldText: z.boolean(),
   }),
   slug: z.string(),
   overview: z.any(),
