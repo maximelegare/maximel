@@ -11,10 +11,11 @@ import { useRouter } from "next/router";
 
 interface Props {
   data?: BlockContentModel;
-  highlightColor?: string;
+  highlightColor: string;
+  separatorColor:string
 }
 
-export const BlockContent: FC<Props> = ({ data, highlightColor }) => {
+export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }) => {
   const { locale } = useRouter();
 
   let lines;
@@ -39,13 +40,12 @@ export const BlockContent: FC<Props> = ({ data, highlightColor }) => {
   };
 
   const getMarkups = (marks: string[]) => {
-    console.log(marks);
-    const marksToAdd: string[] = [];
+  const marksToAdd: string[] = [];
 
     marks.forEach((mark) => {
       switch (mark) {
         case "highlight": {
-          marksToAdd.push("gradiant-text");
+          marksToAdd.push(`${highlightColor}`);
           break;
         }
         case "strong": {
@@ -63,7 +63,7 @@ export const BlockContent: FC<Props> = ({ data, highlightColor }) => {
   ) => {
     switch (el.text) {
       case "//": {
-        return <Separator />;
+        return <Separator color={separatorColor}/>;
       }
       default: {
         return (

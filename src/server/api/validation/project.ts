@@ -1,16 +1,18 @@
-import { array, z } from "zod";
+import {  z } from "zod";
 
 export type BlockContentModel = z.infer<typeof ProjectSchema.shape.subtitle>
 export type LinksModel = z.infer<typeof ProjectSchema.shape.links>
 
-
 import { lang } from "db/schemas/locale/supportedLanguages";
 
 
+export type ProjectSchemaModel = z.infer<typeof ProjectSchema>
+
 const ProjectSchema = z.object({
   _id: z.string(),
+  styles:z.object({textAccent:z.string(), accent:z.string()}),
   title: z.string(),
-  logo: z.object({ imageUrl: z.string() }),
+  logo: z.object({ imageUrl: z.string(), alt:z.string() }),
   subtitle: z.object({
     text: z.record(
       z.enum(lang),
@@ -30,13 +32,14 @@ const ProjectSchema = z.object({
   body: z.any(),
   images: z.array(z.object({ imageUrl: z.string(), bigImage: z.boolean() })),
   technologies: z.array(z.object({ imageUrl: z.string(), title: z.string() })),
-  links:z.array(z.object({href:z.string(), type:z.string()}))
+  links:z.array(z.object({href:z.string(), type:z.string()})),
+  
 
 });
 
-const ProjectSchemaArray = z.array(ProjectSchema);
+export const ProjectSchemaArray = z.array(ProjectSchema);
 
-export { ProjectSchema, ProjectSchemaArray };
+
 
 
 

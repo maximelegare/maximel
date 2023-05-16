@@ -19,6 +19,7 @@ interface Props {
   clipPath?: string;
   circleHover?: boolean;
   children?: ReactNode;
+  colorHighlight?: string;
   handleFlipCard?: () => any;
 }
 
@@ -29,13 +30,14 @@ export const Card: FC<Props> = ({
   clipPath,
   gradiantBorder = false,
   children,
-  handleFlipCard
+  colorHighlight,
+  handleFlipCard,
 }) => {
   return (
     <article
-      className={`${styles ? styles : ""} h-full w-full rounded-lg ${
-        gradiantBorder ? "p-1" : ""
-      }`}
+      className={`${styles ? styles : ""} ${
+        colorHighlight ? colorHighlight : ""
+      } h-full w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
     >
       <div
         className={`relative z-[1] flex h-full  w-full items-center justify-center rounded-md ${
@@ -59,10 +61,17 @@ export const Card: FC<Props> = ({
           </If>
           <When condition={circleHover === true}>
             <div className="group">
-              <div className="gradiant absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]"></div>
-              <div className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full" onClick={handleFlipCard}>
+              <div
+                className={`${
+                  colorHighlight ? colorHighlight : ""
+                } absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
+              ></div>
+              <div
+                className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full"
+                onClick={handleFlipCard}
+              >
                 <div className="flex items-center" data-aos="fade-right-custom">
-                  <BsArrowRightShort className="text-4xl" />
+                  <BsArrowRightShort className="text-4xl text-white" />
                 </div>
               </div>
             </div>
@@ -79,20 +88,26 @@ export const Card: FC<Props> = ({
 
 export const FlipCard: FC<Props> = (props) => {
   const [flipState, setFlipState] = useState(false);
+  const [flip, setFlip] = useState(false);
+
+  const handdleFlip = () => {
+    setFlipState(!flipState);
+    setTimeout(() => {
+      setFlip(true);
+    }, 600);
+  };
 
   return (
     <div>
-      <div className="flip-card">
+      <div className={`flip-card ${flip ? "fliped-card" : ""}`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
           <div className="flip-card-front">
-            <Card {...props} handleFlipCard={() => setFlipState(true)}>
+            <Card {...props} handleFlipCard={() => handdleFlip()}>
               {props.children}
             </Card>
           </div>
-          <div className="flip-card-back">
-            <h1>John Doe</h1>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
+          <div className="flip-card-back h-screen w-screen">
+            <div className="absolute left-1/2 top-1/2 z-[200] h-full w-full -translate-x-1/2 -translate-y-1/2 bg-amber-600"></div>
           </div>
         </div>
       </div>

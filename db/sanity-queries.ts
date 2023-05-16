@@ -3,19 +3,20 @@ export type Query = "products"
 const getQuery = (query: Query, lang: string) => {
     switch (query) {
       case "products": {
-        return `*[_type == "project"]{
+        return `*[_type == "project"] | order(position asc){
           _id,
           title,
+          styles,
           subtitle{text{fr[]{
             style, children[]{text, marks}
           }}, hasBoldText},
           "slug":slug.current,
           overview,
           body,
-          logo{"imageUrl":asset->url},
+          logo{"imageUrl":asset->url, alt},
           images[]{"imageUrl":asset->url, alt, bigImage},
           technologies[]->{"imageUrl": image.asset->url, title}, 
-          links[]{href, type} 
+          links[]{href, type},
         }`;
       }
       default: {

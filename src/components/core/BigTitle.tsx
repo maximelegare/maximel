@@ -3,7 +3,7 @@ import type { FC, ReactNode } from "react";
 import type { ReactElement } from "react";
 import { BlockContent } from "./BlockContent";
 import { Media } from "./Media";
-
+import Image from "next/image";
 import type {
   BlockContentModel,
   LinksModel,
@@ -12,36 +12,52 @@ import type {
 interface Props {
   smallTitle: string;
   title?: string;
-  icon: ReactNode;
+  // icon: ReactNode;
   subtitle?: BlockContentModel;
   buttons?: LinksModel;
+  logo: {
+    alt: string;
+    imageUrl: string;
+  };
+  styles: {
+    textAccent: string;
+    accent: string;
+  };
 }
 
 export const BigTitle: FC<Props> = ({
   smallTitle,
   title,
-  icon,
+  // icon,
   subtitle,
   buttons,
+  logo,
+  styles,
 }) => {
   return (
     <div className="ml-4">
       <div className="flex flex-col gap-6">
         <div className="flex">
-          <div className="flex w-3 flex-col items-center gap-2">
-            <div className="to-b-gradiant h-[100px] w-[3px]"></div>
+          <div className="flex w-7 flex-col items-center gap-2">
+            <div className={`to-b-${styles.accent} h-[100px] w-[3px]`}></div>
           </div>
         </div>
         <div className="flex gap-6">
           <div className="flex">
-            <div className="flex w-3 flex-col items-center gap-6">
-              <span className="text-3xl">{icon}</span>
-
-              <div className="to-b-gradiant-reverse h-full  w-[3px]"></div>
+            <div className="flex w-7 flex-col items-center gap-6">
+              <Image
+                src={logo.imageUrl}
+                alt={logo.alt}
+                width={1000}
+                height={1000}
+              />
+              <div
+                className={`to-b-${styles.accent}-reverse h-full  w-[3px]`}
+              ></div>
             </div>
           </div>
           <div>
-            <div className="pb-[200px]">
+            <div className="pb-10">
               {/* <h2
                 data-aos="fade-left-custom"
                 data-aos-duration="300"
@@ -59,7 +75,11 @@ export const BigTitle: FC<Props> = ({
               >
                 {title}
               </h1>
-              <BlockContent data={subtitle} />
+              <BlockContent
+                separatorColor={styles.accent}
+                data={subtitle}
+                highlightColor={styles.textAccent}
+              />
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (
                   <div key={idx}>

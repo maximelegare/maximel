@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { GrProjects as icon } from "react-icons/gr";
 
 const project = {
@@ -6,6 +7,27 @@ const project = {
   type: "document",
   icon,
   fields: [
+    {
+      name:"position",
+      title:"Position",
+      type:"number"
+    },{
+      name:"styles",
+      title:"Styles",
+      type:"object",
+      fields:[
+        {
+          name:"textAccent",
+          title:"Text accent",
+          type:"string"
+        },
+        {
+          name:"accent",
+          title:"accent",
+          type:"string"
+        }
+      ]
+    },
     {
       name: "title",
       title: "Title",
@@ -117,31 +139,29 @@ const project = {
       ],
     },
   ],
-  // preview: {
-  //   select: {
-  //     title: "title",
-  //     date: "releaseDate",
-  //     subtitle: "subtitle",
-  //     media: "logo",
-  //     castName0: "castMembers.0.person.name",
-  //     castName1: "castMembers.1.person.name",
-  //   },
-  //   prepare({
-  //     title,
-  //     media,
-  //     subtitle,
-  //   }: {
-  //     title: string;
-  //     media: string;
-  //     subtitle: string;
-  //   }) {
-  //     return {
-  //       title: `${title.toLowerCase()}`,
-  //       media,
-  //       subtitle: `${subtitle ?? ""}`,
-  //     };
-  //   },
-  // },
+  preview: {
+    select: {
+      title: "title",
+      position:"position",
+      media: "logo",
+    },
+    prepare({
+      title,
+      media,
+      position,
+    }: {
+      title: string;
+      media: any;
+
+      position: number;
+    }) {
+      return {
+        title: `${position} - ${title.toLowerCase()}`,
+        media,
+       
+      };
+    },
+  },
 };
 
 export default project;

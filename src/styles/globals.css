@@ -16,21 +16,42 @@ body {
   --primary-gradiant-color: 90deg, #0de7da 3%, #2de282 95%;
 }
 
-.gradiant {
-  @apply bg-gradient-to-tl from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95%;
+.gradiant-purple{
+  @apply bg-gradient-to-tl from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95% ;
 }
 
-.to-b-gradiant {
-  @apply bg-gradient-to-b from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95%;
+.to-b-gradiant-purple {
+  @apply bg-gradient-to-b from-[#3c1155] from-20% via-[#39155a] via-60% to-[#3d1381] to-95% opacity-70;
 }
 
-.to-b-gradiant-reverse {
-  @apply bg-gradient-to-b from-[#3d1381] from-20% via-[#39155a] via-60% to-[#3c1155] to-95%;
+.to-b-gradiant-purple-reverse {
+  @apply bg-gradient-to-b from-[#3d1381] from-20% via-[#39155a] via-60% to-transparent to-100% opacity-70;
 }
 
-.gradiant-text{
-  @apply  bg-gradient-to-r from-[#0de7da] from-5%  to-[#2de282] to-95% inline-block text-transparent bg-clip-text;
+.gradiant-text-green{
+  @apply  bg-gradient-to-r from-[#0de7da] from-5%  to-[#2de282] to-100% inline-block text-transparent bg-clip-text;
 }
+
+.gradiant-yellow{
+  @apply bg-[#EFCB1D]
+}
+
+.to-b-gradiant-yellow{
+  @apply bg-gradient-to-b from-transparent from-0% to-[#EFCB1D] to-70% opacity-50;
+}
+.to-b-gradiant-yellow-reverse{
+  @apply bg-[#EFCB1D] opacity-50;
+}
+
+
+
+
+.gradiant-text-yellow{
+  @apply text-[#EFCB1D];
+}
+
+
+
 
 
 h1, .h1{
@@ -98,7 +119,6 @@ p, .p{}
 }
 
 
-
 [data-aos="fade-up-custom"] {
   opacity: 0;
   transform: translate(0, 20px);
@@ -117,12 +137,41 @@ p, .p{}
   width:100%;
   height: 100%;
   perspective: 1000px;
+  transition: all;
+  z-index: 100;
+  
 }
+
+@keyframes zoomCard {
+  from {
+    width:0;
+    height: 0;
+  }
+  to{
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* .fliped-card{
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  animation-name: zoomCard;
+  transition: all;
+  animation-timing-function: ease-in-out;
+  animation-duration: 200ms;
+  animation-fill-mode: forwards;
+} */
+
+
 
 .flip-card-inner {
   position: relative;
-  width: 100%;
-  height: 100%;
+
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -132,23 +181,24 @@ p, .p{}
   transform: rotateY(180deg);
 } */
 
-.flip-card-front, .flip-card-back {
+.flip-card-front {
   position: absolute;
-  width: 100%;
-  height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+
+.flip-card-back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: red;
 }
 
 .flip-action{
   transform: rotateY(180deg);
 }
 
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  /* transform: rotateY(180deg); */
-}
 
 
 .flip-card-inner {
@@ -178,7 +228,6 @@ p, .p{}
 }
 
 .flip-card-back {
-  background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
 }

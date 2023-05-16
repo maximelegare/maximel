@@ -26,7 +26,7 @@ export const Hero = () => {
 
   return (
     <Section
-      styles="gradiant"
+      styles="gradiant-purple"
       noContainerElements={<Boxes />}
 
     >
