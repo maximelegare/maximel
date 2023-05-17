@@ -10,6 +10,7 @@ import { Button } from "~/components/core/Button";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
 import { Media } from "~/components/core/Media";
+import { Section } from "~/components/core/Section";
 
 import { Project } from "./Project";
 export const Projects = () => {
@@ -21,6 +22,7 @@ export const Projects = () => {
 
 
   return (
+    <Section styles="bg-black" bluredBackground>
     <div>
       {data.res.map((project, idx) => {
         console.log("project", project)
@@ -31,5 +33,6 @@ export const Projects = () => {
         );
       })}
     </div>
+    </Section>
   );
 };

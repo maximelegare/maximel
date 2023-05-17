@@ -17,7 +17,7 @@ interface Props {
 
 export const Project: FC<Props> = ({ data }) => {
   return (
-    <Section styles="bg-black" bluredBackground>
+    
       <>
         <div className="grid grid-cols-2">
           <BigTitle
@@ -41,12 +41,10 @@ export const Project: FC<Props> = ({ data }) => {
             paddingBottom="pb-[150px]"
           />
           <FlipCard
-            imageUrl={""}
             styles="mt-8"
             gradiantBorder
             colorHighlight={data.styles.accent}
-            circleHover
-            
+            circleHover 
           >
             <div>hello</div>
             <div>hello</div>
@@ -56,6 +54,7 @@ export const Project: FC<Props> = ({ data }) => {
             <div>hello</div>
             <div>hello</div>
           </FlipCard>
+        
 
           {/* <Card imageUrl={""} /> */}
 
@@ -79,6 +78,5 @@ export const Project: FC<Props> = ({ data }) => {
           <Card imageUrl="/maximel/public/assets/img/hodei.png" />
         </div> */}
       </>
-    </Section>
   );
 };

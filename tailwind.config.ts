@@ -51,6 +51,8 @@ export default {
           secondary: "#F000B8",
           accent: "#37CDBE",
           neutral: "#3D4451",
+          "gray-900":"#101320",
+          "gray-800":"#101320",
           base: "#ede9fe",
           info: "#3ABFF8",
           success: "#36D399",
