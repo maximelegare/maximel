@@ -52,14 +52,5 @@ const ProjectSchema = z.object({
   links: z.array(z.object({ href: z.string(), type: z.string() })),
 });
 
-export const ProjectSchemaArray = z.array(ProjectSchema);
-
-// _id,
-// title,
-// subtitle,
-// "slug":slug.current,
-// overview,
-// body,
-// logo{"imageUrl":asset->url},
-// images[]{"imageUrl":asset->url},
-// technologies[]->{"imageUrl": image.asset->url, title}
+export const ProjectsSchema = z.array(ProjectSchema);
+export  {ProjectSchema}

@@ -3,7 +3,7 @@ import { type NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Hero } from "~/components/pages/index/Hero";
 import { Projects } from "~/components/pages/index/Projects";
-import { ProjectsGrid } from "~/components/pages/index/ProjectsGrid";
+import { ProjectsCategories } from "~/components/pages/index/ProjectsCategories";
 
 
 
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <main>
         <Hero />
         <Projects />    
-        <ProjectsGrid />    
+        <ProjectsCategories />    
       </main>
     </>
   );
