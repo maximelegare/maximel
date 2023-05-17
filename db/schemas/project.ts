@@ -18,12 +18,12 @@ const project = {
       fields:[
         {
           name:"textAccent",
-          title:"Text accent",
+          title:"Text accent class",
           type:"string"
         },
         {
           name:"accent",
-          title:"accent",
+          title:"Accent class",
           type:"string"
         }
       ]
@@ -36,10 +36,7 @@ const project = {
     {
       name: "headline",
       title: "Headline",
-      type: "object",
-      fields:[
-        { name: "text", title: "Headline", type: "localeBlockContent" }, 
-      ]
+      type: "localeBlockContent",
     },
     {
       name: "slug",

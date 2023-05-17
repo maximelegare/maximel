@@ -13,7 +13,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 // import styles from "../../styles/filpCard.module.scss"
 
 interface Props {
-  imageUrl: string | undefined;
+  imageUrl?: string | undefined;
   styles?: string | undefined;
   gradiantBorder?: boolean;
   clipPath?: string;
@@ -37,7 +37,7 @@ export const Card: FC<Props> = ({
     <article
       className={`${styles ? styles : ""} ${
         colorHighlight ? colorHighlight : ""
-      } h-full w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
+      } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
     >
       <div
         className={`relative z-[1] flex h-full  w-full items-center justify-center rounded-md ${

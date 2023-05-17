@@ -36,8 +36,9 @@ export const Project: FC<Props> = ({ data }) => {
             logo={data.logo}
             smallTitle="Star of the show"
             title={data.title}
-            subtitle={data.headline}
+            subtitle={data.overview}
             buttons={data.links}
+            paddingBottom="pb-[150px]"
           />
           <FlipCard
             imageUrl={""}
@@ -46,8 +47,15 @@ export const Project: FC<Props> = ({ data }) => {
             colorHighlight={data.styles.accent}
             circleHover
             
-          />
-          <Card imageUrl="/maximel/public/assets/img/hodei.png" />
+          >
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+          </FlipCard>
 
           {/* <Card imageUrl={""} /> */}
 

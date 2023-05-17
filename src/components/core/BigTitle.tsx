@@ -12,7 +12,7 @@ import type {
 interface Props {
   smallTitle: string;
   title?: string;
-  // icon: ReactNode;
+  paddingBottom?:string;
   subtitle?: BlockContentModel;
   buttons?: LinksModel;
   logo: {
@@ -28,7 +28,7 @@ interface Props {
 export const BigTitle: FC<Props> = ({
   smallTitle,
   title,
-  // icon,
+  paddingBottom = "pb-10",
   subtitle,
   buttons,
   logo,
@@ -57,7 +57,7 @@ export const BigTitle: FC<Props> = ({
             </div>
           </div>
           <div>
-            <div className="pb-10">
+            <div className={paddingBottom}>
               {/* <h2
                 data-aos="fade-left-custom"
                 data-aos-duration="300"

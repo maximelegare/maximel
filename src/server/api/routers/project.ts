@@ -10,7 +10,7 @@ import { ProjectSchemaArray } from "../validation/project";
 
 export const projectRouter = createTRPCRouter({
   allProjects: publicProcedure
-    .input(z.object({ lang: z.string() }))
+    .input(z.object({ lang:z.string().default("fr")  }))
     .query(async ({ input: { lang } }) => {
       const res = await getData("products", lang);
 

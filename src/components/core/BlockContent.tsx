@@ -17,13 +17,11 @@ interface Props {
 
 export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }) => {
   const { locale } = useRouter();
-
-  let lines;
-  if (locale && data?.text[locale as Lang]) {
-    lines = data.text[locale as Lang];
-  }
-
+  
+  const lines = data?.[locale as Lang]
+  
   type Size = "h1" | "h2" | "h3" | "h4";
+
 
   const getLineStyle = (size: Size) => {
     switch (size as string) {
