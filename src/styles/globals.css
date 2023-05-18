@@ -37,12 +37,18 @@ body {
 }
 
 .to-b-gradiant-yellow{
-  @apply bg-gradient-to-b from-transparent from-0% to-[#EFCB1D] to-70% opacity-50;
+  @apply bg-gradient-to-b from-transparent from-0% to-[#EFCB1D] to-70% opacity-60;
 }
 .to-b-gradiant-yellow-reverse{
-  @apply bg-[#EFCB1D] opacity-50;
+  @apply bg-gradient-to-b from-[#EFCB1D] from-0% to-transparent to-100% opacity-60;
 }
 
+.to-b-gradiant-gray{
+  @apply bg-gradient-to-b from-transparent from-0% to-[#101320] to-70%;
+}
+.to-b-gradiant-gray-reverse{
+  @apply bg-gradient-to-b from-[#101320] from-0% to-transparent to-100%;
+}
 
 
 
@@ -128,9 +134,6 @@ p, .p{}
   opacity: 1;
   transform: translate(0);
 }
-
-
-
 
 .flip-card {
   background-color: transparent;

@@ -12,7 +12,7 @@ export async function getData(query:Query, lang:string) {
     apiVersion: "2023-05-03",
     dataset: "prod",
   });
-
+  
   return await client.fetch(
     groq`${getQuery(query, lang)}`);
 }

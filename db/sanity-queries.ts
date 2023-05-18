@@ -55,10 +55,19 @@ const getQuery = (query: Query, lang: string) => {
         }`;
     }
     case "categories": {
-      return `*[_type == "section"] | order(position asc){
+      return `*[_type == "category"] | order(position asc){
         _id,
         styles,
         title,
+        headline{
+          ${lang}[]{
+            style,
+            children[]{
+              text,
+              marks
+            }
+          }
+        },
         "slug":slug.current,
         image{"imageUrl":asset->url, alt},
         projects[]->{

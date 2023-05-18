@@ -12,9 +12,10 @@ import type {
 interface Props {
   smallTitle: string;
   title?: string;
-  paddingBottom?:string;
+  paddingBottom?: string;
   subtitle?: BlockContentModel;
   buttons?: LinksModel;
+  logoElement?: ReactElement;
   logo: {
     alt: string;
     imageUrl: string;
@@ -27,6 +28,7 @@ interface Props {
 
 export const BigTitle: FC<Props> = ({
   smallTitle,
+  logoElement,
   title,
   paddingBottom = "pb-10",
   subtitle,
@@ -36,6 +38,7 @@ export const BigTitle: FC<Props> = ({
 }) => {
   return (
     <div className="ml-4">
+      
       <div className="flex flex-col gap-6">
         <div className="flex">
           <div className="flex w-7 flex-col items-center gap-2">
@@ -45,12 +48,16 @@ export const BigTitle: FC<Props> = ({
         <div className="flex gap-6">
           <div className="flex">
             <div className="flex w-7 flex-col items-center gap-6">
-              <Image
-                src={logo.imageUrl}
-                alt={logo.alt}
-                width={1000}
-                height={1000}
-              />
+              {logoElement ? (
+                logoElement
+              ) : (
+                <Image
+                  src={logo.imageUrl}
+                  alt={logo.alt}
+                  width={1000}
+                  height={1000}
+                />
+              )}
               <div
                 className={`to-b-${styles.accent}-reverse h-full  w-[3px]`}
               ></div>

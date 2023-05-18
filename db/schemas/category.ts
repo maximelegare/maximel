@@ -25,11 +25,11 @@ const category = {
         },
       ],
     },
-    // {
-    //     name: "headline",
-    //     title: "Headline",
-    //     type: "localeBlockContent",
-    //   },
+    {
+      name: "headline",
+      title: "Headline",
+      type: "localeBlockContent",
+    },
     {
       name: "styles",
       title: "Styles",
