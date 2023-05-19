@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -8,22 +9,27 @@ import React from "react";
 export const useBubblesAnimation = () => {
   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
     if (canvas && canvas.parentElement) {
-      const rect:DOMRect = canvas.parentElement.getBoundingClientRect();  
+      const rect: DOMRect = canvas.parentElement.getBoundingClientRect();
       const ctx = canvas.getContext("2d");
       canvas.width = rect.width;
       canvas.height = rect.height;
+      const diagonal = Math.sqrt(
+        Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
+      );
+
+      if (ctx) {
+        canvas.addEventListener("click", (e) => {
+          particlesArray.forEach((particle) => {
+            if (ctx.isPointInPath(particle.circle, e.offsetX, e.offsetY)) {
+              particle.clicked = true  
+            } 
+          });
+        });
+      }
+
       const particlesArray: Particle[] = [];
-      const colors = [
-        "#F2A02E",
-        "#F44336",
-        "#E91E63",
-        "#9C27B0",
-        "#3F51B5",
-        "#2196F3",
-        "#00BCD4",
-        "#4CAF50",
-        "#FFEB3B",
-      ];
+
+      const colors = ["#101320"];
 
       class Particle {
         private x;
@@ -31,7 +37,10 @@ export const useBubblesAnimation = () => {
         private directionX;
         private directionY;
         private size;
-        private color;
+        public color;
+        public circle: any;
+        public defaultColor;
+        public clicked;
 
         constructor(
           x: number,
@@ -47,14 +56,21 @@ export const useBubblesAnimation = () => {
           this.directionY = directionY;
           this.size = size;
           this.color = color;
+          this.defaultColor = color;
+          this.clicked = false;
         }
         draw() {
           if (ctx) {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            this.circle = new Path2D();
+            if (this.size <= diagonal && this.clicked) {
+              this.size += 10;
+              console.log("growing")
+            }
+
+            this.circle.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
 
             ctx.fillStyle = this.color;
-            ctx.fill();
+            ctx.fill(this.circle);
           }
         }
         update() {
@@ -70,14 +86,12 @@ export const useBubblesAnimation = () => {
         }
       }
       function init() {
-        for (let i = 0; i < 50; i++) {
-          const size = Math.random() * 20 + 5;
+        for (let i = 0; i < 1; i++) {
+          const size = 70;
           const x = Math.random() * (canvas.width - size * 2) + size;
           const y = Math.random() * (canvas.height - size * 2) + size;
-          const directionX =
-            Math.random() * 0.2 * Math.sin(Math.random() * 180);
-          const directionY =
-            Math.random() * 0.2 * Math.cos(Math.random() * 180);
+          const directionX = Math.random() * 1;
+          const directionY = Math.random() * 1;
           const color = colors[Math.floor(Math.random() * colors.length)];
 
           const particle = new Particle(
@@ -112,5 +126,3 @@ export const useBubblesAnimation = () => {
     animateBubblesOnCanvas,
   };
 };
-
-

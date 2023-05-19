@@ -29,10 +29,15 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} canvas2DBubbles>
         <div className="fill-gray-800 p-10 opacity-60">
           <div className="relative">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-display">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-4xl">
               {data.title}
             </div>
-            <Image src={data.image.imageUrl} alt={data.image.alt} width={550} height={500}/>
+            <Image
+              src={data.image.imageUrl}
+              alt={data.image.alt}
+              width={550}
+              height={500}
+            />
           </div>
         </div>
       </FlipCard>

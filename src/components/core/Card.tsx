@@ -47,19 +47,19 @@ export const Card: FC<Props> = ({
           gradiantBorder ? "bg-black" : ""
         } ${clipPath ?? ""}`}
       >
-        <div className=" relative block h-full w-full overflow-hidden" onClick={handleFlipCard}>
+        <div className=" relative block h-full w-full overflow-hidden" >
           <If condition={imageUrl}>
             <Then>
               <Image
-                className="rounded-lg"
+                className="rounded-lg pointer-events-none"
                 src={imageUrl ?? ""}
                 alt=""
-                width={1800}
+                width={100}
                 height={0}
               ></Image>
             </Then>
             <Else>
-              <div className="relative z-[2]">{children}</div>
+              <div className="relative z-[2] pointer-events-none">{children}</div>
             </Else>
           </If>
           <When condition={circleHover === true}>
@@ -71,7 +71,6 @@ export const Card: FC<Props> = ({
               ></div>
               <div
                 className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full"
-                
               >
                 <div className="flex items-center" data-aos="fade-right-custom">
                   <BsArrowRightShort className="text-4xl text-white" />
