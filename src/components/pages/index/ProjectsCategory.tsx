@@ -26,7 +26,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         logo={{ alt: "", imageUrl: "" }}
       />
 
-      <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} circleHover>
+      <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} canvas2DBubbles>
         <div className="fill-gray-800 p-10 opacity-60">
           <div className="relative">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-display">

@@ -10,6 +10,7 @@ import { When, If, Then, Else } from "react-if";
 import { ReactNode } from "react";
 
 import { BsArrowRightShort } from "react-icons/bs";
+import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 // import styles from "../../styles/filpCard.module.scss"
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
   gradiantBorder?: boolean;
   clipPath?: string;
   circleHover?: boolean;
+  canvas2DBubbles?:boolean
   children?: ReactNode;
   colorHighlight?: string;
   handleFlipCard?: () => any;
@@ -29,6 +31,7 @@ export const Card: FC<Props> = ({
   styles,
   clipPath,
   gradiantBorder = false,
+  canvas2DBubbles = false,
   children,
   colorHighlight,
   handleFlipCard,
@@ -75,6 +78,9 @@ export const Card: FC<Props> = ({
                 </div>
               </div>
             </div>
+          </When>
+          <When condition={canvas2DBubbles === true}>
+            <Bubbles2DCanvas />
           </When>
           <div className="relative">
             <div className="z-20"></div>
