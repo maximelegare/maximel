@@ -13,8 +13,9 @@ export const Bubbles2DCanvas = () => {
   }, [animateBubblesOnCanvas]);
 
   return (
-    <canvas
-      className="absolute left-0 top-0 h-full w-full"
+    <canvas 
+    
+      className="absolute top-0 left-0"
       ref={canvasRef}
     ></canvas>
   );

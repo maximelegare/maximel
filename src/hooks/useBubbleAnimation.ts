@@ -1,13 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from "react";
 
 // import { warpBubble } from "./bubbleWarp";
 
 export const useBubblesAnimation = () => {
   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
-    if (canvas) {
+    if (canvas && canvas.parentElement) {
+      const rect:DOMRect = canvas.parentElement.getBoundingClientRect();  
       const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = rect.width;
+      canvas.height = rect.height;
       const particlesArray: Particle[] = [];
       const colors = [
         "#F2A02E",

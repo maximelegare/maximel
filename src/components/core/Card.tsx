@@ -47,7 +47,7 @@ export const Card: FC<Props> = ({
           gradiantBorder ? "bg-black" : ""
         } ${clipPath ?? ""}`}
       >
-        <div className=" relative block h-full w-full overflow-hidden">
+        <div className=" relative block h-full w-full overflow-hidden" onClick={handleFlipCard}>
           <If condition={imageUrl}>
             <Then>
               <Image
@@ -71,7 +71,7 @@ export const Card: FC<Props> = ({
               ></div>
               <div
                 className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full"
-                onClick={handleFlipCard}
+                
               >
                 <div className="flex items-center" data-aos="fade-right-custom">
                   <BsArrowRightShort className="text-4xl text-white" />
