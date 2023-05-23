@@ -19,14 +19,15 @@ export const ProjectsCategories = () => {
 
   return (
     <Section styles="bg-black" bluredBackground>
-      <div className="grid grid-cols-2 grid-rows-3 gap-x-4">
+      <div className="">
         {data.res.map((el, idx) => {
           return (
             <div key={idx}>
               <ProjectsCategory data={el}/>
             </div>
-          )
+          );
         })}
+        
         {/* <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} circleHover>
           <div className="fill-gray-800 p-10 opacity-60">
             <div className="relative">

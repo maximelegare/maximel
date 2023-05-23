@@ -24,10 +24,10 @@ export const Button: FC<Props> = ({
   const getClasses = (variant?: string) => {
     switch (variant) {
       case "icon": {
-        return `btn-circle btn-sm text-lg hover:bg-[#3c1155]`;
+        return `btn-circle btn-sm text-lg hover:bg-[#3c1155] `;
       }
       default: {
-        return `w-24`;
+        return `min-w-[6rem] ${outline ? "btn-outline" : ""}`;
       }
     }
   };
@@ -37,7 +37,7 @@ export const Button: FC<Props> = ({
         <Link
           target={targetBlank ? "_blank" : ""}
           className={`${getClasses(variant)} ${styles ?? ""}
-           ${outline ? "btn-outline" : ""}  btn-sm btn`}
+             btn-sm btn`}
           href={href}
         >
           {children}
@@ -45,9 +45,7 @@ export const Button: FC<Props> = ({
       ) : (
         <button
           onClick={handleClick}
-          className={`${getClasses(variant)} ${styles ?? ""} ${
-            outline ? "btn-outline" : ""
-          } btn-sm btn`}
+          className={`${getClasses(variant)} ${styles ?? ""} btn-sm btn`}
         >
           {children}
         </button>

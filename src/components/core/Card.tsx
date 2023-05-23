@@ -13,16 +13,20 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 // import styles from "../../styles/filpCard.module.scss"
 
+import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
+
 interface Props {
   imageUrl?: string | undefined;
   styles?: string | undefined;
   gradiantBorder?: boolean;
   clipPath?: string;
   circleHover?: boolean;
-  canvas2DBubbles?:boolean
+  canvas2DBubbles?: boolean;
   children?: ReactNode;
   colorHighlight?: string;
+  textHiglight?: string;
   handleFlipCard?: () => any;
+  messageUnderneath: string;
 }
 
 export const Card: FC<Props> = ({
@@ -35,59 +39,77 @@ export const Card: FC<Props> = ({
   children,
   colorHighlight,
   handleFlipCard,
+  textHiglight,
+  messageUnderneath,
 }) => {
+  // const handleClick = () => {
+  //   if(clickedState && handleFlipCard){
+  //     handleFlipCard()
+  //   }
+  // }
+
   return (
-    <article
-      className={`${styles ? styles : ""} ${
-        colorHighlight ? colorHighlight : ""
-      } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
-    >
-      <div
-        className={`relative z-[1] flex h-full  w-full items-center justify-center rounded-md ${
-          gradiantBorder ? "bg-black" : ""
-        } ${clipPath ?? ""}`}
+    <>
+      <article
+        className={`${styles ? styles : ""} ${
+          colorHighlight ? colorHighlight : ""
+        } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
       >
-        <div className=" relative block h-full w-full overflow-hidden" >
-          <If condition={imageUrl}>
-            <Then>
-              <Image
-                className="rounded-lg pointer-events-none"
-                src={imageUrl ?? ""}
-                alt=""
-                width={100}
-                height={0}
-              ></Image>
-            </Then>
-            <Else>
-              <div className="relative z-[2] pointer-events-none">{children}</div>
-            </Else>
-          </If>
-          <When condition={circleHover === true}>
-            <div className="group">
-              <div
-                className={`${
-                  colorHighlight ? colorHighlight : ""
-                } absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
-              ></div>
-              <div
-                className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full"
-              >
-                <div className="flex items-center" data-aos="fade-right-custom">
-                  <BsArrowRightShort className="text-4xl text-white" />
+        <div
+          className={`relative z-[1] flex h-96  w-full items-center justify-center rounded-md ${
+            gradiantBorder ? "bg-black" : ""
+          } ${clipPath ?? ""}`}
+        >
+          <div className=" relative block h-full w-full overflow-hidden">
+            <If condition={imageUrl}>
+              <Then>
+                <Image
+                  className="pointer-events-none rounded-lg"
+                  src={imageUrl ?? ""}
+                  alt=""
+                  width={1500}
+                  height={0}
+                ></Image>
+              </Then>
+              <Else>
+                <div className="pointer-events-none relative z-[2]">
+                  {children}
+                </div>
+              </Else>
+            </If>
+            <When condition={circleHover === true}>
+              <div className="group">
+                <div
+                  className={`${
+                    colorHighlight ? colorHighlight : ""
+                  } absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
+                ></div>
+                <div className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
+                  <div
+                    className="flex items-center"
+                    data-aos="fade-right-custom"
+                  >
+                    <BsArrowRightShort className="text-4xl text-white" />
+                  </div>
                 </div>
               </div>
+            </When>
+            <When condition={canvas2DBubbles === true}>
+              <Bubbles2DCanvas />
+            </When>
+            <div className="relative">
+              <div className="z-20"></div>
+              {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}
             </div>
-          </When>
-          <When condition={canvas2DBubbles === true}>
-            <Bubbles2DCanvas />
-          </When>
-          <div className="relative">
-            <div className="z-20"></div>
-            {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+      <When condition={messageUnderneath !== undefined}>
+        <div className={`mt-4 flex animate-pulse justify-center text-center`}>
+          <div className={textHiglight}>{messageUnderneath}</div>
+        </div>
+      </When>
+    </>
   );
 };
 

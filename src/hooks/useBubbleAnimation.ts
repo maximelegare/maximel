@@ -2,11 +2,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React from "react";
+import React, {useState} from "react";
+
 
 // import { warpBubble } from "./bubbleWarp";
 
 export const useBubblesAnimation = () => {
+   
+
   const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
     if (canvas && canvas.parentElement) {
       const rect: DOMRect = canvas.parentElement.getBoundingClientRect();
@@ -22,6 +25,7 @@ export const useBubblesAnimation = () => {
           particlesArray.forEach((particle) => {
             if (ctx.isPointInPath(particle.circle, e.offsetX, e.offsetY)) {
               particle.clicked = true  
+             
             } 
           });
         });
@@ -124,5 +128,6 @@ export const useBubblesAnimation = () => {
 
   return {
     animateBubblesOnCanvas,
+    
   };
 };

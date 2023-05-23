@@ -15,7 +15,7 @@ export const Bubbles2DCanvas = () => {
   return (
     <canvas 
     
-      className="absolute top-0 left-0"
+      className="absolute top-0 left-0 rounded-md"
       ref={canvasRef}
     ></canvas>
   );

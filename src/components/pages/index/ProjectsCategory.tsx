@@ -3,7 +3,7 @@ import React, { type FC } from "react";
 import { type CategorySchemaModel } from "~/server/api/validation/category";
 import Image from "next/image";
 import { BigTitle } from "~/components/core/BigTitle";
-import { FlipCard } from "~/components/core/Card";
+import { Card } from "~/components/core/Card";
 import { TfiRulerPencil } from "react-icons/tfi";
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 export const ProjectsCategory: FC<Props> = ({ data }) => {
   return (
     <div>
+      
       <BigTitle
         styles={data.styles}
         smallTitle="Star of the show"
@@ -26,21 +27,21 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         logo={{ alt: "", imageUrl: "" }}
       />
 
-      <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} canvas2DBubbles>
+      <Card messageUnderneath="CLICK THE BUBBLE!" gradiantBorder textHiglight={data.styles.textAccent} colorHighlight={"bg-gray-800"} canvas2DBubbles>
         <div className="fill-gray-800 p-10 opacity-60">
           <div className="relative">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-4xl">
+            {/* <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-4xl">
               {data.title}
-            </div>
+            </div> */}
             <Image
               src={data.image.imageUrl}
               alt={data.image.alt}
-              width={550}
-              height={500}
+              width={500}
+              height={0}
             />
           </div>
         </div>
-      </FlipCard>
+      </Card>
     </div>
   );
 };
