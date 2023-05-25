@@ -9,6 +9,8 @@ import type {
   LinksModel,
 } from "~/server/api/validation/project";
 
+import { When } from "react-if";
+
 interface Props {
   smallTitle: string;
   title?: string;
@@ -16,6 +18,8 @@ interface Props {
   subtitle?: BlockContentModel;
   buttons?: LinksModel;
   logoElement?: ReactElement;
+  dotHighlight?: string;
+  marginTop:boolean
   logo: {
     alt: string;
     imageUrl: string;
@@ -35,13 +39,26 @@ export const BigTitle: FC<Props> = ({
   buttons,
   logo,
   styles,
+  dotHighlight,
+  marginTop
 }) => {
   return (
     <div className="ml-4">
-      
       <div className="flex flex-col gap-6">
         <div className="flex">
-          <div className="flex w-7 flex-col items-center gap-2">
+          <div className="relative flex w-7 flex-col items-center gap-2">
+            <When condition={marginTop === true}>
+              <>
+                <div
+                  className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
+                ></div>
+                <div
+                  className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
+                    dotHighlight ? `${dotHighlight}` : ""
+                  } `}
+                ></div>
+              </>
+            </When>
             <div className={`to-b-${styles.accent} h-[100px] w-[3px]`}></div>
           </div>
         </div>

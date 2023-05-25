@@ -19,29 +19,15 @@ export const ProjectsCategories = () => {
 
   return (
     <Section styles="bg-black" bluredBackground>
-      <div className="">
+      <div className="grid grid-cols-2 gap-x-4">
         {data.res.map((el, idx) => {
           return (
             <div key={idx}>
-              <ProjectsCategory data={el}/>
+              <ProjectsCategory data={el} />
             </div>
           );
         })}
         
-        {/* <FlipCard gradiantBorder colorHighlight={"bg-gray-800"} circleHover>
-          <div className="fill-gray-800 p-10 opacity-60">
-            <div className="relative">
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center  font-display text-5xl">
-                Design
-                <br />&<br />
-                Photography
-              </div>
-              <PhotographyIcons />
-            </div>
-          </div>
-        </FlipCard> */}
-        <div></div>
-        <div></div>
       </div>
     </Section>
   );

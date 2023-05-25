@@ -45,6 +45,17 @@ const category = {
           title: "Accent class",
           type: "string",
         },
+        {
+          name:"bubbleColor",
+          title:"Bubble color Hex",
+          type:"string",
+        },
+        {
+          name:"marginTop",
+          title:"Margin Top",
+          type:"boolean",
+          initialValue: false
+        },
       ],
     },
     {

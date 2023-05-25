@@ -23,10 +23,11 @@ interface Props {
   circleHover?: boolean;
   canvas2DBubbles?: boolean;
   children?: ReactNode;
-  colorHighlight?: string;
+  colorHighlight: string;
   textHiglight?: string;
   handleFlipCard?: () => any;
-  messageUnderneath: string;
+  messageUnderneath?: string;
+  bubbleColor?:string;
 }
 
 export const Card: FC<Props> = ({
@@ -41,6 +42,7 @@ export const Card: FC<Props> = ({
   handleFlipCard,
   textHiglight,
   messageUnderneath,
+  bubbleColor
 }) => {
   // const handleClick = () => {
   //   if(clickedState && handleFlipCard){
@@ -56,7 +58,7 @@ export const Card: FC<Props> = ({
         } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
       >
         <div
-          className={`relative z-[1] flex h-96  w-full items-center justify-center rounded-md ${
+          className={`relative z-[1] flex   w-full items-center justify-center rounded-md ${
             gradiantBorder ? "bg-black" : ""
           } ${clipPath ?? ""}`}
         >
@@ -94,13 +96,13 @@ export const Card: FC<Props> = ({
                 </div>
               </div>
             </When>
-            <When condition={canvas2DBubbles === true}>
-              <Bubbles2DCanvas />
-            </When>
             <div className="relative">
               <div className="z-20"></div>
               {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}
             </div>
+            <When condition={canvas2DBubbles === true}>
+              <Bubbles2DCanvas bubbleColor={bubbleColor ?? "#fff"} />
+            </When>
           </div>
         </div>
       </article>

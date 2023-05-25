@@ -50,6 +50,12 @@ body {
   @apply bg-gradient-to-b from-[#101320] from-0% to-transparent to-100%;
 }
 
+.gradiant-gray{
+  @apply bg-[#101320];
+}
+
+
+
 
 
 .gradiant-text-yellow{

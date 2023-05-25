@@ -4,12 +4,16 @@ import { lang } from "db/schemas/locale/supportedLanguages";
 
 import { ProjectSchema } from "./project";
 
-
 export type CategorySchemaModel = z.infer<typeof CategorySchema>;
 
 const CategorySchema = z.object({
   _id: z.string(),
-  styles: z.object({ textAccent: z.string(), accent: z.string() }),
+  styles: z.object({
+    textAccent: z.string(),
+    accent: z.string(),
+    marginTop: z.boolean(),
+    bubbleColor:z.string().optional()
+  }),
   title: z.string(),
   slug: z.string(),
   headline: z.record(
@@ -23,13 +27,12 @@ const CategorySchema = z.object({
       })
     )
   ),
-  image:z.object({
-    imageUrl:z.string(),
-    alt:z.string()
+  image: z.object({
+    imageUrl: z.string(),
+    alt: z.string(),
   }),
-  projects:z.array(ProjectSchema)
+  projects: z.array(ProjectSchema),
 });
 
-
-export const CategoriesSchema = z.array(CategorySchema) 
-export { CategorySchema }
+export const CategoriesSchema = z.array(CategorySchema);
+export { CategorySchema };

@@ -10,7 +10,7 @@ import React, {useState} from "react";
 export const useBubblesAnimation = () => {
    
 
-  const animateBubblesOnCanvas = (canvas: HTMLCanvasElement) => {
+  const animateBubblesOnCanvas = (canvas: HTMLCanvasElement, bubbleColor:string) => {
     if (canvas && canvas.parentElement) {
       const rect: DOMRect = canvas.parentElement.getBoundingClientRect();
       const ctx = canvas.getContext("2d");
