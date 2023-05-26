@@ -16,7 +16,7 @@ import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
 import { useRecoilState } from "recoil";
 import { projectVisibilityAtom } from "atoms/projectAtom";
-import { ProjectDetailsCard } from "../pages/index/ProjectDetailsCard";
+
 
 interface Props {
   imageUrl?: string | undefined;
@@ -134,7 +134,7 @@ export const FlipCard: FC<Props> = (props) => {
               {props.children}
             </Card>
           </div>
-          <div className="flip-card-back h-screen w-screen"></div>
+          <div className="flip-card-back"></div>
         </div>
       </div>
     </div>

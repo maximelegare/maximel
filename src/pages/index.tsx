@@ -1,13 +1,12 @@
 import { type NextPage } from "next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { ProjectDetailsCard } from "~/components/pages/index/ProjectDetailsCard"; 
+import { Dialog } from "~/components/core/Dialog";
 import { Hero } from "~/components/pages/index/Hero";
 import { Projects } from "~/components/pages/index/Projects";
 import { ProjectsCategories } from "~/components/pages/index/ProjectsCategories";
 import { useRecoilValue } from "recoil";
 import { projectVisibilityAtom } from "atoms/projectAtom";
-
 
 const Home: NextPage = () => {
   const projectVisibility = useRecoilValue(projectVisibilityAtom);
@@ -18,9 +17,7 @@ const Home: NextPage = () => {
         <Hero />
         <Projects />
         <ProjectsCategories />
-
-      
-        {projectVisibility && <ProjectDetailsCard />}
+        <Dialog show={projectVisibility} ></Dialog>
       </main>
     </>
   );
