@@ -19,7 +19,7 @@ export const ProjectsCategories = () => {
 
   return (
     <Section styles="bg-black" bluredBackground>
-      <div className="grid grid-cols-2 gap-x-4">
+      <div className="grid grid-cols-2 gap-x-4 pb-5">
         {data.res.map((el, idx) => {
           return (
             <div key={idx}>

@@ -27,7 +27,7 @@ interface Props {
   textHiglight?: string;
   handleFlipCard?: () => any;
   messageUnderneath?: string;
-  bubbleColor?:string;
+  bubbleColor?: string;
 }
 
 export const Card: FC<Props> = ({
@@ -42,7 +42,7 @@ export const Card: FC<Props> = ({
   handleFlipCard,
   textHiglight,
   messageUnderneath,
-  bubbleColor
+  bubbleColor,
 }) => {
   // const handleClick = () => {
   //   if(clickedState && handleFlipCard){
@@ -55,10 +55,10 @@ export const Card: FC<Props> = ({
       <article
         className={`${styles ? styles : ""} ${
           colorHighlight ? colorHighlight : ""
-        } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""}`}
+        } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""} backface-hidden`}
       >
         <div
-          className={`relative z-[1] flex   w-full items-center justify-center rounded-md ${
+          className={` relative z-[1] flex   w-full items-center justify-center rounded-md ${
             gradiantBorder ? "bg-black" : ""
           } ${clipPath ?? ""}`}
         >
@@ -80,26 +80,22 @@ export const Card: FC<Props> = ({
               </Else>
             </If>
             <When condition={circleHover === true}>
-              <div className="group">
+              <div className="group" onClick={handleFlipCard}>
                 <div
                   className={`${
                     colorHighlight ? colorHighlight : ""
-                  } absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
+                  }  absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
                 ></div>
-                <div className="absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
+                <div className=" absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
                   <div
-                    className="flex items-center"
+                    className="flex items-center backface-hidden"
                     data-aos="fade-right-custom"
                   >
                     <BsArrowRightShort className="text-4xl text-white" />
                   </div>
                 </div>
               </div>
-            </When>
-            <div className="relative">
-              <div className="z-20"></div>
-              {/* <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-black opacity-40 rounded-lg outline outline-gray-800 outline-1 "></div> */}
-            </div>
+            </When>    
             <When condition={canvas2DBubbles === true}>
               <Bubbles2DCanvas bubbleColor={bubbleColor ?? "#fff"} />
             </When>
@@ -117,29 +113,23 @@ export const Card: FC<Props> = ({
 
 export const FlipCard: FC<Props> = (props) => {
   const [flipState, setFlipState] = useState(false);
-  const [flip, setFlip] = useState(false);
-
-  const handdleFlip = () => {
-    setFlipState(!flipState);
-    setTimeout(() => {
-      setFlip(true);
-    }, 600);
-  };
 
   return (
     <div>
-      <div className={`flip-card ${flip ? "fliped-card" : ""}`}>
+      <div className={`flip-card`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
-          <div className="flip-card-front">
-            <Card {...props} handleFlipCard={() => handdleFlip()}>
+          <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
+            <Card {...props} handleFlipCard={() => setFlipState(!flipState)}>
               {props.children}
             </Card>
           </div>
           <div className="flip-card-back h-screen w-screen">
-            <div className="absolute left-1/2 top-1/2 z-[200] h-full w-full -translate-x-1/2 -translate-y-1/2 bg-amber-600"></div>
+            {/* <div className="absolute left-1/2 top-1/2  h-full w-full -translate-x-1/2 -translate-y-1/2 bg-amber-600"></div> */}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+

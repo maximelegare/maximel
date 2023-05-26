@@ -3,7 +3,7 @@ import React, { type FC } from "react";
 import { type CategorySchemaModel } from "~/server/api/validation/category";
 import Image from "next/image";
 import { BigTitle } from "~/components/core/BigTitle";
-import { Card } from "~/components/core/Card";
+import { Card, FlipCard } from "~/components/core/Card";
 import { TfiRulerPencil } from "react-icons/tfi";
 import { Bubbles2DCanvas } from "~/components/canvas/Bubble2DCanvas";
 
@@ -31,7 +31,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         logo={{ alt: "", imageUrl: "" }}
       />
 
-      <Card
+      <FlipCard
         messageUnderneath="CLICK THE BUBBLE!"
         gradiantBorder
         textHiglight={data.styles.textAccent}
@@ -54,7 +54,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
             />
           </div>
         </div>
-      </Card>
+      </FlipCard>
     </div>
   );
 };

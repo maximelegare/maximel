@@ -67,7 +67,7 @@ export const useBubblesAnimation = () => {
           if (ctx) {
             this.circle = new Path2D();
             if (this.size <= diagonal && this.clicked) {
-              this.size += 10;
+              this.size += 20;
               console.log("growing")
             }
 
@@ -94,8 +94,8 @@ export const useBubblesAnimation = () => {
           const size = 70;
           const x = Math.random() * (canvas.width - size * 2) + size;
           const y = Math.random() * (canvas.height - size * 2) + size;
-          const directionX = Math.random() * 1;
-          const directionY = Math.random() * 1;
+          const directionX = Math.random() * 1.5;
+          const directionY = Math.random() * 1.5;
           const color = colors[Math.floor(Math.random() * colors.length)];
 
           const particle = new Particle(
