@@ -134,17 +134,9 @@ p,
   transform: translate(0);
 }
 
-@keyframes zoomCard {
-  from {
-    width: 0;
-    height: 0;
-  }
-  to {
-    width: 100vw;
-    height: 100vh;
-  }
-}
-
+/**
+* Flip card styles
+*/
 .flip-card {
   background-color: transparent;
   width: 100%;
@@ -200,18 +192,31 @@ p,
   transform: rotateY(180deg);
 }
 
-.animate-up {
-  animation-name: fadeDown;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
-  top: 0;
+
+
+/**
+* Dialog animations
+*/
+.dialog-enter {
+  opacity: 0;
+  margin-top: 60px;
+}
+.dialog-enter-active {
+  opacity: 1;
+  transition: opacity 300ms, margin-top 800ms;
+  transition-timing-function: cubic-bezier(.16,.65,.5,.96);
+  margin-top: 40px;
+}
+.dialog-exit {
+  opacity: 1;
+  margin-top: 40px;
+}
+.dialog-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, margin-top 400ms;
+  transition-timing-function: cubic-bezier(.4,.26,.11,.99);
+  margin-top: 60px;
 }
 
-@keyframes fadeUp {
-  from {
-    top: 20px;
-  }
-  to {
-    top: 0px;
-  }
-}
+
+
