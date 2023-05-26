@@ -92,10 +92,10 @@ export const useBubblesAnimation = () => {
       function init() {
         for (let i = 0; i < 1; i++) {
           const size = 70;
-          const x = Math.random() * (canvas.width - size * 2) + size;
-          const y = Math.random() * (canvas.height - size * 2) + size;
-          const directionX = Math.random() * 1.5;
-          const directionY = Math.random() * 1.5;
+          const x = 0.7 * (canvas.width - size * 2) + size;
+          const y = 0.7 * (canvas.height - size * 2) + size;
+          const directionX = Math.random() * 1.3;
+          const directionY = Math.random() * 1.3;
           const color = colors[Math.floor(Math.random() * colors.length)];
 
           const particle = new Particle(

@@ -28,7 +28,6 @@ export const Hero = () => {
     <Section
       styles="gradiant-purple"
       noContainerElements={<Boxes />}
-
     >
       
       <div className="flex h-full flex-col items-center pt-[15%]">

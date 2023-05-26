@@ -14,6 +14,9 @@ import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 // import styles from "../../styles/filpCard.module.scss"
 
 import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
+import { useRecoilState } from "recoil";
+import { projectVisibilityAtom } from "atoms/projectAtom";
+import { ProjectDetailsCard } from "../pages/index/ProjectDetailsCard";
 
 interface Props {
   imageUrl?: string | undefined;
@@ -44,18 +47,14 @@ export const Card: FC<Props> = ({
   messageUnderneath,
   bubbleColor,
 }) => {
-  // const handleClick = () => {
-  //   if(clickedState && handleFlipCard){
-  //     handleFlipCard()
-  //   }
-  // }
-
   return (
     <>
       <article
         className={`${styles ? styles : ""} ${
           colorHighlight ? colorHighlight : ""
-        } h-fit w-full rounded-lg ${gradiantBorder ? "p-[2px]" : ""} backface-hidden`}
+        } h-fit w-full rounded-lg ${
+          gradiantBorder ? "p-[2px]" : ""
+        } backface-hidden`}
       >
         <div
           className={` relative z-[1] flex   w-full items-center justify-center rounded-md ${
@@ -95,7 +94,7 @@ export const Card: FC<Props> = ({
                   </div>
                 </div>
               </div>
-            </When>    
+            </When>
             <When condition={canvas2DBubbles === true}>
               <Bubbles2DCanvas bubbleColor={bubbleColor ?? "#fff"} />
             </When>
@@ -114,22 +113,30 @@ export const Card: FC<Props> = ({
 export const FlipCard: FC<Props> = (props) => {
   const [flipState, setFlipState] = useState(false);
 
+  const [visibilityState, setVisibilityState] = useRecoilState(
+    projectVisibilityAtom
+  );
+
+  const handleFlip = () => {
+    setFlipState(!flipState);
+    document.querySelector("body")?.classList.add("overflow-hidden");
+
+    setTimeout(() => {
+      setVisibilityState(!visibilityState);
+    }, 500);
+  };
   return (
     <div>
       <div className={`flip-card`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
           <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
-            <Card {...props} handleFlipCard={() => setFlipState(!flipState)}>
+            <Card {...props} handleFlipCard={handleFlip}>
               {props.children}
             </Card>
           </div>
-          <div className="flip-card-back h-screen w-screen">
-            {/* <div className="absolute left-1/2 top-1/2  h-full w-full -translate-x-1/2 -translate-y-1/2 bg-amber-600"></div> */}
-          </div>
+          <div className="flip-card-back h-screen w-screen"></div>
         </div>
       </div>
     </div>
   );
 };
-
-
