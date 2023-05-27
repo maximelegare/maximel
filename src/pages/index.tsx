@@ -6,10 +6,8 @@ import { Hero } from "~/components/pages/index/Hero";
 import { Projects } from "~/components/pages/index/Projects";
 import { ProjectsCategories } from "~/components/pages/index/ProjectsCategories";
 import { useRecoilValue } from "recoil";
-import { projectVisibilityAtom } from "atoms/projectAtom";
 
 const Home: NextPage = () => {
-  const projectVisibility = useRecoilValue(projectVisibilityAtom);
 
   return (
     <>
@@ -17,7 +15,6 @@ const Home: NextPage = () => {
         <Hero />
         <Projects />
         <ProjectsCategories />
-        <Dialog show={projectVisibility} ></Dialog>
       </main>
     </>
   );

@@ -15,8 +15,7 @@ import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 
 import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
 import { useRecoilState } from "recoil";
-import { projectVisibilityAtom } from "atoms/projectAtom";
-
+import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
 interface Props {
   imageUrl?: string | undefined;
@@ -28,7 +27,7 @@ interface Props {
   children?: ReactNode;
   colorHighlight: string;
   textHiglight?: string;
-  handleFlipCard?: () => any;
+  handleFlipCard: () => any;
   messageUnderneath?: string;
   bubbleColor?: string;
 }
@@ -110,27 +109,30 @@ export const Card: FC<Props> = ({
   );
 };
 
-export const FlipCard: FC<Props> = (props) => {
+export const FlipCard: FC<Props> = ({ handleFlipCard, ...props}) => {
+
   const [flipState, setFlipState] = useState(false);
 
-  const [visibilityState, setVisibilityState] = useRecoilState(
-    projectVisibilityAtom
-  );
+  // const [visibilityState, setVisibilityState] =
+  //   useRecoilState(dialogVisibilityAtom);
 
   const handleFlip = () => {
     setFlipState(!flipState);
-    document.querySelector("body")?.classList.add("overflow-hidden");
 
-    setTimeout(() => {
-      setVisibilityState(!visibilityState);
-    }, 500);
+    // setTimeout(() => {
+    //   setVisibilityState({
+    //     ...visibilityState,
+    //     bikanky: !visibilityState.bikanky,
+    //   });
+    // }, 500);
+      handleFlipCard();
   };
   return (
     <div>
       <div className={`flip-card`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
           <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
-            <Card {...props} handleFlipCard={handleFlip}>
+            <Card {...props} handleFlipCard={() => handleFlip()}>
               {props.children}
             </Card>
           </div>
