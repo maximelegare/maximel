@@ -17,7 +17,7 @@ import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
 import { useRecoilState } from "recoil";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
-interface Props {
+interface BaseCard {
   imageUrl?: string | undefined;
   styles?: string | undefined;
   gradiantBorder?: boolean;
@@ -27,12 +27,18 @@ interface Props {
   children?: ReactNode;
   colorHighlight: string;
   textHiglight?: string;
-  handleFlipCard: () => any;
   messageUnderneath?: string;
   bubbleColor?: string;
 }
 
-export const Card: FC<Props> = ({
+interface CardProps extends BaseCard {
+  handleCircleClick?:() => any;
+}
+
+interface FlipCardInterface extends BaseCard {
+  onCardFlip:() => any
+}
+export const Card: FC<CardProps> = ({
   circleHover,
   imageUrl,
   styles,
@@ -41,7 +47,7 @@ export const Card: FC<Props> = ({
   canvas2DBubbles = false,
   children,
   colorHighlight,
-  handleFlipCard,
+  handleCircleClick,
   textHiglight,
   messageUnderneath,
   bubbleColor,
@@ -78,7 +84,7 @@ export const Card: FC<Props> = ({
               </Else>
             </If>
             <When condition={circleHover === true}>
-              <div className="group" onClick={handleFlipCard}>
+              <div className="group" onClick={handleCircleClick}>
                 <div
                   className={`${
                     colorHighlight ? colorHighlight : ""
@@ -109,7 +115,7 @@ export const Card: FC<Props> = ({
   );
 };
 
-export const FlipCard: FC<Props> = ({ handleFlipCard, ...props}) => {
+export const FlipCard: FC<FlipCardInterface> = ({ onCardFlip, ...props}) => {
 
   const [flipState, setFlipState] = useState(false);
 
@@ -125,14 +131,14 @@ export const FlipCard: FC<Props> = ({ handleFlipCard, ...props}) => {
     //     bikanky: !visibilityState.bikanky,
     //   });
     // }, 500);
-      handleFlipCard();
+    onCardFlip();
   };
   return (
     <div>
       <div className={`flip-card`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
           <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
-            <Card {...props} handleFlipCard={() => handleFlip()}>
+            <Card {...props} handleCircleClick={() => handleFlip()}>
               {props.children}
             </Card>
           </div>

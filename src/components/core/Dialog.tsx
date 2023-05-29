@@ -26,6 +26,8 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
     onDialogClose && onDialogClose();
   };
 
+
+  
   return (
     <>
       <CSSTransition

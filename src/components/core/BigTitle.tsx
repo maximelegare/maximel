@@ -19,7 +19,7 @@ interface Props {
   buttons?: LinksModel;
   logoElement?: ReactElement;
   dotHighlight?: string;
-  marginTop:boolean
+  marginTop?:boolean
   logo: {
     alt: string;
     imageUrl: string;

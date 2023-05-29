@@ -1,11 +1,10 @@
-import React, { type FC } from "react";
+import React, { type FC, useEffect } from "react";
 
 import { type CategorySchemaModel } from "~/server/api/validation/category";
 import Image from "next/image";
 import { BigTitle } from "~/components/core/BigTitle";
-import { Card, FlipCard } from "~/components/core/Card";
+import { FlipCard } from "~/components/core/Card";
 import { TfiRulerPencil } from "react-icons/tfi";
-import { Bubbles2DCanvas } from "~/components/canvas/Bubble2DCanvas";
 import { Dialog } from "~/components/core/Dialog";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
@@ -15,22 +14,25 @@ interface Props {
 }
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
-  
   const { marginTop } = data.styles;
-  const [dialogVisibility, setDialogVisibility] = useRecoilState(dialogVisibilityAtom);
-
-
+  const [dialogVisibility, setDialogVisibility] =
+    useRecoilState(dialogVisibilityAtom);
 
   const handleCardFlip = () => {
     setTimeout(() => {
-      setDialogVisibility({
-        ...dialogVisibility,
-        bikanky: !dialogVisibility.bikanky,
+      setDialogVisibility((oldValues) => {
+        const obj = { ...oldValues, [data.slug]: true };
+        return obj;
       });
     }, 500);
-  }
+  };
 
-
+  useEffect(() => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [data.slug]: false };
+      return obj;
+    });
+  }, []);
 
   return (
     <>
@@ -57,8 +59,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           colorHighlight={data.styles.accent}
           bubbleColor={data.styles.bubbleColor}
           canvas2DBubbles
-          
-          handleFlipCard={handleCardFlip}
+          onCardFlip={() => console.log("cardFliped")}
         >
           <div className="fill-gray-800 p-10 opacity-60">
             <div className="relative h-auto w-full">
@@ -77,7 +78,12 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           </div>
         </FlipCard>
       </div>
-      <Dialog show={dialogVisibility.bikanky}>hello</Dialog>
+
+      {
+        <Dialog show={dialogVisibility[data.slug] || false}>
+          hello
+        </Dialog>
+      }
     </>
   );
 };
