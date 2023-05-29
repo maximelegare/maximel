@@ -23,6 +23,9 @@ interface Props {
 }
 
 export const Project: FC<Props> = ({ data }) => {
+
+  const [cardIsFlipped, setCardIsFlipped] = useState(false)
+
   const [dialogVisibility, setDialogVisibility] =
     useRecoilState(dialogVisibilityAtom);
 
@@ -32,7 +35,16 @@ export const Project: FC<Props> = ({ data }) => {
         const obj = { ...oldValues, [data.slug]: true };
         return obj;
       });
+      setCardIsFlipped(true)
     }, 500);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [data.slug]: false };
+      return obj;
+    });
+    setCardIsFlipped(false)
   };
 
   useEffect(() => {
@@ -71,6 +83,7 @@ export const Project: FC<Props> = ({ data }) => {
           colorHighlight={data.styles.accent}
           circleHover
           onCardFlip={() => handleCardFlip()}
+          isFlipped={cardIsFlipped}
         >
           <div>hello</div>
           <div>hello</div>
@@ -80,8 +93,11 @@ export const Project: FC<Props> = ({ data }) => {
           <div>hello</div>
           <div>hello</div>
         </FlipCard>
-        <Dialog show={dialogVisibility[data.slug] || false}>
-          hello
+        <Dialog
+          show={dialogVisibility[data.slug] || false}
+          onDialogClose={() => handleCloseDialog()}
+        >
+          {data.title}
         </Dialog>
 
         {/* <Card imageUrl={""} /> */}

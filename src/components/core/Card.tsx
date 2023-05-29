@@ -16,6 +16,7 @@ import { Bubbles2DCanvas } from "../canvas/Bubble2DCanvas";
 import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
 import { useRecoilState } from "recoil";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
+import { useEffect } from "react";
 
 interface BaseCard {
   imageUrl?: string | undefined;
@@ -32,11 +33,12 @@ interface BaseCard {
 }
 
 interface CardProps extends BaseCard {
-  handleCircleClick?:() => any;
+  handleCircleClick?: () => any;
 }
 
 interface FlipCardInterface extends BaseCard {
-  onCardFlip:() => any
+  onCardFlip: () => any;
+  isFlipped?: boolean;
 }
 export const Card: FC<CardProps> = ({
   circleHover,
@@ -115,24 +117,27 @@ export const Card: FC<CardProps> = ({
   );
 };
 
-export const FlipCard: FC<FlipCardInterface> = ({ onCardFlip, ...props}) => {
-
+export const FlipCard: FC<FlipCardInterface> = ({
+  onCardFlip,
+  isFlipped,
+  ...props
+}) => {
   const [flipState, setFlipState] = useState(false);
 
   // const [visibilityState, setVisibilityState] =
   //   useRecoilState(dialogVisibilityAtom);
 
+  useEffect(() => {
+    if (isFlipped !== undefined) {
+      setFlipState(isFlipped);
+    }
+  }, [isFlipped]);
+
   const handleFlip = () => {
     setFlipState(!flipState);
-
-    // setTimeout(() => {
-    //   setVisibilityState({
-    //     ...visibilityState,
-    //     bikanky: !visibilityState.bikanky,
-    //   });
-    // }, 500);
     onCardFlip();
   };
+
   return (
     <div>
       <div className={`flip-card`}>

@@ -2,6 +2,8 @@ import React, { type ReactNode, useEffect, useState, useRef } from "react";
 import type { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 
+import { useDom } from "~/hooks/useDom";
+
 interface Props {
   show: boolean;
   children: ReactNode;
@@ -11,23 +13,24 @@ interface Props {
 export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
   const nodeRef = useRef(null);
 
+  const { bodyOverflowHidden, bodyOverflowVisible } = useDom();
+
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(show);
     if (show === true) {
-      document.querySelector("body")?.classList.add("overflow-y");
+      bodyOverflowHidden();
+    } else {
+      bodyOverflowVisible();
     }
   }, [show]);
 
   const closeDialog = () => {
-    document.querySelector("body")?.classList.remove("overflow-hidden");
     setIsVisible(false);
     onDialogClose && onDialogClose();
   };
 
-
-  
   return (
     <>
       <CSSTransition
@@ -52,3 +55,11 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
     </>
   );
 };
+
+// export const useDialog  = () => {
+//   const closeDialog = () => {
+
+//   }
+
+//   return {closeDialog}
+// }

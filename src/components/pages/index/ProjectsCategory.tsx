@@ -27,6 +27,13 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
     }, 500);
   };
 
+  const handleCloseDialog = () => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [data.slug]: false };
+      return obj;
+    });
+  }
+
   useEffect(() => {
     setDialogVisibility((oldValues) => {
       const obj = { ...oldValues, [data.slug]: false };
@@ -80,7 +87,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       </div>
 
       {
-        <Dialog show={dialogVisibility[data.slug] || false}>
+        <Dialog show={dialogVisibility[data.slug] || false} onDialogClose={() => handleCloseDialog()}>
           hello
         </Dialog>
       }
