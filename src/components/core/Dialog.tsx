@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   const { bodyOverflowHidden, bodyOverflowVisible } = useDom();
 
@@ -26,9 +26,15 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
     }
   }, [show]);
 
-  const closeDialog = () => {
-    setIsVisible(false);
-    onDialogClose && onDialogClose();
+  const handleClick = (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (
+      e &&
+      nodeRef.current &&
+      !nodeRef.current.contains(e.target as HTMLElement)
+    ) {
+      setIsVisible(false);
+      onDialogClose && onDialogClose();
+    }
   };
 
   return (
@@ -40,17 +46,19 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
         classNames="dialog"
         unmountOnExit
       >
-        <div
-          className="fixed bottom-0 left-0 right-0 top-0 z-50"
-          onClick={() => closeDialog()}
-        >
+        <>
           <div
-            ref={nodeRef}
-            className="fixed left-1/2 mt-10 h-3/4 w-2/3 -translate-x-1/2 overflow-auto bg-cyan-900"
+            className="fixed bottom-0 left-0 right-0 top-0 z-50"
+            onClick={(e) => handleClick(e)}
           >
-            <div className="">{children}</div>
+            <div
+              ref={nodeRef}
+              className="fixed left-1/2 mt-10 h-3/4 w-2/3 -translate-x-1/2 overflow-auto bg-cyan-900"
+            >
+              <div className="">{children}</div>
+            </div>
           </div>
-        </div>
+        </>
       </CSSTransition>
     </>
   );
