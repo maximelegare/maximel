@@ -26,7 +26,7 @@ export const Section: FC<Props> = ({
               : ""
           }
         >
-          <div className="h-full w-full opacity-60"></div>
+          <div className="section-background h-full w-full opacity-60"></div>
         </div>
       </div>
       <div className="absolute left-0 top-0 z-10 h-full w-full">

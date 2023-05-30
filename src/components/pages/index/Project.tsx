@@ -98,8 +98,8 @@ export const Project: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          {data.title}
-          {/* <BlockContent data={data.body} highlightColor={data.styles.textAccent} separatorColor=""/> */}
+          {/* {data.title} */}
+          <BlockContent data={data.body} highlightColor={data.styles.textAccent} separatorColor=""/>
         </Dialog>
 
         {/* <Card imageUrl={""} /> */}
