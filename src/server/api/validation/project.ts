@@ -16,10 +16,11 @@ const ProjectSchema = z.object({
     z.enum(lang),
     z.array(
       z.object({
-        style: z.string(),
-        children: z.array(
-          z.object({ text: z.string(), marks: z.array(z.string()) })
-        ),
+        style: z.string().or(z.null()),
+        children: z
+          .array(z.object({ text: z.string(), marks: z.array(z.string()) }))
+          .or(z.null()),
+        imageUrl: z.string().or(z.null()).or(z.undefined()),
       })
     )
   ),
@@ -29,10 +30,11 @@ const ProjectSchema = z.object({
     z.enum(lang),
     z.array(
       z.object({
-        style: z.string(),
-        children: z.array(
-          z.object({ text: z.string(), marks: z.array(z.string()) })
-        ),
+        style: z.string().or(z.null()),
+        children: z
+          .array(z.object({ text: z.string(), marks: z.array(z.string()) }))
+          .or(z.null()),
+        imageUrl: z.string().or(z.null()).or(z.undefined()),
       })
     )
   ),
@@ -40,10 +42,11 @@ const ProjectSchema = z.object({
     z.enum(lang),
     z.array(
       z.object({
-        style: z.string(),
-        children: z.array(
-          z.object({ text: z.string(), marks: z.array(z.string()) })
-        ),
+        style: z.string().or(z.null()),
+        children: z
+          .array(z.object({ text: z.string(), marks: z.array(z.string()) }))
+          .or(z.null()),
+        imageUrl: z.string().or(z.null()).or(z.undefined()),
       })
     )
   ),
@@ -53,4 +56,4 @@ const ProjectSchema = z.object({
 });
 
 export const ProjectsSchema = z.array(ProjectSchema);
-export  {ProjectSchema}
+export { ProjectSchema };

@@ -17,6 +17,7 @@ import { useEffect } from "react";
 
 import type { DialogAtom } from "atoms/dialogAtom";
 import { Dialog } from "~/components/core/Dialog";
+import { BlockContent } from "~/components/core/BlockContent";
 
 interface Props {
   data: ProjectSchemaModel;
@@ -98,6 +99,7 @@ export const Project: FC<Props> = ({ data }) => {
           onDialogClose={() => handleCloseDialog()}
         >
           {data.title}
+          {/* <BlockContent data={data.body} highlightColor={data.styles.textAccent} separatorColor=""/> */}
         </Dialog>
 
         {/* <Card imageUrl={""} /> */}

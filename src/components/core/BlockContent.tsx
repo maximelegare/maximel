@@ -7,21 +7,27 @@ import { Separator } from "./Separator";
 import type { BlockContentModel } from "~/server/api/validation/project";
 import type { Lang } from "db/schemas/locale/supportedLanguages";
 
+import { If, Then, Else } from "react-if";
+
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface Props {
   data?: BlockContentModel;
   highlightColor: string;
-  separatorColor:string
+  separatorColor: string;
 }
 
-export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }) => {
+export const BlockContent: FC<Props> = ({
+  data,
+  highlightColor,
+  separatorColor,
+}) => {
   const { locale } = useRouter();
-  
-  const lines = data?.[locale as Lang]
-  
-  type Size = "h1" | "h2" | "h3" | "h4";
 
+  const lines = data?.[locale as Lang];
+
+  type Size = "h1" | "h2" | "h3" | "h4";
 
   const getLineStyle = (size: Size) => {
     switch (size as string) {
@@ -38,7 +44,7 @@ export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }
   };
 
   const getMarkups = (marks: string[]) => {
-  const marksToAdd: string[] = [];
+    const marksToAdd: string[] = [];
 
     marks.forEach((mark) => {
       switch (mark) {
@@ -61,7 +67,7 @@ export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }
   ) => {
     switch (el.text) {
       case "//": {
-        return <Separator color={separatorColor}/>;
+        return <Separator color={separatorColor} />;
       }
       default: {
         return (
@@ -78,7 +84,11 @@ export const BlockContent: FC<Props> = ({ data, highlightColor, separatorColor }
       <div>
         {lines?.map((el, idx) => (
           <div key={idx} className={getLineStyle(el.style as Size)}>
-            {el.children.map((el, idx) => getHtmlElement(el, idx))}
+            {el.children &&
+              el.children.map((el, idx) => getHtmlElement(el, idx))}
+            {el.imageUrl && (
+              <Image src={el.imageUrl} alt="" width={200} height={200} />
+            )}
           </div>
         ))}
       </div>

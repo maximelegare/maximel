@@ -18,7 +18,7 @@ export const Section: FC<Props> = ({
   return (
     <section className={`relative flex justify-center ${styles ? styles : ""}`}>
       <div className="container relative  min-h-screen">
-        <div className="relative z-30 px-4">{children}</div>
+        <div className="relative z-30 px-6">{children}</div>
         <div
           className={
             bluredBackground
@@ -26,7 +26,7 @@ export const Section: FC<Props> = ({
               : ""
           }
         >
-          <div className=" h-full w-full bg-black opacity-60 blur-sm"></div>
+          <div className="h-full w-full opacity-60"></div>
         </div>
       </div>
       <div className="absolute left-0 top-0 z-10 h-full w-full">

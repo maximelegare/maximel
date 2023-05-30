@@ -53,11 +53,12 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
           >
             <div
               ref={nodeRef}
-              className="fixed left-1/2 mt-10 h-3/4 w-2/3 -translate-x-1/2 overflow-auto bg-cyan-900"
+              className="container fixed left-1/2 mt-20 h-3/4 w-full -translate-x-1/2 overflow-auto bg-slate-600 "
             >
-              <div className="">{children}</div>
+              <div className=" h-full">{children}</div>
             </div>
           </div>
+          {/* <div className="fixed bottom-0 left-0 right-0 top-0 z-30 bg-black"></div> */}
         </>
       </CSSTransition>
     </>

@@ -22,7 +22,7 @@ export const ProjectsCategories = () => {
   if (!data || !data.res) return <div>no data</div>;
 
   return (
-    <Section styles="bg-black relative z-[-1]" bluredBackground>
+    <Section styles="bg-black relative z-10" bluredBackground>
       <div className="grid grid-cols-2 gap-x-4 pb-5">
         {data?.res.map((el, idx) => {
           return (

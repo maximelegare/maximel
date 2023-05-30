@@ -13,7 +13,8 @@ const getQuery = (query: Query, lang: string) => {
               children[]{
                 text,
                  marks
-                }
+                },
+                "imageUrl":asset->url
               }
             },
           "slug":slug.current,
@@ -23,7 +24,8 @@ const getQuery = (query: Query, lang: string) => {
               children[]{
                 text,
                  marks
-                }
+                },
+                "imageUrl":asset->url
               }
             },
           body{
@@ -32,7 +34,8 @@ const getQuery = (query: Query, lang: string) => {
             children[]{
               text,
               marks
-              }
+              },
+              "imageUrl":asset->url
             }
           },
           logo{

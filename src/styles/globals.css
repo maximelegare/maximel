@@ -205,11 +205,11 @@ p,
   opacity: 1;
   transition: opacity 300ms, margin-top 800ms;
   transition-timing-function: cubic-bezier(.16,.65,.5,.96);
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .dialog-exit {
   opacity: 1;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .dialog-exit-active {
   opacity: 0;
@@ -218,5 +218,34 @@ p,
   margin-top: 60px;
 }
 
+.dialog-bg-enter {
+  opacity: 0;
+}
+.dialog-bg-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+  transition-timing-function: cubic-bezier(.16,.65,.5,.96);
+}
+.dialog-bg-exit {
+  opacity: 1;
+}
+.dialog-bg-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, ;
+  transition-timing-function: cubic-bezier(.4,.26,.11,.99);
+}
+
+
+.section-background{
+  border: 1px solid #ffffff22;
+  background-color: #180d3922;
+  /* background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%); */
+  
+  border-radius: .7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+ 
+}
 
 
