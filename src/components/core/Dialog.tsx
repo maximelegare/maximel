@@ -2,6 +2,10 @@ import React, { type ReactNode, useEffect, useState, useRef } from "react";
 import type { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 
+import { Scrollbars } from "react-custom-scrollbars-2";
+
+import { type RefObject } from "react";
+
 import { useDom } from "~/hooks/useDom";
 
 interface Props {
@@ -52,10 +56,22 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
             onClick={(e) => handleClick(e)}
           >
             <div
+              className="container absolute -translate-x-1/2 left-1/2 mt-20 flex h-3/4 "
               ref={nodeRef}
-              className="container fixed left-1/2 mt-20 h-3/4 w-full -translate-x-1/2 overflow-auto bg-slate-600 "
             >
-              <div className=" h-full">{children}</div>
+              <Scrollbars
+                // style={{
+                //   width: 700,
+                //   height: 300,
+                //   backgroundColor: "red",
+                //   zIndex: 10000,
+                // }}
+                className=" h-full w-full bg-slate-600"
+              >
+                <div>
+                  <div className="p-6 h-full">{children}</div>
+                </div>
+              </Scrollbars>
             </div>
           </div>
           {/* <div className="fixed bottom-0 left-0 right-0 top-0 z-30 bg-black"></div> */}
