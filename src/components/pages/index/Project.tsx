@@ -86,13 +86,7 @@ export const Project: FC<Props> = ({ data }) => {
           onCardFlip={() => handleCardFlip()}
           isFlipped={cardIsFlipped}
         >
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
+         {/* {data.overviewCard.image} */}
         </FlipCard>
 
         <Dialog

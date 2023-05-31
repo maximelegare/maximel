@@ -28,6 +28,21 @@ const getQuery = (query: Query, lang: string) => {
                 "imageUrl":asset->url
               }
             },
+            overviewCard{
+              image{
+                "imageUrl":asset->url,
+                alt,
+              },
+              text{
+              fr[]{
+                style,
+                children[]{
+                  text,
+                   marks
+                  },
+                }
+              }
+            },
           body{
             ${lang}[]{
             style,

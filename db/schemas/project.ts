@@ -8,25 +8,26 @@ const project = {
   icon,
   fields: [
     {
-      name:"position",
-      title:"Position",
-      type:"number"
-    },{
-      name:"styles",
-      title:"Styles",
-      type:"object",
-      fields:[
+      name: "position",
+      title: "Position",
+      type: "number",
+    },
+    {
+      name: "styles",
+      title: "Styles",
+      type: "object",
+      fields: [
         {
-          name:"textAccent",
-          title:"Text accent class",
-          type:"string"
+          name: "textAccent",
+          title: "Text accent class",
+          type: "string",
         },
         {
-          name:"accent",
-          title:"Accent class",
-          type:"string"
-        }
-      ]
+          name: "accent",
+          title: "Accent class",
+          type: "string",
+        },
+      ],
     },
     {
       name: "title",
@@ -53,6 +54,30 @@ const project = {
       type: "localeBlockContent",
     },
     {
+      name: "overviewCard",
+      title: "Overview Card",
+      type: "object",
+      fields: [
+        {
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        },
+        { name: "text", title: "Text", type: "localeBlockContent" },
+      ],
+    },
+
+    {
       name: "body",
       title: "Body",
       type: "localeBlockContent",
@@ -75,21 +100,20 @@ const project = {
       ],
     },
     {
-      name:"links",
-      title:"Links",
-      type:"array",
-      of:[
+      name: "links",
+      title: "Links",
+      type: "array",
+      of: [
         {
-          name:"link",
-          title:"Link",
-          type:"object",
-          fields:[
-            {name:"type", title:"Type", type:"string"},
-            {name:"href", title:"href", type:"string"},
-          ]
-          
-        }
-      ]
+          name: "link",
+          title: "Link",
+          type: "object",
+          fields: [
+            { name: "type", title: "Type", type: "string" },
+            { name: "href", title: "href", type: "string" },
+          ],
+        },
+      ],
     },
     {
       name: "logo",
@@ -138,7 +162,7 @@ const project = {
   preview: {
     select: {
       title: "title",
-      position:"position",
+      position: "position",
       media: "logo",
     },
     prepare({
@@ -154,7 +178,6 @@ const project = {
       return {
         title: `${position} - ${title.toLowerCase()}`,
         media,
-       
       };
     },
   },

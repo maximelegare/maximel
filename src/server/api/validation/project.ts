@@ -26,6 +26,24 @@ const ProjectSchema = z.object({
   ),
 
   slug: z.string(),
+  overviewCard: z
+    .object({
+      image: z.object({ imageUrl: z.string(), alt: z.string() }),
+      text: z.record(
+        z.enum(lang),
+        z.array(
+          z.object({
+            style: z.string().or(z.null()),
+            children: z
+              .array(z.object({ text: z.string(), marks: z.array(z.string()) }))
+              .or(z.null()),
+            imageUrl: z.string().or(z.null()).or(z.undefined()),
+          })
+        )
+      ),
+    })
+    .or(z.null())
+    .or(z.undefined()),
   overview: z.record(
     z.enum(lang),
     z.array(
