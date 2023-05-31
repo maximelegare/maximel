@@ -12,12 +12,11 @@ import { useRecoilValue } from "recoil";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
 const Home: NextPage = () => {
-
-  const dialogs = useRecoilValue(dialogVisibilityAtom)
+  const dialogs = useRecoilValue(dialogVisibilityAtom);
 
   useEffect(() => {
-    console.log("dialogs", dialogs)
-  },[dialogs])
+    console.log("dialogs", dialogs);
+  }, [dialogs]);
 
   return (
     <>

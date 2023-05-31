@@ -7,14 +7,20 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import { type RefObject } from "react";
 
 import { useDom } from "~/hooks/useDom";
+import { Button } from "./Button";
+import {IoIosClose} from "react-icons/io"
+
+
+
 
 interface Props {
   show: boolean;
   children: ReactNode;
+  header:any;
   onDialogClose?: () => void;
 }
 
-export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
+export const Dialog: FC<Props> = ({ header, show, children, onDialogClose }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
   const { bodyOverflowHidden, bodyOverflowVisible } = useDom();
@@ -29,6 +35,8 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
       bodyOverflowVisible();
     }
   }, [show]);
+
+  
 
   const handleClick = (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (
@@ -56,20 +64,24 @@ export const Dialog: FC<Props> = ({ show, children, onDialogClose }) => {
             onClick={(e) => handleClick(e)}
           >
             <div
-              className="container absolute -translate-x-1/2 left-1/2 mt-20 flex h-3/4 "
+              className="absolute left-1/2 mt-20 flex h-3/4 w-2/3 -translate-x-1/2 overflow-hidden rounded-md"
               ref={nodeRef}
             >
-              <Scrollbars
-                // style={{
-                //   width: 700,
-                //   height: 300,
-                //   backgroundColor: "red",
-                //   zIndex: 10000,
-                // }}
-                className=" h-full w-full bg-slate-600"
-              >
+              <Scrollbars className="relative mt-12 h-full w-full bg-slate-600">
                 <div>
-                  <div className="p-6 h-full">{children}</div>
+                  <div className="p-6">{children}</div>
+                </div>
+                <div className="fixed top-0 z-[100] flex h-12 w-full items-center justify-between bg-red-100 px-6">
+                  <div>{header}</div>
+                  <Button
+                    handleClick={() => {
+                      setIsVisible(false);
+                      onDialogClose && onDialogClose();
+                    }}
+                    variant="icon"
+                  >
+                    <IoIosClose className="text-3xl"/>
+                  </Button>
                 </div>
               </Scrollbars>
             </div>

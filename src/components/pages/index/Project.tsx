@@ -18,14 +18,14 @@ import { useEffect } from "react";
 import type { DialogAtom } from "atoms/dialogAtom";
 import { Dialog } from "~/components/core/Dialog";
 import { BlockContent } from "~/components/core/BlockContent";
+import { Media } from "~/components/core/Media";
 
 interface Props {
   data: ProjectSchemaModel;
 }
 
 export const Project: FC<Props> = ({ data }) => {
-
-  const [cardIsFlipped, setCardIsFlipped] = useState(false)
+  const [cardIsFlipped, setCardIsFlipped] = useState(false);
 
   const [dialogVisibility, setDialogVisibility] =
     useRecoilState(dialogVisibilityAtom);
@@ -36,7 +36,7 @@ export const Project: FC<Props> = ({ data }) => {
         const obj = { ...oldValues, [data.slug]: true };
         return obj;
       });
-      setCardIsFlipped(true)
+      setCardIsFlipped(true);
     }, 500);
   };
 
@@ -45,7 +45,7 @@ export const Project: FC<Props> = ({ data }) => {
       const obj = { ...oldValues, [data.slug]: false };
       return obj;
     });
-    setCardIsFlipped(false)
+    setCardIsFlipped(false);
   };
 
   useEffect(() => {
@@ -94,12 +94,24 @@ export const Project: FC<Props> = ({ data }) => {
           <div>hello</div>
           <div>hello</div>
         </FlipCard>
+
         <Dialog
+          header={
+            <div className="flex gap-1">
+              {data.links.map((link, idx) => (
+                <Media href={link.href} type={link.type} key={idx} />
+              ))}
+            </div>
+          }
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
           {/* {data.title} */}
-          <BlockContent data={data.body} highlightColor={data.styles.textAccent} separatorColor=""/>
+          <BlockContent
+            data={data.body}
+            highlightColor={data.styles.textAccent}
+            separatorColor=""
+          />
         </Dialog>
 
         {/* <Card imageUrl={""} /> */}

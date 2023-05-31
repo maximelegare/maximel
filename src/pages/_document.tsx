@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import { Scrollbars } from "react-custom-scrollbars-2";
 class myDocument extends Document {
   render() {
     return (
@@ -16,10 +16,10 @@ class myDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin=""
           />
-          {/** 
+          {/**
            * Pass the SVG in this url:
            * https://yoksel.github.io/url-encoder/
-           * 
+           *
            * Then put the encoded version after data:image/svg+xml, => this will make the favicon a crisp SVG
            */}
           <link
@@ -33,7 +33,9 @@ class myDocument extends Document {
           />
         </Head>
         <body >
-          <Main />
+          {/* <Scrollbars className="h-screen w-screen bg-black"> */}
+            <Main />
+          {/* </Scrollbars> */}
           <NextScript />
         </body>
       </Html>
