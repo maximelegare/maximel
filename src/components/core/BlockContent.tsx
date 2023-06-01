@@ -39,6 +39,9 @@ export const BlockContent: FC<Props> = ({
       case "h2": {
         return "h2 pb-3";
       }
+      case "h3": {
+        return "h3 pb-3";
+      }
       case "p": {
         return "p pb-3";
       }
@@ -60,6 +63,9 @@ export const BlockContent: FC<Props> = ({
         case "strong": {
           marksToAdd.push("font-bold");
           break;
+        }
+        case "opacity-70":{
+          marksToAdd.push("opacity-70")
         }
       }
     });

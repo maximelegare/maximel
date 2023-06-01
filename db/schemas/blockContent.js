@@ -13,6 +13,10 @@
 const HighlightDecorator = (props) => (
   <span style={{ color: "red" }}>{props.children}</span>
 );
+const Opacity70 = (props) => (
+  <span style={{ backgroundColor:"#00000030" }}>{props.children}</span>
+);
+
 
 const blockContent = {
   title: "Block Content",
@@ -47,6 +51,13 @@ const blockContent = {
             icon: () => "H",
             component: HighlightDecorator,
           },
+          {
+            title: "Opacity-70",
+            value: "opacity-70",
+            icon: () => "O-70",
+            component: Opacity70,
+          },
+         
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [

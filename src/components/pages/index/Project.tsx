@@ -87,7 +87,7 @@ export const Project: FC<Props> = ({ data }) => {
             onCardFlip={() => handleCardFlip()}
             isFlipped={cardIsFlipped}
           >
-            <div className="flex justify-end p-8 gap-6">
+            <div className="flex justify-end gap-6 p-8">
               <Image
                 src={data.overviewCard.image.imageUrl}
                 alt={data.overviewCard.image.alt}
@@ -102,7 +102,9 @@ export const Project: FC<Props> = ({ data }) => {
                 highlightColor={data.styles.textAccent}
                 separatorColor={data.styles.accent}
                 className={`${
-                  data.overviewCard.imagePosition === "right" ? "order-1 text-right" : ""
+                  data.overviewCard.imagePosition === "right"
+                    ? "order-1 text-right"
+                    : ""
                 }`}
               />
             </div>
@@ -120,35 +122,13 @@ export const Project: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          {/* {data.title} */}
           <BlockContent
             data={data.body}
             highlightColor={data.styles.textAccent}
             separatorColor={data.styles.accent}
           />
         </Dialog>
-
-        {/* <Card imageUrl={""} /> */}
-
-        {/* {data.res[0]?.images.map((img, idx) => {
-            console.log(img.bigImage);
-            return (
-              <div key={idx}>
-              <Card
-              styles="col-span-2"
-              imageUrl={img.imageUrl}
-              />
-              </div>
-              );
-            })} */}
-
-        {/* <Card imageUrl="/maximel/public/assets/img/hodei.png" /> */}
       </div>
-      {/* <div className="grid grid-cols-2 gap-4">
-          <Card styles="col-span-2" imageUrl="/maximel/public/assets/img/hodei.png" />
-          <Card imageUrl="/maximel/public/assets/img/hodei.png" />
-          <Card imageUrl="/maximel/public/assets/img/hodei.png" />
-        </div> */}
     </>
   );
 };
