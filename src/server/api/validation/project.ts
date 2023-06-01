@@ -28,6 +28,7 @@ const ProjectSchema = z.object({
   slug: z.string(),
   overviewCard: z
     .object({
+      imagePosition:z.string(),
       image: z.object({ imageUrl: z.string(), alt: z.string() }),
       text: z.record(
         z.enum(lang),

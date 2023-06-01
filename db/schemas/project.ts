@@ -59,6 +59,19 @@ const project = {
       type: "object",
       fields: [
         {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          options: {
+            layout: "radio",
+            list: [
+              { title: "Right", value: "right" },
+              { title: "Left", value: "left" },
+            ],
+          },
+          initialValue: "right"
+        },
+        {
           name: "image",
           title: "Image",
           type: "image",

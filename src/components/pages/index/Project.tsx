@@ -68,7 +68,7 @@ export const Project: FC<Props> = ({ data }) => {
         />
       </div>
       <Card imageUrl={data.images[0]?.imageUrl} colorHighlight="" />
-      <div className="grid grid-cols-2 grid-rows-1 gap-x-4">
+      <div className="grid grid-cols-2 grid-rows-1 gap-x-6">
         <BigTitle
           styles={data.styles}
           logo={data.logo}
@@ -78,16 +78,36 @@ export const Project: FC<Props> = ({ data }) => {
           buttons={data.links}
           paddingBottom="pb-[150px]"
         />
-        <FlipCard
-          styles="mt-8"
-          gradiantBorder
-          colorHighlight={data.styles.accent}
-          circleHover
-          onCardFlip={() => handleCardFlip()}
-          isFlipped={cardIsFlipped}
-        >
-         {/* {data.overviewCard.image} */}
-        </FlipCard>
+        {data.overviewCard && (
+          <FlipCard
+            styles="mt-8"
+            gradiantBorder
+            colorHighlight={data.styles.accent}
+            circleHover
+            onCardFlip={() => handleCardFlip()}
+            isFlipped={cardIsFlipped}
+          >
+            <div className="flex justify-end p-8 gap-6">
+              <Image
+                src={data.overviewCard.image.imageUrl}
+                alt={data.overviewCard.image.alt}
+                width={300}
+                height={0}
+                className={`${
+                  data.overviewCard.imagePosition === "right" ? "order-2" : ""
+                }`}
+              />
+              <BlockContent
+                data={data.overviewCard.text}
+                highlightColor={data.styles.textAccent}
+                separatorColor={data.styles.accent}
+                className={`${
+                  data.overviewCard.imagePosition === "right" ? "order-1 text-right" : ""
+                }`}
+              />
+            </div>
+          </FlipCard>
+        )}
 
         <Dialog
           header={
@@ -104,7 +124,7 @@ export const Project: FC<Props> = ({ data }) => {
           <BlockContent
             data={data.body}
             highlightColor={data.styles.textAccent}
-            separatorColor=""
+            separatorColor={data.styles.accent}
           />
         </Dialog>
 

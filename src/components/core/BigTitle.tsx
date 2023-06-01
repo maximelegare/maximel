@@ -103,6 +103,7 @@ export const BigTitle: FC<Props> = ({
                 separatorColor={styles.accent}
                 data={subtitle}
                 highlightColor={styles.textAccent}
+                
               />
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (

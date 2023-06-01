@@ -29,6 +29,7 @@ const getQuery = (query: Query, lang: string) => {
               }
             },
             overviewCard{
+              imagePosition,
               image{
                 "imageUrl":asset->url,
                 alt,

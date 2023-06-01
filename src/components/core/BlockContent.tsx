@@ -16,12 +16,14 @@ interface Props {
   data?: BlockContentModel;
   highlightColor: string;
   separatorColor: string;
+  className?:string
 }
 
 export const BlockContent: FC<Props> = ({
   data,
   highlightColor,
   separatorColor,
+  className
 }) => {
   const { locale } = useRouter();
 
@@ -33,6 +35,9 @@ export const BlockContent: FC<Props> = ({
     switch (size as string) {
       case "h1": {
         return "h1 pb-5";
+      }
+      case "h2": {
+        return "h2 pb-3";
       }
       case "p": {
         return "p pb-3";
@@ -81,7 +86,7 @@ export const BlockContent: FC<Props> = ({
 
   return (
     <>
-      <div>
+      <div  className={className}>
         {lines?.map((el, idx) => (
           <div key={idx} className={getLineStyle(el.style as Size)}>
             {el.children &&
