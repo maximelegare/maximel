@@ -87,7 +87,7 @@ export const Project: FC<Props> = ({ data }) => {
             onCardFlip={() => handleCardFlip()}
             isFlipped={cardIsFlipped}
           >
-            <div className="flex flex-col items-end justify-end gap-20 p-4">
+            <div className="flex flex-col items-end justify-end gap-20 ">
               <Image
                 src={data.overviewCard.image.imageUrl}
                 alt={data.overviewCard.image.alt}
@@ -97,16 +97,20 @@ export const Project: FC<Props> = ({ data }) => {
                   data.overviewCard.imagePosition === "right" ? "order-2" : ""
                 }`}
               />
-              <BlockContent
-                data={data.overviewCard.text}
-                highlightColor={data.styles.textAccent}
-                separatorColor={data.styles.accent}
+              <div
                 className={`${
                   data.overviewCard.imagePosition === "right"
                     ? "order-1 text-right"
                     : ""
-                }`}
-              />
+                } flex h-fit gap-2 pt-4 pr-4`}
+              >
+                <BlockContent
+                  data={data.overviewCard.text}
+                  highlightColor={data.styles.textAccent}
+                  separatorColor={data.styles.accent}
+                />
+                <span className="w-[3px]  bg-white opacity-70 rounded-full"></span>
+              </div>
             </div>
           </FlipCard>
         )}

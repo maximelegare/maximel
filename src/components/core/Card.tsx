@@ -92,7 +92,12 @@ export const Card: FC<CardProps> = ({
                     colorHighlight ? colorHighlight : ""
                   }  absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full transition-all duration-1000 ease-in-out group-hover:scale-[30]`}
                 ></div>
-                <div className=" absolute bottom-3 right-3 z-[2] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
+                <div
+                  className={`${
+                    colorHighlight ? colorHighlight : ""
+                  }  absolute bottom-3 right-3 z-30 h-16 w-16 rounded-full transition-all duration-300 ease-in-out group-hover:scale-0`}
+                ></div>
+                <div className=" absolute bottom-3 right-3 z-30 flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
                   <div
                     className="flex items-center backface-hidden"
                     data-aos="fade-right-custom"
