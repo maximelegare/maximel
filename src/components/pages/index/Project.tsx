@@ -87,11 +87,11 @@ export const Project: FC<Props> = ({ data }) => {
             onCardFlip={() => handleCardFlip()}
             isFlipped={cardIsFlipped}
           >
-            <div className="flex justify-end gap-6 p-8">
+            <div className="flex flex-col items-end justify-end gap-20 p-4">
               <Image
                 src={data.overviewCard.image.imageUrl}
                 alt={data.overviewCard.image.alt}
-                width={300}
+                width={500}
                 height={0}
                 className={`${
                   data.overviewCard.imagePosition === "right" ? "order-2" : ""

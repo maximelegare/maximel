@@ -1,3 +1,9 @@
+
+import { RxColumnSpacing as icon } from "react-icons/rx"
+
+import {MdOpacity as opacityIcon} from "react-icons/md"
+
+import {AiFillHighlight as highlightIcon} from "react-icons/ai"
 // @ts-nocheck
 /**
  * This is the schema definition for the rich text fields used for
@@ -15,6 +21,9 @@ const HighlightDecorator = (props) => (
 );
 const Opacity70 = (props) => (
   <span style={{ backgroundColor:"#00000030" }}>{props.children}</span>
+);
+const Nbsp = (props) => (
+  <span style={{ border:"2px solid blue" }}>{props.children}</span>
 );
 
 
@@ -48,14 +57,20 @@ const blockContent = {
           {
             title: "Highlight",
             value: "highlight",
-            icon: () => "H",
+            icon: highlightIcon,
             component: HighlightDecorator,
           },
           {
             title: "Opacity-70",
             value: "opacity-70",
-            icon: () => "O-70",
+            icon: opacityIcon,
             component: Opacity70,
+          },
+          {
+            title: "Nbsp",
+            value: "nbsp",
+            icon:icon,
+            component: Nbsp,
           },
          
         ],

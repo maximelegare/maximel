@@ -69,7 +69,7 @@ const project = {
               { title: "Left", value: "left" },
             ],
           },
-          initialValue: "right"
+          
         },
         {
           name: "image",

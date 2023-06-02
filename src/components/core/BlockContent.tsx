@@ -16,14 +16,14 @@ interface Props {
   data?: BlockContentModel;
   highlightColor: string;
   separatorColor: string;
-  className?:string
+  className?: string;
 }
 
 export const BlockContent: FC<Props> = ({
   data,
   highlightColor,
   separatorColor,
-  className
+  className,
 }) => {
   const { locale } = useRouter();
 
@@ -34,7 +34,7 @@ export const BlockContent: FC<Props> = ({
   const getLineStyle = (size: Size) => {
     switch (size as string) {
       case "h1": {
-        return "h1 pb-5";
+        return "h1 pb-2";
       }
       case "h2": {
         return "h2 pb-3";
@@ -51,9 +51,31 @@ export const BlockContent: FC<Props> = ({
     }
   };
 
-  const getMarkups = (marks: string[]) => {
+  const createNbspElementText = (text: string) => {
+    const words = text.match(/[^ ]+/g);
+    console.log(words)
+    return (
+      <>
+        {words
+          ? words?.map((word, idx) => (
+              <span key={idx} className="inline">
+                {word}
+                {idx === words.length - 1 ? (
+                  <span className="inline"></span>
+                ) : (
+                  <span className="inline">&nbsp;</span>
+                )}
+              </span>
+            ))
+          : text}
+      </>
+    );
+  };
+
+  const getTextContentWithMarkup = (marks: string[], text: string) => {
     const marksToAdd: string[] = [];
 
+    let nbspElements;
     marks.forEach((mark) => {
       switch (mark) {
         case "highlight": {
@@ -64,12 +86,23 @@ export const BlockContent: FC<Props> = ({
           marksToAdd.push("font-bold");
           break;
         }
-        case "opacity-70":{
-          marksToAdd.push("opacity-70")
+        case "opacity-70": {
+          marksToAdd.push("opacity-70");
+          break;
+        }
+        case "nbsp": {
+          nbspElements = createNbspElementText(text);
         }
       }
     });
-    return marksToAdd.join().replaceAll(",", " ");
+
+    const classes = marksToAdd.join().replaceAll(",", " ");
+
+    return (
+      <p className={`inline ${classes}`}>
+        {nbspElements !== undefined ? nbspElements : text}&thinsp;
+      </p>
+    );
   };
 
   const getHtmlElement = (
@@ -82,8 +115,8 @@ export const BlockContent: FC<Props> = ({
       }
       default: {
         return (
-          <p className={`inline-block ${getMarkups(el.marks)}`} key={idx}>
-            {el.text}&thinsp;
+          <p key={idx} className="inline">
+            {getTextContentWithMarkup(el.marks, el.text)}
           </p>
         );
       }
@@ -92,7 +125,7 @@ export const BlockContent: FC<Props> = ({
 
   return (
     <>
-      <div  className={className}>
+      <div className={className}>
         {lines?.map((el, idx) => (
           <div key={idx} className={getLineStyle(el.style as Size)}>
             {el.children &&
