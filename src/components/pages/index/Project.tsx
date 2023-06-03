@@ -55,6 +55,23 @@ export const Project: FC<Props> = ({ data }) => {
     });
   }, []);
 
+  const getImagePadding = (imagePadding: string) => {
+    switch (imagePadding) {
+      case "no-padding-right": {
+        return "pr-0";
+      }
+      case "no-padding-left": {
+        return "pl-0";
+      }
+      case "default": {
+        return "pr-4 pl-4";
+      }
+      default: {
+        return "";
+      }
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-2">
@@ -88,28 +105,26 @@ export const Project: FC<Props> = ({ data }) => {
             isFlipped={cardIsFlipped}
           >
             <div className="flex flex-col items-end justify-end gap-20 ">
-              <Image
-                src={data.overviewCard.image.imageUrl}
-                alt={data.overviewCard.image.alt}
-                width={500}
-                height={0}
-                className={`${
-                  data.overviewCard.imagePosition === "right" ? "order-2" : ""
-                }`}
-              />
-              <div
-                className={`${
-                  data.overviewCard.imagePosition === "right"
-                    ? "order-1 text-right"
-                    : ""
-                } flex h-fit gap-2 pt-4 pr-4`}
-              >
+              <div className={` flex h-fit gap-2 pr-4 pt-4`}>
                 <BlockContent
                   data={data.overviewCard.text}
                   highlightColor={data.styles.textAccent}
                   separatorColor={data.styles.accent}
+                  className="text-right"
                 />
-                <span className="w-[3px]  bg-white opacity-70 rounded-full"></span>
+                <span className="w-[3px]  rounded-full bg-white opacity-70"></span>
+              </div>
+              <div
+                className={`${getImagePadding(
+                  data.overviewCard.image.imagePadding
+                )}`}
+              >
+                <Image
+                  src={data.overviewCard.image.imageUrl}
+                  alt={data.overviewCard.image.alt}
+                  width={500}
+                  height={0}
+                />
               </div>
             </div>
           </FlipCard>

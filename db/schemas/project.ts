@@ -59,19 +59,6 @@ const project = {
       type: "object",
       fields: [
         {
-          name: "imagePosition",
-          title: "Image Position",
-          type: "string",
-          options: {
-            layout: "radio",
-            list: [
-              { title: "Right", value: "right" },
-              { title: "Left", value: "left" },
-            ],
-          },
-          
-        },
-        {
           name: "image",
           title: "Image",
           type: "image",
@@ -83,6 +70,20 @@ const project = {
               name: "alt",
               title: "Alt",
               type: "string",
+            },
+            {
+              name: "imagePadding",
+              title: "Image Padding",
+              type: "string",
+              options: {
+                layout: "radio",
+                list: [
+                  { title: "No padding Right", value: "no-padding-right" },
+                  { title: "No padding left", value: "no-padding-left" },
+                  { title: "Default", value: "default" },
+                ],
+              },
+              initialValue: "default",
             },
           ],
         },

@@ -51,31 +51,10 @@ export const BlockContent: FC<Props> = ({
     }
   };
 
-  const createNbspElementText = (text: string) => {
-    const words = text.match(/[^ ]+/g);
-    console.log(words)
-    return (
-      <>
-        {words
-          ? words?.map((word, idx) => (
-              <span key={idx} className="inline">
-                {word}
-                {idx === words.length - 1 ? (
-                  <span className="inline"></span>
-                ) : (
-                  <span className="inline">&nbsp;</span>
-                )}
-              </span>
-            ))
-          : text}
-      </>
-    );
-  };
-
   const getTextContentWithMarkup = (marks: string[], text: string) => {
     const marksToAdd: string[] = [];
 
-    let nbspElements;
+    let element;
     marks.forEach((mark) => {
       switch (mark) {
         case "highlight": {
@@ -91,7 +70,9 @@ export const BlockContent: FC<Props> = ({
           break;
         }
         case "nbsp": {
-          nbspElements = createNbspElementText(text);
+          if (text === " ") {
+            element = <span className="whitespace-nowrap">&thinsp;</span>;
+          }
         }
       }
     });
@@ -100,7 +81,7 @@ export const BlockContent: FC<Props> = ({
 
     return (
       <p className={`inline ${classes}`}>
-        {nbspElements !== undefined ? nbspElements : text}&thinsp;
+        {element !== undefined ? element : <>{text}&thinsp;</>}
       </p>
     );
   };

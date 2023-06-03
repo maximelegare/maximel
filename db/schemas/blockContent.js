@@ -1,9 +1,8 @@
+import { RxColumnSpacing as icon } from "react-icons/rx";
 
-import { RxColumnSpacing as icon } from "react-icons/rx"
+import { MdOpacity as opacityIcon } from "react-icons/md";
 
-import {MdOpacity as opacityIcon} from "react-icons/md"
-
-import {AiFillHighlight as highlightIcon} from "react-icons/ai"
+import { AiFillHighlight as highlightIcon } from "react-icons/ai";
 // @ts-nocheck
 /**
  * This is the schema definition for the rich text fields used for
@@ -16,16 +15,17 @@ import {AiFillHighlight as highlightIcon} from "react-icons/ai"
  *  }
  */
 
+
+
 const HighlightDecorator = (props) => (
   <span style={{ color: "red" }}>{props.children}</span>
 );
 const Opacity70 = (props) => (
-  <span style={{ backgroundColor:"#00000030" }}>{props.children}</span>
+  <span style={{ backgroundColor: "#00000030" }}>{props.children}</span>
 );
 const Nbsp = (props) => (
-  <span style={{ border:"2px solid blue" }}>{props.children}</span>
+  <span style={{ border: "2px solid blue" }}>{props.children}</span>
 );
-
 
 const blockContent = {
   title: "Block Content",
@@ -46,6 +46,7 @@ const blockContent = {
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
         { title: "Quote", value: "blockquote" },
+        
       ],
       lists: [{ title: "Bullet", value: "bullet" }],
       // Marks let you mark up inline text in the block editor.
@@ -69,10 +70,9 @@ const blockContent = {
           {
             title: "Nbsp",
             value: "nbsp",
-            icon:icon,
+            icon: icon,
             component: Nbsp,
           },
-         
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
