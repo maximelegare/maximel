@@ -11,6 +11,8 @@ import { useRecoilValue } from "recoil";
 
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
+import { ContactForm } from "~/components/pages/index/ContactForm";
+
 const Home: NextPage = () => {
   const dialogs = useRecoilValue(dialogVisibilityAtom);
 
@@ -24,6 +26,7 @@ const Home: NextPage = () => {
         <Hero />
         <Projects />
         <ProjectsCategories />
+        <ContactForm />
       </main>
     </>
   );

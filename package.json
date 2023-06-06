@@ -23,6 +23,7 @@
     "aos": "^2.3.4",
     "cannon-es": "^0.20.0",
     "daisyui": "^2.51.6",
+    "formik": "^2.4.1",
     "next": "^13.2.4",
     "next-i18next": "^13.2.2",
     "next-sanity": "^4.3.2",
@@ -38,7 +39,8 @@
     "sass": "^1.62.1",
     "superjson": "1.12.2",
     "three": "^0.152.2",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zod-formik-adapter": "^1.2.0"
   },
   "devDependencies": {
     "@kamona/tailwindcss-perspective": "^0.1.1",
