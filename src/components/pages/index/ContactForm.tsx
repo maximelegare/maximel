@@ -27,7 +27,7 @@ export const ContactForm = () => {
   return (
     <Section bluredBackground styles="bg-black">
       <div className="grid grid-cols-2 gap-4">
-        <form onSubmit={handleSubmit} className="flex w-full flex-col  gap-5">
+        <form onSubmit={handleSubmit} className="flex w-full flex-col  gap-5 bg-black p-6 border-gray-900 border-2 rounded-md">
           <div className="flex flex-grow gap-5">
             <Input
               label="First Name"
