@@ -11,27 +11,29 @@ import type {
 
 import { When } from "react-if";
 
+import { If, Then } from "react-if";
+
 interface Props {
-  smallTitle: string;
   title?: string;
   paddingBottom?: string;
   subtitle?: BlockContentModel;
+  subtitleString?:string;
   buttons?: LinksModel;
   logoElement?: ReactElement;
   dotHighlight?: string;
-  marginTop?:boolean
-  logo: {
+  marginTop?: boolean;
+  logo?: {
     alt: string;
     imageUrl: string;
   };
   styles: {
     textAccent: string;
     accent: string;
+    titlePosition: string;
   };
 }
 
 export const BigTitle: FC<Props> = ({
-  smallTitle,
   logoElement,
   title,
   paddingBottom = "pb-10",
@@ -40,25 +42,51 @@ export const BigTitle: FC<Props> = ({
   logo,
   styles,
   dotHighlight,
-  marginTop
+  subtitleString
 }) => {
+  console.log(`[${title ?? ""}]`, styles.titlePosition);
+
   return (
-    <div className="ml-4">
+    <div
+      className={`${
+        styles.titlePosition === "right" || styles.titlePosition === "left"
+          ? "mt-[600px]"
+          : ""
+      } ml-4`}
+    >
       <div className="flex flex-col gap-6">
         <div className="flex">
           <div className="relative flex w-7 flex-col items-center gap-2">
-            <When condition={marginTop === true}>
-              <>
-                <div
-                  className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
-                ></div>
-                <div
-                  className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
-                    dotHighlight ? `${dotHighlight}` : ""
-                  } `}
-                ></div>
-              </>
-            </When>
+            {styles.titlePosition === "right"}
+            <If condition={styles.titlePosition === "right"}>
+              <Then>
+                <>
+                  <div
+                    className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
+                  ></div>
+                  <div
+                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
+                      dotHighlight ? `${dotHighlight}` : ""
+                    } `}
+                  ></div>
+                </>
+              </Then>
+            </If>
+            <If condition={styles.titlePosition === "left"}>
+              <Then>
+                <>
+                  <div
+                    className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
+                  ></div>
+                  <div
+                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
+                      dotHighlight ? `${dotHighlight}` : ""
+                    } `}
+                  ></div>
+                </>
+              </Then>
+            </If>
+
             <div className={`to-b-${styles.accent} h-[100px] w-[3px]`}></div>
           </div>
         </div>
@@ -68,12 +96,16 @@ export const BigTitle: FC<Props> = ({
               {logoElement ? (
                 logoElement
               ) : (
-                <Image
-                  src={logo.imageUrl}
-                  alt={logo.alt}
-                  width={1000}
-                  height={1000}
-                />
+                <>
+                  {logo && (
+                    <Image
+                      src={logo.imageUrl}
+                      alt={logo.alt}
+                      width={1000}
+                      height={1000}
+                    />
+                  )}
+                </>
               )}
               <div
                 className={`to-b-${styles.accent}-reverse h-full  w-[3px]`}
@@ -103,8 +135,8 @@ export const BigTitle: FC<Props> = ({
                 separatorColor={styles.accent}
                 data={subtitle}
                 highlightColor={styles.textAccent}
-                
               />
+              <h1 className="text-4xl">{subtitleString}</h1>
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (
                   <div key={idx}>

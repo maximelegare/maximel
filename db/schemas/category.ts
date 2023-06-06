@@ -51,10 +51,18 @@ const category = {
           type:"string",
         },
         {
-          name:"marginTop",
-          title:"Margin Top",
-          type:"boolean",
-          initialValue: false
+          name: "titlePosition",
+          title: "Title Position",
+          type: "string",
+          options: {
+            layout: "radio",
+            list: [
+              { title: "Right", value: "right" },
+              { title: "Left", value: "left" },
+              { title: "Default", value: "default" },
+            ],
+          },
+          initialValue: "default",
         },
       ],
     },

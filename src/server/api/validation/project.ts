@@ -9,7 +9,7 @@ export type ProjectSchemaModel = z.infer<typeof ProjectSchema>;
 
 const ProjectSchema = z.object({
   _id: z.string(),
-  styles: z.object({ textAccent: z.string(), accent: z.string() }),
+  styles: z.object({ textAccent: z.string(), accent: z.string(), titlePosition: z.string(), }),
   title: z.string(),
   logo: z.object({ imageUrl: z.string(), alt: z.string() }),
   headline: z.record(

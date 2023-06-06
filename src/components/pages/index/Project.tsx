@@ -77,7 +77,6 @@ export const Project: FC<Props> = ({ data }) => {
       <div className="grid grid-cols-2">
         <BigTitle
           styles={data.styles}
-          smallTitle="Star of the show"
           title={data.title}
           //   icon={<GiDeathStar />}
           subtitle={data.headline}
@@ -89,7 +88,6 @@ export const Project: FC<Props> = ({ data }) => {
         <BigTitle
           styles={data.styles}
           logo={data.logo}
-          smallTitle="Star of the show"
           title={data.title}
           subtitle={data.overview}
           buttons={data.links}

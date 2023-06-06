@@ -11,7 +11,7 @@ const CategorySchema = z.object({
   styles: z.object({
     textAccent: z.string(),
     accent: z.string(),
-    marginTop: z.boolean(),
+    titlePosition: z.string(),
     bubbleColor:z.string().optional()
   }),
   title: z.string(),

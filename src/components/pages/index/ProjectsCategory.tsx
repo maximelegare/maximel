@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
-  const { marginTop } = data.styles;
+  const { titlePosition } = data.styles;
   const [dialogVisibility, setDialogVisibility] =
     useRecoilState(dialogVisibilityAtom);
 
@@ -32,7 +32,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       const obj = { ...oldValues, [data.slug]: false };
       return obj;
     });
-  }
+  };
 
   useEffect(() => {
     setDialogVisibility((oldValues) => {
@@ -43,17 +43,21 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
 
   return (
     <>
-      <div className={marginTop ? "mt-[600px]" : ""}>
+      <div
+        className={
+          titlePosition === "right" || titlePosition === "left"
+            ? "mt-[600px]"
+            : ""
+        }
+      >
         <BigTitle
           styles={data.styles}
-          smallTitle="Star of the show"
           title={"Other projects"}
           subtitle={data.headline}
           dotHighlight={data.styles.accent}
-          marginTop={marginTop}
           logoElement={
             <div className="text-2xl">
-              <TfiRulerPencil />
+              <TfiRulerPencil className=""/>
             </div>
           }
           logo={{ alt: "", imageUrl: "" }}
@@ -87,7 +91,11 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       </div>
 
       {
-        <Dialog show={dialogVisibility[data.slug] || false} onDialogClose={() => handleCloseDialog()}>
+        <Dialog
+          header="hello"
+          show={dialogVisibility[data.slug] || false}
+          onDialogClose={() => handleCloseDialog()}
+        >
           hello
         </Dialog>
       }
