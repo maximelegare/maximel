@@ -26,6 +26,7 @@ interface Props {
 
 export const Project: FC<Props> = ({ data }) => {
   const [cardIsFlipped, setCardIsFlipped] = useState(false);
+  // const [circleIsHovered, setCircleIsHovered] = useState(false)
 
   const [dialogVisibility, setDialogVisibility] =
     useRecoilState(dialogVisibilityAtom);
@@ -100,16 +101,19 @@ export const Project: FC<Props> = ({ data }) => {
             colorHighlight={data.styles.accent}
             circleHover
             onCardFlip={() => handleCardFlip()}
+            // handleCircleMouseEnter={() => setCircleIsHovered(true)}
+            // handleCircleMouseLeave={() => setCircleIsHovered(false)}
             isFlipped={cardIsFlipped}
           >
             <div className="flex flex-col items-end justify-end gap-20 ">
               <div className={` flex h-fit gap-2 pr-4 pt-4`}>
-                <BlockContent
-                  data={data.overviewCard.text}
-                  highlightColor={data.styles.textAccent}
-                  separatorColor={data.styles.accent}
-                  className="text-right"
-                />
+                  <BlockContent
+                    // color={circleIsHovered? "text-black" : ""}
+                    data={data.overviewCard.text}
+                    highlightColor={data.styles.textAccent}
+                    separatorColor={data.styles.accent}
+                    className="text-right"
+                  />
                 <span className="w-[3px]  rounded-full bg-white opacity-70"></span>
               </div>
               <div

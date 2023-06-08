@@ -4,7 +4,6 @@ import { CSSTransition } from "react-transition-group";
 
 import { Scrollbars } from "react-custom-scrollbars-2";
 
-import { type RefObject } from "react";
 
 import { useDom } from "~/hooks/useDom";
 import { Button } from "./Button";

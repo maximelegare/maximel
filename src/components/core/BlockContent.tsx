@@ -17,6 +17,7 @@ interface Props {
   highlightColor: string;
   separatorColor: string;
   className?: string;
+  color?: string;
 }
 
 export const BlockContent: FC<Props> = ({
@@ -24,6 +25,7 @@ export const BlockContent: FC<Props> = ({
   highlightColor,
   separatorColor,
   className,
+  color,
 }) => {
   const { locale } = useRouter();
 
@@ -34,19 +36,19 @@ export const BlockContent: FC<Props> = ({
   const getLineStyle = (size: Size) => {
     switch (size as string) {
       case "h1": {
-        return "h1 pb-2";
+        return `h1 pb-2 ${color ?? ""}`;
       }
       case "h2": {
-        return "h2 pb-3";
+        return `h2 pb-3 ${color ?? ""}`;
       }
       case "h3": {
-        return "h3 pb-3";
+        return `h3 pb-3 ${color ?? ""}`;
       }
       case "p": {
-        return "p pb-3";
+        return `p pb-3 ${color ?? ""}`;
       }
       default: {
-        return "text-sm";
+        return `text-sm ${color ?? ""}`;
       }
     }
   };

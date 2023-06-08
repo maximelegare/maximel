@@ -30,6 +30,8 @@ interface BaseCard {
   textHiglight?: string;
   messageUnderneath?: string;
   bubbleColor?: string;
+  handleCircleMouseEnter?: () => any;
+  handleCircleMouseLeave?: () => any;
 }
 
 interface CardProps extends BaseCard {
@@ -50,6 +52,8 @@ export const Card: FC<CardProps> = ({
   children,
   colorHighlight,
   handleCircleClick,
+  handleCircleMouseEnter,
+  handleCircleMouseLeave,
   textHiglight,
   messageUnderneath,
   bubbleColor,
@@ -86,7 +90,12 @@ export const Card: FC<CardProps> = ({
               </Else>
             </If>
             <When condition={circleHover === true}>
-              <div className="group" onClick={handleCircleClick}>
+              <div
+                className="group"
+                onClick={handleCircleClick}
+                onMouseEnter={handleCircleMouseEnter}
+                onMouseLeave={handleCircleMouseLeave}
+              >
                 <div
                   className={`${
                     colorHighlight ? colorHighlight : ""
@@ -125,6 +134,8 @@ export const Card: FC<CardProps> = ({
 export const FlipCard: FC<FlipCardInterface> = ({
   onCardFlip,
   isFlipped,
+  handleCircleMouseLeave,
+  handleCircleMouseEnter,
   ...props
 }) => {
   const [flipState, setFlipState] = useState(false);
@@ -148,7 +159,12 @@ export const FlipCard: FC<FlipCardInterface> = ({
       <div className={`flip-card`}>
         <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
           <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
-            <Card {...props} handleCircleClick={() => handleFlip()}>
+            <Card
+              {...props}
+              handleCircleClick={() => handleFlip()}
+              handleCircleMouseEnter={handleCircleMouseEnter}
+              handleCircleMouseLeave={handleCircleMouseLeave}
+            >
               {props.children}
             </Card>
           </div>
@@ -158,4 +174,3 @@ export const FlipCard: FC<FlipCardInterface> = ({
     </div>
   );
 };
- 
