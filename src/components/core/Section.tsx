@@ -26,7 +26,7 @@ export const Section: FC<Props> = ({
               : ""
           }
         >
-          <div className="h-full w-full bg-[#180d3922] border-[#ffffff22] border-x-[1px] opacity-60"></div>
+          <div className="h-full w-full bg-gray-900 border-gray-500 border-x-[1px]"></div>
         </div>
       </div>
       <div className="absolute left-0 top-0 z-10 h-full w-full">

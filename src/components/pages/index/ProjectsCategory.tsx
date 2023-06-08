@@ -72,7 +72,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           canvas2DBubbles
           onCardFlip={() => console.log("cardFliped")}
         >
-          <div className="fill-gray-800 p-10 opacity-60">
+          <div className="fill-gray-700 p-10 opacity-60">
             <div className="relative h-auto w-full">
               {/* <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-4xl">
               {data.title}

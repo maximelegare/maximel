@@ -12,6 +12,10 @@ interface Props {
   error?: string;
 }
 
+interface TextareaProps extends Props {
+  rowsNumber: number;
+}
+
 interface InputProps extends Props {
   type: string;
 }
@@ -20,9 +24,6 @@ const getLabelClassName = () => {
   return "font-semibold text-sm opacity-60 gap-1";
 };
 
-const getInputClassName = () => {
-  return "input-gray-900 input-bordered input w-full bg-gray-900 grow";
-};
 
 const getErrorLabelClassName = () => {
   return "font-semibold text-sm opacity-60 gap-1 text-error";
@@ -40,13 +41,15 @@ export const Input: FC<InputProps> = ({
   error,
 }) => {
   return (
-    <div className="flex flex-col gap-1 w-full">
+    <div className="flex w-full flex-col gap-1">
       <div className="flex w-full flex-col gap-1">
         <label className={getLabelClassName()} htmlFor={name}>
           {label.toUpperCase()}
         </label>
         <input
-          className={`${getInputClassName()} ${styles ? styles : ""}`}
+          className={`input-gray-700 input-bordered input w-full grow bg-gray-700 ${
+            styles ? styles : ""
+          }`}
           name={name}
           value={value}
           type={type}
@@ -64,7 +67,7 @@ export const Input: FC<InputProps> = ({
   );
 };
 
-export const Textarea: FC<Props> = ({
+export const Textarea: FC<TextareaProps> = ({
   name,
   value,
   styles,
@@ -72,7 +75,8 @@ export const Textarea: FC<Props> = ({
   label,
   handleChange,
   handleBlur,
-  error
+  error,
+  rowsNumber,
 }) => {
   return (
     <div className="flex flex-col gap-1">
@@ -80,12 +84,15 @@ export const Textarea: FC<Props> = ({
         {label.toUpperCase()}
       </label>
       <textarea
-        className={`${getInputClassName()} ${styles ? styles : ""}`}
+        className={`textarea-bordered textarea bg-gray-700 ${
+          styles ? styles : ""
+        }`}
         name={name}
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
         placeholder={placeholder}
+        rows={4}
       />
       {error && (
         <label htmlFor={name} className={getErrorLabelClassName()}>

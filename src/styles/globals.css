@@ -37,21 +37,21 @@ body {
 }
 
 .to-b-gradiant-yellow {
-  @apply bg-gradient-to-b from-transparent from-0% to-[#EFCB1D] to-70% opacity-60;
+  @apply bg-gradient-to-b from-transparent from-0% to-bk-accent to-70% opacity-60;
 }
 .to-b-gradiant-yellow-reverse {
-  @apply bg-gradient-to-b from-[#EFCB1D] from-0% to-transparent to-100% opacity-60;
+  @apply bg-gradient-to-b from-bk-accent from-0% to-transparent to-100% opacity-60;
 }
 
 .to-b-gradiant-gray {
-  @apply bg-gradient-to-b from-transparent from-0% to-[#101320] to-70%;
+  @apply bg-gradient-to-b from-transparent from-0% to-gray-800 to-70%;
 }
 .to-b-gradiant-gray-reverse {
-  @apply bg-gradient-to-b from-[#101320] from-0% to-transparent to-100%;
+  @apply bg-gradient-to-b from-gray-800 from-0% to-transparent to-100%;
 }
 
 .gradiant-gray {
-  @apply bg-[#101320];
+  @apply bg-gray-800;
 }
 
 .gradiant-text-yellow {
@@ -239,17 +239,7 @@ p,
   transition-timing-function: cubic-bezier(.4,.26,.11,.99);
 }
 
-
-.section-background{
-  border: 1px solid #ffffff22;
-  background-color: #180d3922;
-  /* background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%); */
-  
-  border-radius: .7rem;
-  /* backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px); */
-  overflow: hidden;
- 
+.gray-border{
+  @apply  border-x-[1px];
 }
-
 
