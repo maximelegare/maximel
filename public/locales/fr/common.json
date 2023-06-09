@@ -6,7 +6,25 @@
       "for": "pour mes",
       "future": "futurs",
       "projects": "projets",
-      "add-one":"plus un"
+      "add-one": "plus un"
+    },
+    "contactForm": {
+      "firstName": {
+        "label": "prénom",
+        "placeholder": "Entrez votre prénom"
+      },
+      "lastName": {
+        "label": "nom",
+        "placeholder": "Entrez votre nom"
+      },
+      "email": {
+        "label": "email",
+        "placeholder": "Entrez votre email"
+      },
+      "message": {
+        "label": "message",
+        "placeholder": "Entrez votre message"
+      }
     }
   }
 }

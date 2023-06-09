@@ -7,6 +7,24 @@
       "future": "future",
       "projects": "projects",
       "add-one":"add one"
+    },
+    "contactForm": {
+      "firstName": {
+        "label": "firstname",
+        "placeholder": "Enter your firstname"
+      },
+      "lastName": {
+        "label": "lastname",
+        "placeholder": "Enter your lastname"
+      },
+      "email": {
+        "label": "email",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "message",
+        "placeholder": "Enter your message"
+      }
     }
   }
 }

@@ -12,7 +12,14 @@ import { BigTitle } from "~/components/core/BigTitle";
 
 import { IoIosPaperPlane } from "react-icons/io";
 
+import { useTranslation } from "next-i18next";
+
+
+
 export const ContactForm = () => {
+
+  const { t } = useTranslation("common");
+
   const {
     handleSubmit,
     touched,
@@ -59,8 +66,8 @@ export const ContactForm = () => {
           >
             <div className="flex flex-grow gap-5">
               <Input
-                label="First Name"
-                placeholder="Please enter your first name"
+                label={t("index.contactForm.firstName.label") ?? ""}
+                placeholder={t("index.contactForm.firstName.placeholder") ?? ""}
                 name="firstName"
                 type="text"
                 handleChange={handleChange}
@@ -76,8 +83,8 @@ export const ContactForm = () => {
                 }
               />
               <Input
-                label="Last name"
-                placeholder="Please enter your last name"
+                label={t("index.contactForm.lastName.label") ?? ""}
+                placeholder={t("index.contactForm.lastName.placeholder") ?? ""}
                 name="lastName"
                 type="text"
                 handleChange={handleChange}
@@ -94,8 +101,8 @@ export const ContactForm = () => {
               />
             </div>
             <Input
-              label="Email"
-              placeholder="Please enter your email"
+              label={t("index.contactForm.email.label") ?? ""}
+              placeholder={t("index.contactForm.email.placeholder") ?? ""}
               name="email"
               type="email"
               handleChange={handleChange}
@@ -106,8 +113,8 @@ export const ContactForm = () => {
             />
             <Textarea
               rowsNumber={5}
-              label="message"
-              placeholder="Please enter a message"
+              label={t("index.contactForm.message.label") ?? ""}
+              placeholder={t("index.contactForm.message.placeholder") ?? ""}
               name="message"
               handleChange={handleChange}
               value={values.message}
