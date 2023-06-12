@@ -29,7 +29,6 @@ export const Hero = () => {
       styles="gradiant-purple"
       noContainerElements={<Boxes />}
     >
-      
       <div className="flex h-full flex-col items-center pt-[15%]">
         <div
           data-aos="zoom-in"

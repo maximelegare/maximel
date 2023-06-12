@@ -3,12 +3,19 @@ import { useBubblesAnimation } from "~/hooks/useBubbleAnimation";
 import type { FC } from "react";
 
 interface Props {
-  bubbleColor:string;
+  bubbleColor: string;
+  handleBubbleClicked?: () => any;
 }
 
+export const Bubbles2DCanvas: FC<Props> = ({
+  bubbleColor,
+  handleBubbleClicked,
+}) => {
+  const onBubbleClicked = () => {
+    handleBubbleClicked && handleBubbleClicked();
+  };
 
-export const Bubbles2DCanvas:FC<Props> = ({bubbleColor}) => {
-  const { animateBubblesOnCanvas } = useBubblesAnimation();
+  const { animateBubblesOnCanvas } = useBubblesAnimation({ onBubbleClicked });
 
   const canvasRef = useRef(null);
 
@@ -19,9 +26,8 @@ export const Bubbles2DCanvas:FC<Props> = ({bubbleColor}) => {
   }, [animateBubblesOnCanvas]);
 
   return (
-    <canvas 
-    
-      className="absolute top-0 left-0 h-full  rounded-md"
+    <canvas
+      className="absolute left-0 top-0 h-full  rounded-md"
       ref={canvasRef}
     ></canvas>
   );

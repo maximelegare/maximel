@@ -24,6 +24,7 @@ const Home: NextPage = () => {
     <>
       <main>
         <Hero />
+        <div id="headerDataAOSAnchor"></div>
         <Projects />
         <ProjectsCategories />
         <ContactForm />

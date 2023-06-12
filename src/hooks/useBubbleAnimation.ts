@@ -2,15 +2,24 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, {useState} from "react";
-
+import React, { useState } from "react";
 
 // import { warpBubble } from "./bubbleWarp";
 
-export const useBubblesAnimation = () => {
-   
+interface Props {
+  onBubbleClicked: () => any;
+}
 
-  const animateBubblesOnCanvas = (canvas: HTMLCanvasElement, bubbleColor:string) => {
+export function useBubblesAnimation(props: Props) {
+
+  const { onBubbleClicked } = props;
+
+  const [bubbleFinishedGrowing, setBubbleFinishedGrowing] = useState(false)
+  
+  const animateBubblesOnCanvas = (
+    canvas: HTMLCanvasElement,
+    bubbleColor: string
+    ) => {
     if (canvas && canvas.parentElement) {
       const rect: DOMRect = canvas.parentElement.getBoundingClientRect();
       const ctx = canvas.getContext("2d");
@@ -24,9 +33,10 @@ export const useBubblesAnimation = () => {
         canvas.addEventListener("click", (e) => {
           particlesArray.forEach((particle) => {
             if (ctx.isPointInPath(particle.circle, e.offsetX, e.offsetY)) {
-              particle.clicked = true  
-             
-            } 
+              
+              particle.clicked = true;
+              onBubbleClicked();
+            }
           });
         });
       }
@@ -68,8 +78,8 @@ export const useBubblesAnimation = () => {
             this.circle = new Path2D();
             if (this.size <= diagonal && this.clicked) {
               this.size += 20;
-              console.log("growing")
             }
+            
 
             this.circle.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
 
@@ -128,6 +138,5 @@ export const useBubblesAnimation = () => {
 
   return {
     animateBubblesOnCanvas,
-    
   };
-};
+}

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import type { FC } from "react";
 import Image from "next/image";
@@ -58,6 +58,25 @@ export const Card: FC<CardProps> = ({
   messageUnderneath,
   bubbleColor,
 }) => {
+  const [showCardTitleWhenCircleGrew, setShowCardTitleWhenCircleGrew] =
+    useState(false);
+
+  const showTitle = () => {
+    setTimeout(() => {
+      setShowCardTitleWhenCircleGrew(true)
+    },700)
+  }
+
+
+  const MemoBubbles2DCanvas = useMemo(() => {
+    return (
+      <Bubbles2DCanvas
+        bubbleColor={bubbleColor ?? "#fff"}
+        handleBubbleClicked={() => showTitle()}
+      />
+    );
+  }, []);
+
   return (
     <>
       <article
@@ -116,8 +135,13 @@ export const Card: FC<CardProps> = ({
                 </div>
               </div>
             </When>
+            <When condition={showCardTitleWhenCircleGrew === true}>
+              <div data-aos="fade-up-custom" data-aos-duration="400" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+                title
+              </div>
+            </When>
             <When condition={canvas2DBubbles === true}>
-              <Bubbles2DCanvas bubbleColor={bubbleColor ?? "#fff"} />
+              {MemoBubbles2DCanvas}
             </When>
           </div>
         </div>
