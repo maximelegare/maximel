@@ -145,7 +145,7 @@ export const Card: FC<CardProps> = ({
                 >
                   <div>{title}</div>
                 </div>
-                <div className="group">
+                <div className="group" onClick={handleCircleClick}>
                   <div
                     className={`${
                       colorHighlight ? colorHighlight : ""
@@ -155,7 +155,6 @@ export const Card: FC<CardProps> = ({
                     <div
                       className="flex items-center backface-hidden"
                       data-aos="fade-right-custom"
-                      onClick={handleCircleClick}
                     >
                       <BsArrowRightShort className="text-4xl text-white" />
                     </div>
@@ -204,8 +203,12 @@ export const FlipCard: FC<FlipCardInterface> = ({
   return (
     <div>
       <div className={`flip-card`}>
-        <div className={`flip-card-inner ${flipState ? "flip-action" : ""}`}>
-          <div className={`flip-card-front ${flipState ? "z-[-1]" : ""}`}>
+        <div
+          className={`flip-card-inner backface-hidden ${
+            flipState ? "flip-action" : ""
+          }`}
+        >
+          <div className={`flip-card-front  ${flipState ? "z-[-1]" : ""}`}>
             <Card
               {...props}
               handleCircleClick={() => handleFlip()}
@@ -215,7 +218,7 @@ export const FlipCard: FC<FlipCardInterface> = ({
               {props.children}
             </Card>
           </div>
-          <div className="flip-card-back"></div>
+          <div></div>
         </div>
       </div>
     </div>
