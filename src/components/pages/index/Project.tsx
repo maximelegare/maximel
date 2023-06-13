@@ -38,7 +38,7 @@ export const Project: FC<Props> = ({ data }) => {
         return obj;
       });
       setCardIsFlipped(true);
-    }, 500);
+    }, 400);
   };
 
   const handleCloseDialog = () => {

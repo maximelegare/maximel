@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { type FC, useState, useEffect } from "react";
 
 import { type CategorySchemaModel } from "~/server/api/validation/category";
@@ -8,6 +9,9 @@ import { TfiRulerPencil } from "react-icons/tfi";
 import { Dialog } from "~/components/core/Dialog";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
+import Gallery from "react-photo-gallery";
+
+import {photos} from "../../../../public/assets/p/images"
 
 interface Props {
   data: CategorySchemaModel;
@@ -28,7 +32,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         return obj;
       });
       setCardIsFlipped(true);
-    }, 500);
+    }, 400);
   };
 
   const handleCloseDialog = () => {
@@ -103,7 +107,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          hello
+          <Gallery photos={photos}/>
         </Dialog>
       }
     </>

@@ -46,9 +46,9 @@ const category = {
           type: "string",
         },
         {
-          name:"bubbleColor",
-          title:"Bubble color Hex",
-          type:"string",
+          name: "bubbleColor",
+          title: "Bubble color Hex",
+          type: "string",
         },
         {
           name: "titlePosition",
@@ -63,6 +63,12 @@ const category = {
             ],
           },
           initialValue: "default",
+        },
+        {
+          name: "content",
+          title: "Content",
+          type: "reference",
+          to: [{ type: "project" }, { type: "photography" }],
         },
       ],
     },
