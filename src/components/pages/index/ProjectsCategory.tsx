@@ -1,4 +1,4 @@
-import React, { type FC, useEffect } from "react";
+import React, { type FC, useState, useEffect } from "react";
 
 import { type CategorySchemaModel } from "~/server/api/validation/category";
 import Image from "next/image";
@@ -15,6 +15,9 @@ interface Props {
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
   const { titlePosition } = data.styles;
+  const [cardIsFlipped, setCardIsFlipped] = useState(false);
+  // const [circleIsHovered, setCircleIsHovered] = useState(false)
+
   const [dialogVisibility, setDialogVisibility] =
     useRecoilState(dialogVisibilityAtom);
 
@@ -24,6 +27,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         const obj = { ...oldValues, [data.slug]: true };
         return obj;
       });
+      setCardIsFlipped(true);
     }, 500);
   };
 
@@ -32,6 +36,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       const obj = { ...oldValues, [data.slug]: false };
       return obj;
     });
+    setCardIsFlipped(false);
   };
 
   useEffect(() => {
@@ -57,7 +62,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           dotHighlight={data.styles.accent}
           logoElement={
             <div className="text-2xl">
-              <TfiRulerPencil className=""/>
+              <TfiRulerPencil className="" />
             </div>
           }
           logo={{ alt: "", imageUrl: "" }}
@@ -70,7 +75,9 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           colorHighlight={data.styles.accent}
           bubbleColor={data.styles.bubbleColor}
           canvas2DBubbles
-          onCardFlip={() => console.log("cardFliped")}
+          onCardFlip={() => handleCardFlip()}
+          title={data.title}
+          isFlipped={cardIsFlipped}
         >
           <div className="fill-gray-700 p-10 opacity-60">
             <div className="relative h-auto w-full">

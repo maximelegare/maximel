@@ -19,6 +19,7 @@ import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useEffect } from "react";
 
 interface BaseCard {
+  title?: string;
   imageUrl?: string | undefined;
   styles?: string | undefined;
   gradiantBorder?: boolean;
@@ -43,6 +44,7 @@ interface FlipCardInterface extends BaseCard {
   isFlipped?: boolean;
 }
 export const Card: FC<CardProps> = ({
+  title,
   circleHover,
   imageUrl,
   styles,
@@ -63,10 +65,9 @@ export const Card: FC<CardProps> = ({
 
   const showTitle = () => {
     setTimeout(() => {
-      setShowCardTitleWhenCircleGrew(true)
-    },700)
-  }
-
+      setShowCardTitleWhenCircleGrew(true);
+    }, 700);
+  };
 
   const MemoBubbles2DCanvas = useMemo(() => {
     return (
@@ -136,9 +137,31 @@ export const Card: FC<CardProps> = ({
               </div>
             </When>
             <When condition={showCardTitleWhenCircleGrew === true}>
-              <div data-aos="fade-up-custom" data-aos-duration="400" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-                title
-              </div>
+              <>
+                <div
+                  data-aos="fade-up-custom"
+                  data-aos-duration="400"
+                  className="absolute bottom-0 left-0 z-50 flex h-full w-full -translate-x-1/2 items-center justify-center font-display text-4xl"
+                >
+                  <div>{title}</div>
+                </div>
+                <div className="group">
+                  <div
+                    className={`${
+                      colorHighlight ? colorHighlight : ""
+                    } zoom-in-animation absolute bottom-3 right-3 z-[1] h-16 w-16 rounded-full opacity-75 group-hover:opacity-100`}
+                  ></div>
+                  <div className="absolute bottom-3 right-3 z-[100] flex h-16 w-16 animate-pulse  cursor-pointer  items-center justify-center rounded-full">
+                    <div
+                      className="flex items-center backface-hidden"
+                      data-aos="fade-right-custom"
+                      onClick={handleCircleClick}
+                    >
+                      <BsArrowRightShort className="text-4xl text-white" />
+                    </div>
+                  </div>
+                </div>
+              </>
             </When>
             <When condition={canvas2DBubbles === true}>
               {MemoBubbles2DCanvas}
