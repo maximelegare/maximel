@@ -12,7 +12,18 @@ const category = {
       title: "Title",
       type: "string",
     },
-
+    {
+      name: "photographs",
+      title: "Photograhps",
+      type: "array",
+      of: [
+        {
+          title: "Photography",
+          type: "reference",
+          to: [{ type: "photography" }],
+        },
+      ],
+    },
     {
       name: "projects",
       title: "Projects",
@@ -21,7 +32,7 @@ const category = {
         {
           title: "Project",
           type: "reference",
-          to: [{ type: "project" }],
+          to: [{ type: "project" }, { type: "photography" }],
         },
       ],
     },
@@ -64,12 +75,7 @@ const category = {
           },
           initialValue: "default",
         },
-        {
-          name: "content",
-          title: "Content",
-          type: "reference",
-          to: [{ type: "project" }, { type: "photography" }],
-        },
+        
       ],
     },
     {

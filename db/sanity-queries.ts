@@ -102,6 +102,7 @@ const getQuery = (query: Query, lang: string) => {
               }
             }
           },
+          
         "slug":slug.current,
         overview{
           ${lang}[]{
@@ -137,7 +138,13 @@ const getQuery = (query: Query, lang: string) => {
         links[]{
           href, type
           },
-        }
+        },
+        photographs[]->{
+          "src":photography.asset->url,
+           "alt":photography.alt,
+           "height":photography.height,
+           "width":photography.width
+          },
       }`;
     }
 

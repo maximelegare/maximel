@@ -6,6 +6,14 @@ import { ProjectSchema } from "./project";
 
 export type CategorySchemaModel = z.infer<typeof CategorySchema>;
 
+
+const PhotographySchema = z.object({
+  src:z.string(),
+  alt:z.string(),
+  height:z.number(),
+  width:z.number()
+})
+
 const CategorySchema = z.object({
   _id: z.string(),
   styles: z.object({
@@ -31,7 +39,8 @@ const CategorySchema = z.object({
     imageUrl: z.string(),
     alt: z.string(),
   }),
-  projects: z.array(ProjectSchema),
+  projects: z.array(ProjectSchema).or(z.null()).or(z.undefined()),
+  photographs:z.array(PhotographySchema).or(z.null()).or(z.undefined())
 });
 
 export const CategoriesSchema = z.array(CategorySchema);

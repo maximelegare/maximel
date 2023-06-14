@@ -11,7 +11,7 @@ import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
 import Gallery from "react-photo-gallery";
 
-import {photos} from "../../../../public/assets/p/images"
+import { photos } from "../../../../public/assets/p/images";
 
 interface Props {
   data: CategorySchemaModel;
@@ -107,7 +107,10 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          <Gallery photos={photos}/>
+          {data.photographs && (
+            
+              <Gallery photos={data.photographs} />
+          )}
         </Dialog>
       }
     </>

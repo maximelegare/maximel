@@ -68,9 +68,9 @@ export const Dialog: FC<Props> = ({
                   className="absolute left-1/2 mt-20 flex h-3/4 w-2/3 -translate-x-1/2 overflow-hidden rounded-md"
                   ref={nodeRef}
                 >
-                  <Scrollbars className="relative mt-12 h-full w-full bg-graySuperDark">
-                    <div>
-                      <div className="p-6">{children}</div>
+                  <Scrollbars className="relative  h-full w-full bg-graySuperDark">
+                    <div className="py-6 mt-12">
+                      <div className="px-6">{children}</div>
                     </div>
                     <div className="fixed top-0 z-[100] flex h-12 w-full items-center justify-between bg-gray-700 px-6">
                       <div>{header}</div>
