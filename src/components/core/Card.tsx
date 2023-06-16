@@ -44,8 +44,6 @@ interface FlipCardInterface extends BaseCard {
   isFlipped?: boolean;
 }
 
-
-
 export const Card: FC<CardProps> = ({
   title,
   circleHover,
@@ -228,18 +226,20 @@ export const FlipCard: FC<FlipCardInterface> = ({
   );
 };
 
-
 interface CardBasic {
-styles?:string
-children:ReactNode
-colorHighlight: string;
+  styles?: string;
+  children: ReactNode;
+  colorHighlight: string;
 }
 
-export const CardBasic:FC<CardBasic> = ({styles, children, colorHighlight}) => {
+export const CardBasic: FC<CardBasic> = ({
+  styles,
+  children,
+  colorHighlight,
+}) => {
   return (
-    <div className={`${styles ? styles : ""} w-full min-h-[400px] bg-red-100`}>{children}</div>
-  )
-}
-
-
-
+    <div className={`${styles ? styles : ""} min-h-[400px] w-full bg-black`}>
+      <div className="m-6">{children}</div>
+    </div>
+  );
+};

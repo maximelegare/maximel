@@ -11,12 +11,14 @@
 
 /* gameSection */
 .SIMON__game-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   flex-wrap: wrap;
   justify-content: center;
-  width: 450px;
+  width: fit-content;
   margin: 0 auto;
-  height: 100%;
+
 }
 
 .SIMON__game-Button {

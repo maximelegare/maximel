@@ -109,7 +109,6 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          {/* <SimonsGame /> */}
           {data.photographs ? (
             <Gallery photos={data.photographs} />
           ) : (
@@ -117,7 +116,9 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
               <>
                 <CardBasic colorHighlight="">hello</CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>
-                <CardBasic colorHighlight="">hello</CardBasic>
+                <CardBasic colorHighlight="">
+                    <SimonsGame />
+                </CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>
               </>

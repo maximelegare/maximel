@@ -3,42 +3,48 @@
 import React, { useEffect, useState } from "react";
 
 export const SimonsGame = () => {
-  const [header, setHeader] = useState("Press any key to start");
+  const [header, setHeader] = useState("Simon's Game");
   let [colorPatern, setColorPatern] = useState([]);
-   let [animatedCircle, setanimatedCircle] = useState("");
+  let [animatedCircle, setanimatedCircle] = useState("");
 
   let [nb_good_user, setNumberGoodUser] = useState(0);
-  let [level, setLevel] = useState(1)
+  let [level, setLevel] = useState(1);
+  let [loseStatus, setLoseStatus] = useState(false)
   let [goodButtonClickedAnimation, setGoodButtonClickedAnimation] =
     useState("");
   let [badButtonClickedAnimation, setBadButtonClickedAnimation] = useState("");
 
+  let [startGame, setStartGame] = useState(false)
+
+
   var youLose = true;
   var userList = null;
- 
 
+  // const addEventListener = () => {
+  //   document.addEventListener("keypress", (e) => init(e));
+  // };
 
-  const addEventListener = () => {
-    document.addEventListener("keypress", (e) => init(e));
-  };
-
-  useEffect(() => {
-    addEventListener();
-  }, []);
+  // useEffect(() => {
+  //   addEventListener();
+  // }, []);
 
   function init(event) {
     if (youLose === true) {
       youLose = false;
+      setStartGame(true)
+      setLoseStatus(false)
       comparaisonPaterns();
     }
   }
 
   // fonction main
   function comparaisonPaterns() {
-
     youLose = false;
+    setLoseStatus(false)
     setHeader(`Level ${level}`);
-    randomColor();
+    setTimeout(() => {
+      randomColor();
+    }, 1000);
   }
 
   const handleClick = (event) => {
@@ -69,13 +75,13 @@ export const SimonsGame = () => {
       level === nb_good_user + 1 &&
       colorPatern[nb_good_user] === userList
     ) {
-      console.log("[level]", level)
-      console.log("[nb_good_user]", nb_good_user +1)
+      console.log("[level]", level);
+      console.log("[nb_good_user]", nb_good_user + 1);
 
       goodButtonClicked(colorClickedByUser);
-      setLevel(level+1);
+      setLevel(level + 1);
       setNumberGoodUser(0);
-   
+
       setHeader(`Level ${level}`);
       setTimeout(() => {
         randomColor();
@@ -98,7 +104,6 @@ export const SimonsGame = () => {
     setTimeout(() => {
       setanimatedCircle("");
     }, 400);
-
   }
 
   function goodButtonClicked(colorClickedByUser) {
@@ -111,30 +116,30 @@ export const SimonsGame = () => {
 
   function BadColorClicked(colorClickedByUser) {
     youLose = true;
+    setStartGame(false)
+    setLoseStatus(true)
     userList = null;
     setColorPatern([]);
     setNumberGoodUser(0);
+    setLevel(1);
 
- 
-    setHeader(`Game Over. Press any key to restart`);
+    setHeader(`Game Over.`);
 
     setBadButtonClickedAnimation(colorClickedByUser);
 
     setTimeout(function () {
       setBadButtonClickedAnimation("");
     }, 75);
-
   }
 
-
   return (
-    <div className="h-full">
+    <div className="flex h-full flex-col items-center gap-5">
       <div id="headingSection" className="SIMON__header pb-3">
         <h1 className="SIMON__header__h1">{header}</h1>
       </div>
-      <div className="SIMON__game-section gap-3">
+      <div className="SIMON__game-section gap-3 mb-3">
         <button
-          className={`red h-44 w-44 rounded-full ${
+          className={`red h-24 w-24 rounded-full ${
             animatedCircle === "red" && "animate-pulse-fast"
           } ${goodButtonClickedAnimation === "red" && "goodButtonAnimation"} ${
             badButtonClickedAnimation === "red" && "lose"
@@ -142,7 +147,7 @@ export const SimonsGame = () => {
           onClick={(e) => handleClick(e)}
         ></button>
         <button
-          className={`yellow h-44 w-44 rounded-full ${
+          className={`yellow h-24 w-24 rounded-full ${
             animatedCircle === "yellow" && "animate-pulse-fast"
           } ${
             goodButtonClickedAnimation === "yellow" && "goodButtonAnimation"
@@ -150,7 +155,7 @@ export const SimonsGame = () => {
           onClick={(e) => handleClick(e)}
         ></button>
         <button
-          className={`blue h-44 w-44 rounded-full ${
+          className={`blue h-24 w-24 rounded-full ${
             animatedCircle === "blue" && "animate-pulse-fast"
           } ${goodButtonClickedAnimation === "blue" && "goodButtonAnimation"} ${
             badButtonClickedAnimation === "blue" && "lose"
@@ -158,7 +163,7 @@ export const SimonsGame = () => {
           onClick={(e) => handleClick(e)}
         ></button>
         <button
-          className={`green h-44 w-44 rounded-full ${
+          className={`green h-24 w-24 rounded-full ${
             animatedCircle === "green" && "animate-pulse-fast"
           } ${
             goodButtonClickedAnimation === "green" && "goodButtonAnimation"
@@ -166,6 +171,9 @@ export const SimonsGame = () => {
           onClick={(e) => handleClick(e)}
         ></button>
       </div>
+      <button className=" btn btn-primary btn-sm" disabled={startGame} onClick={init}>
+        Play!
+      </button>
     </div>
   );
 };
