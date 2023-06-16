@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "next-i18next.config.js", "src/utils/i18n.js", "src/utils/sanity.js", "db/schemas/schemas.js", "db/schemas/technology.js", "db/schemas/project.js?", "db/schemas/blockContent.js" ],
+, "next-i18next.config.js", "src/utils/i18n.js", "src/utils/sanity.js", "db/schemas/schemas.js", "db/schemas/technology.js", "db/schemas/project.js?", "db/schemas/blockContent.js","src/components/games/SimonsGame.js"  ],
   "exclude": ["node_modules"]
 }

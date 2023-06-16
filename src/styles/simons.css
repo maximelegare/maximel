@@ -1,0 +1,104 @@
+
+
+.SIMON__container {
+  background-color: rgb(8, 5, 5);
+  color: white;
+  letter-spacing: 1.2px;
+}
+.SIMON__header h1 {
+  text-align: center;
+}
+
+/* gameSection */
+.SIMON__game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 450px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.SIMON__game-Button {
+  width: 175px;
+  height: 175px;
+  border: solid 6px rgb(0, 0, 0);
+  border-radius: 300px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.red {
+  background-color: rgb(151, 25, 25);
+}
+.yellow {
+  background-color: rgb(223, 192, 20);
+}
+.green {
+  background-color: rgb(23, 150, 51);
+}
+.blue {
+  background-color: rgb(20, 38, 138);
+}
+.animationButton {
+  visibility: hidden;
+}
+
+/* footer Section */
+#footerSection {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-interrogation {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.interrogation {
+  width: 18px;
+  height: auto;
+  position: absolute;
+  margin-top: 12px;
+}
+
+.cercle {
+  height: 55px;
+  width: 55px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  /* transform:rotate(45deg); */
+}
+
+/* animations */
+.SIMON__lose {
+  background-color: rgb(173, 26, 26);
+}
+
+.goodButtonAnimation {
+  background-color: rgb(255, 255, 255);
+}
+
+.SIMON__flashing-animation {
+  animation-name: flashing 1s step-start infinite;
+}
+@keyframes flashing {
+  0% {
+    opacity: 100%;
+  }
+  25% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  75% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

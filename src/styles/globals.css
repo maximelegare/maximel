@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./simons.css";
 
 @import "aos/dist/aos.css";
 
@@ -262,4 +263,131 @@ p,
   100% {
     transform: scale(1, 1);
   }
+}
+
+
+
+/* 
+* Games styles
+*/
+.red {
+  background-color: rgb(151, 25, 25);
+}
+.yellow {
+  background-color: rgb(223, 192, 20);
+}
+.green {
+  background-color: rgb(23, 150, 51);
+}
+.blue {
+  background-color: rgb(20, 38, 138);
+}
+
+
+.SIMON__flashing-animation {
+  animation-name: flashing 1s  infinite;
+}
+@keyframes flashing {
+  0% {
+    opacity: 100%;
+  }
+  25% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  75% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+
+.animationButton {
+  visibility: hidden;
+}
+
+/* footer Section */
+#footerSection {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-interrogation {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.interrogation {
+  width: 18px;
+  height: auto;
+  position: absolute;
+  margin-top: 12px;
+}
+
+.cercle {
+  height: 55px;
+  width: 55px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  /* transform:rotate(45deg); */
+}
+
+/* animations */
+.lose {
+  background-color: rgb(173, 26, 26);
+}
+
+.goodButtonAnimation {
+  background-color: rgb(255, 255, 255);
+}
+
+/* explanation section */
+#explanationSection{
+  display: flex;
+  justify-content: center;
+}
+
+.visibilityExplanation{
+  visibility: hidden;
+}
+.explanationContainer{
+  position: absolute;
+  background-color: rgba(8, 5, 5);
+  width: 40%;
+  height: 620px;
+  margin-top: 150px;
+  border-radius: 40px;
+  border: 6px solid white ;
+  display: flex;
+  justify-content: center;
+}
+
+.explanationTextContainer{
+  margin-top: 20px;
+  width: 90%;
+  
+}
+.explanationTextContainer h2{
+  margin-bottom: 30px;
+}
+
+
+
+table{
+  
+  margin: 30px auto;
+}
+td{
+  /* border: solid white 2px; */
+  padding: 15px 5px;
+  font-family: 'Roboto';
+  color: rgb(148, 148, 148);
+
 }

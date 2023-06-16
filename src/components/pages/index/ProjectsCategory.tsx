@@ -12,6 +12,7 @@ import { useRecoilState } from "recoil";
 import Gallery from "react-photo-gallery";
 
 import { photos } from "../../../../public/assets/p/images";
+import { SimonsGame } from "~/components/games/SimonsGame";
 
 interface Props {
   data: CategorySchemaModel;
@@ -107,10 +108,10 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          {data.photographs && (
-            
+          <SimonsGame/>
+          {/* {data.photographs && (
               <Gallery photos={data.photographs} />
-          )}
+          )} */}
         </Dialog>
       }
     </>

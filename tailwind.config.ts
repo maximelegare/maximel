@@ -37,6 +37,9 @@ export default {
       },
     },
     extend: {
+      animation: {
+        'pulse-fast': 'pulse 200ms linear infinite ',
+      },
       colors: {
           "primary": "#374151",
           "secondary": "#F000B8",
