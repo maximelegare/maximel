@@ -3,15 +3,11 @@
 import React, { useEffect, useState } from "react";
 
 export const SimonsGame = () => {
-  // var header = document.querySelector(".SIMON__header__h1");
   const [header, setHeader] = useState("Press any key to start");
   let [colorPatern, setColorPatern] = useState([]);
-  // const [youLose, setYouLose] = useState(true)
    let [animatedCircle, setanimatedCircle] = useState("");
-  // let [userList, setUserList] = useState(null)
 
   let [nb_good_user, setNumberGoodUser] = useState(0);
-  // let level = 1;
   let [level, setLevel] = useState(1)
   let [goodButtonClickedAnimation, setGoodButtonClickedAnimation] =
     useState("");
@@ -21,10 +17,7 @@ export const SimonsGame = () => {
   var userList = null;
  
 
-  useEffect(() => {
-    console.log(level)
-  },[level])
-  console.log(level)
+
   const addEventListener = () => {
     document.addEventListener("keypress", (e) => init(e));
   };

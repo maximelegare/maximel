@@ -4,7 +4,7 @@ import React, { type FC, useState, useEffect } from "react";
 import { type CategorySchemaModel } from "~/server/api/validation/category";
 import Image from "next/image";
 import { BigTitle } from "~/components/core/BigTitle";
-import { FlipCard } from "~/components/core/Card";
+import { CardBasic, FlipCard } from "~/components/core/Card";
 import { TfiRulerPencil } from "react-icons/tfi";
 import { Dialog } from "~/components/core/Dialog";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
@@ -13,6 +13,7 @@ import Gallery from "react-photo-gallery";
 
 import { photos } from "../../../../public/assets/p/images";
 import { SimonsGame } from "~/components/games/SimonsGame";
+import { CardGrid } from "~/components/core/CardGrid";
 
 interface Props {
   data: CategorySchemaModel;
@@ -108,10 +109,20 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           show={dialogVisibility[data.slug] || false}
           onDialogClose={() => handleCloseDialog()}
         >
-          <SimonsGame/>
-          {/* {data.photographs && (
-              <Gallery photos={data.photographs} />
-          )} */}
+          {/* <SimonsGame /> */}
+          {data.photographs ? (
+            <Gallery photos={data.photographs} />
+          ) : (
+            <CardGrid>
+              <>
+                <CardBasic colorHighlight="">hello</CardBasic>
+                <CardBasic colorHighlight="">hello</CardBasic>
+                <CardBasic colorHighlight="">hello</CardBasic>
+                <CardBasic colorHighlight="">hello</CardBasic>
+                <CardBasic colorHighlight="">hello</CardBasic>
+              </>
+            </CardGrid>
+          )}
         </Dialog>
       }
     </>
