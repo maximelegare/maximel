@@ -18,7 +18,7 @@ export const Projects = () => {
 
   const { locale } = useRouter();
 
-  const { data } = api.project.allProjects.useQuery({ lang: locale });
+  const { data } = api.project.mainProjects.useQuery({ lang: locale });
 
   if (!data?.res) return <div>no data</div>;
 

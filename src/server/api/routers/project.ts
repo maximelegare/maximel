@@ -5,16 +5,25 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 import { getData } from "db/sanity.utils";
 
-import { ProjectsSchema } from "../validation/project";
+import { ProjectsSchema, SmallProjectsSchema } from "../validation/project";
 
 export const projectRouter = createTRPCRouter({
-  allProjects: publicProcedure
-    .input(z.object({ lang:z.string().default("fr")  }))
+  mainProjects: publicProcedure
+    .input(z.object({ lang: z.string().default("fr") }))
     .query(async ({ input: { lang } }) => {
-      const res = await getData("projects", lang);
+      const res = await getData("mainProjects", lang);
 
       return {
         res: ProjectsSchema.parse(res),
+      };
+    }),
+  smallProjects: publicProcedure
+    .input(z.object({ lang: z.string().default("fr") }))
+    .query(async ({ input: { lang } }) => {
+      const res = await getData("smallProjects", lang);
+
+      return {
+        res: SmallProjectsSchema.parse(res),
       };
     }),
 });

@@ -1,9 +1,9 @@
-export type Query = "projects" | "categories";
+export type Query = "mainProjects" | "categories" | "smallProjects";
 
 const getQuery = (query: Query, lang: string) => {
   switch (query) {
-    case "projects": {
-      return `*[_type == "project"] | order(position asc){
+    case "mainProjects": {
+      return `*[_type == "project" && mainProject == true] | order(position asc){
           _id,
           title,
           styles,
@@ -58,6 +58,26 @@ const getQuery = (query: Query, lang: string) => {
             "imageUrl":asset->url,
              alt
             },
+          images[]{
+            "imageUrl":asset->url,
+            alt,
+            bigImage
+          },
+          technologies[]->{
+            "imageUrl": image.asset->url,
+             title
+            }, 
+          links[]{
+            href,
+            type
+            },
+        }`;
+    }
+    case "smallProjects": {
+      return `*[_type == "project" && mainProject == true] | order(position asc){
+          _id,
+          title,
+          "slug":slug.current,
           images[]{
             "imageUrl":asset->url,
             alt,

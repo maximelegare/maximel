@@ -13,6 +13,12 @@ const project = {
       type: "number",
     },
     {
+      name:"mainProject",
+      title:"Main Project",
+      type:"boolean",
+      initialValue:false
+    },
+    {
       name: "styles",
       title: "Styles",
       type: "object",

@@ -73,5 +73,21 @@ const ProjectSchema = z.object({
   links: z.array(z.object({ href: z.string(), type: z.string() })),
 });
 
+
+const SmallProjectSchema = z.object({
+  _id: z.string(),
+  // styles: z.object({ textAccent: z.string(), accent: z.string(), titlePosition: z.string(), }),
+  title: z.string(),
+  // logo: z.object({ imageUrl: z.string(), alt: z.string() }),
+
+  slug: z.string(),
+  images: z.array(z.object({ imageUrl: z.string(), bigImage: z.boolean() })),
+  technologies: z.array(z.object({ imageUrl: z.string(), title: z.string() })),
+  links: z.array(z.object({ href: z.string(), type: z.string() })),
+});
+
+
+
 export const ProjectsSchema = z.array(ProjectSchema);
-export { ProjectSchema };
+export const SmallProjectsSchema = z.array(SmallProjectSchema);
+export { ProjectSchema, SmallProjectSchema };
