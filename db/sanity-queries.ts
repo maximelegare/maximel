@@ -74,7 +74,7 @@ const getQuery = (query: Query, lang: string) => {
         }`;
     }
     case "smallProjects": {
-      return `*[_type == "project" && mainProject == true] | order(position asc){
+      return `*[_type == "project" && mainProject == false] | order(position asc){
           _id,
           title,
           "slug":slug.current,

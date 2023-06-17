@@ -17,6 +17,7 @@ import { photos } from "../../../../public/assets/p/images";
 import { SimonsGame } from "~/components/games/SimonsGame";
 import { CardGrid } from "~/components/core/CardGrid";
 import { TechnologyIcon } from "~/components/core/TechnologyIcon";
+import { ProjectsGrid } from "./ProjectsGrid";
 
 interface Props {
   data: CategorySchemaModel;
@@ -115,22 +116,23 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           {data.photographs ? (
             <Gallery photos={data.photographs} />
           ) : (
-            <CardGrid>
-              <>
-                <CardBasic colorHighlight="">hello</CardBasic>
-                <CardBasic colorHighlight="">hello</CardBasic>
-                <CardBasic
-                  tech={
-                    <TechnologyIcon color="white" variant="local"/>
-                  }
-                  colorHighlight=""
-                >
-                  <SimonsGame />
-                </CardBasic>
-                <CardBasic colorHighlight="">hello</CardBasic>
-                <CardBasic colorHighlight="">hello</CardBasic>
-              </>
-            </CardGrid>
+            // <CardGrid>
+            //   <>
+            //     <CardBasic colorHighlight="">hello</CardBasic>
+            //     <CardBasic colorHighlight="">hello</CardBasic>
+            //     <CardBasic
+            //       tech={
+            //         <TechnologyIcon color="white" variant="local"/>
+            //       }
+            //       colorHighlight=""
+            //     >
+            //       <SimonsGame />
+            //     </CardBasic>
+            //     <CardBasic colorHighlight="">hello</CardBasic>
+            //     <CardBasic colorHighlight="">hello</CardBasic>
+            //   </>
+            // </CardGrid>
+            <ProjectsGrid />
           )}
         </Dialog>
       }
