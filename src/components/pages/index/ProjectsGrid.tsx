@@ -5,6 +5,7 @@ import { CardGrid } from "~/components/core/CardGrid";
 import { CardBasic } from "~/components/core/Card";
 import { TechnologyIcon } from "~/components/core/TechnologyIcon";
 import { SimonsGame } from "~/components/games/SimonsGame";
+import Image from "next/image";
 
 export const ProjectsGrid = () => {
   const { locale } = useRouter();
@@ -33,7 +34,18 @@ export const ProjectsGrid = () => {
                 key={idx}
                 colorHighlight=""
               >
-                {project.title}
+                {project.images[0] && (
+                  <div className="h-[200px] w-full">
+                    <Image
+                      src={project.images[0]?.imageUrl}
+                      className="object-contain"
+                      width={500}
+                      height={0}
+                      alt=""
+                    />
+                  </div>
+                )}
+                {/* {project.title} */}
               </CardBasic>
             );
           })}

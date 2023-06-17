@@ -244,7 +244,7 @@ export const CardBasic: FC<CardBasic> = ({
       <div className="bg-gray-700 w-full px-4 py-2 text-black h-10">
         <div>{technologies}</div>
       </div>
-      <div className="m-4">{children}</div>
+      <div className="">{children}</div>
     </div>
   );
 };
