@@ -12,15 +12,33 @@ export const ProjectsGrid = () => {
 
   if (!data?.res) return <div>no data</div>;
 
+  const getTechs = (technologies: { imageUrl: string; title: string }[]) => {
+    return (
+      <div className="flex gap-3">
+        {technologies.map((tech, idx) => (
+          <TechnologyIcon key={idx} color="" tech={tech} />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <>
       <CardGrid>
         <>
           {data?.res.map((project, idx) => {
-            return <CardBasic key={idx} colorHighlight="">{project.title}</CardBasic>;
+            return (
+              <CardBasic
+                technologies={getTechs(project.technologies)}
+                key={idx}
+                colorHighlight=""
+              >
+                {project.title}
+              </CardBasic>
+            );
           })}
           <CardBasic
-            tech={<TechnologyIcon color="white" variant="local" />}
+            technologies={<TechnologyIcon color="white" variant="local" />}
             colorHighlight=""
           >
             <SimonsGame />

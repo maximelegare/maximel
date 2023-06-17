@@ -3,12 +3,17 @@ import React, { type FC } from "react";
 
 import { If, Then, Else } from "react-if";
 
+import Image from "next/image";
 type Variant = "local" | undefined;
 
 interface Props {
   variant?: Variant;
   localIconName?: string;
-  color:string
+  color:string;
+  tech?:{
+    imageUrl:string;
+    title:string
+  }
 }
 
 const getLocalIcon = (localIconName = "react") => {
@@ -21,7 +26,7 @@ const getLocalIcon = (localIconName = "react") => {
   }
 };
 
-export const TechnologyIcon: FC<Props> = ({ variant, localIconName, color }) => {
+export const TechnologyIcon: FC<Props> = ({ variant, localIconName, color, tech }) => {
   return (
     <>
       <If condition={variant === "local"}>
@@ -29,7 +34,7 @@ export const TechnologyIcon: FC<Props> = ({ variant, localIconName, color }) => 
           <div className={`text-2xl opacity-60 text-${color}`}>{getLocalIcon(localIconName)}</div>
         </Then>
         <Else>
-          <div>External icon</div>
+          { tech && <Image className="opacity-60" width={15} height={15} src={tech.imageUrl} alt={tech.title}/>}
         </Else>
       </If>
     </>

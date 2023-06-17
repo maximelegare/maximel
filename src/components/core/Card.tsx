@@ -230,19 +230,19 @@ interface CardBasic {
   styles?: string;
   children: ReactNode;
   colorHighlight: string;
-  tech?:any
+  technologies?:any
 }
 
 export const CardBasic: FC<CardBasic> = ({
   styles,
   children,
   colorHighlight,
-  tech
+  technologies
 }) => {
   return (
     <div className={`${styles ? styles : ""} min-h-[400px] w-full bg-black rounded-md overflow-hidden`}>
-      <div className="bg-gray-700 w-full px-4 py-2 text-black">
-        <div>{tech}</div>
+      <div className="bg-gray-700 w-full px-4 py-2 text-black h-10">
+        <div>{technologies}</div>
       </div>
       <div className="m-4">{children}</div>
     </div>
