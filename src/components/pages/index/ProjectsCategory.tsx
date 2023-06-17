@@ -11,9 +11,12 @@ import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
 import Gallery from "react-photo-gallery";
 
+import ReactSvg from "../../../../public/assets/SVG/react.svg";
+
 import { photos } from "../../../../public/assets/p/images";
 import { SimonsGame } from "~/components/games/SimonsGame";
 import { CardGrid } from "~/components/core/CardGrid";
+import { TechnologyIcon } from "~/components/core/TechnologyIcon";
 
 interface Props {
   data: CategorySchemaModel;
@@ -116,8 +119,13 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
               <>
                 <CardBasic colorHighlight="">hello</CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>
-                <CardBasic colorHighlight="">
-                    <SimonsGame />
+                <CardBasic
+                  tech={
+                    <TechnologyIcon color="white" variant="local"/>
+                  }
+                  colorHighlight=""
+                >
+                  <SimonsGame />
                 </CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>
                 <CardBasic colorHighlight="">hello</CardBasic>

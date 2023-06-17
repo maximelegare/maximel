@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export const SimonsGame = () => {
   const [header, setHeader] = useState("Simon's Game");
@@ -9,7 +9,6 @@ export const SimonsGame = () => {
 
   let [nb_good_user, setNumberGoodUser] = useState(0);
   let [level, setLevel] = useState(1);
-  let [loseStatus, setLoseStatus] = useState(false)
   let [goodButtonClickedAnimation, setGoodButtonClickedAnimation] =
     useState("");
   let [badButtonClickedAnimation, setBadButtonClickedAnimation] = useState("");
@@ -20,19 +19,12 @@ export const SimonsGame = () => {
   var youLose = true;
   var userList = null;
 
-  // const addEventListener = () => {
-  //   document.addEventListener("keypress", (e) => init(e));
-  // };
-
-  // useEffect(() => {
-  //   addEventListener();
-  // }, []);
+  
 
   function init(event) {
     if (youLose === true) {
       youLose = false;
       setStartGame(true)
-      setLoseStatus(false)
       comparaisonPaterns();
     }
   }
@@ -40,7 +32,6 @@ export const SimonsGame = () => {
   // fonction main
   function comparaisonPaterns() {
     youLose = false;
-    setLoseStatus(false)
     setHeader(`Level ${level}`);
     setTimeout(() => {
       randomColor();
@@ -117,7 +108,6 @@ export const SimonsGame = () => {
   function BadColorClicked(colorClickedByUser) {
     youLose = true;
     setStartGame(false)
-    setLoseStatus(true)
     userList = null;
     setColorPatern([]);
     setNumberGoodUser(0);

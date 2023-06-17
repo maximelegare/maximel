@@ -5,7 +5,6 @@ import { AiOutlineGithub } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
 
 export const Media = ({ href, type }: { href: string; type: string }) => {
-  console.log(type)
   const getIcon = (type: string) => {
     switch (type) {
       case "github": {
