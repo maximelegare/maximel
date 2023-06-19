@@ -40,6 +40,13 @@ export default {
       animation: {
         'pulse-fast': 'pulse 200ms linear infinite ',
       },
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
+      },
       colors: {
           "primary": "#374151",
           "secondary": "#F000B8",
@@ -48,7 +55,10 @@ export default {
           "base": "#ede9fe",
           "info": "#3ABFF8",
           "error": "#f43f5e",
+          "gray-200":"#394169",
+          "gray-300":"#2c3352",
           "gray-500":"#ffffff22",
+          "gray-600":"#1a1e31",
           "gray-700":"#101320",
           "gray-900":"#08041554",
           "accent": "#37CDBE",

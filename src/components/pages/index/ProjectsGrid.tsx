@@ -6,6 +6,8 @@ import { CardBasic } from "~/components/core/Card";
 import { TechnologyIcon } from "~/components/core/TechnologyIcon";
 import { SimonsGame } from "~/components/games/SimonsGame";
 import Image from "next/image";
+import { Separator } from "~/components/core/Separator";
+import { AiOutlineCalendar } from "react-icons/ai";
 
 export const ProjectsGrid = () => {
   const { locale } = useRouter();
@@ -30,27 +32,40 @@ export const ProjectsGrid = () => {
           {data?.res.map((project, idx) => {
             return (
               <CardBasic
-                technologies={getTechs(project.technologies)}
+                header={getTechs(project.technologies)}
                 key={idx}
                 colorHighlight=""
               >
-                {project.images[0] && (
-                  <div className="h-[200px] w-full">
-                    <Image
-                      src={project.images[0]?.imageUrl}
-                      className="object-contain"
-                      width={500}
-                      height={0}
-                      alt=""
-                    />
+                <div className="py-6">
+                  {project.images[0] && (
+                    <div className="mb-6  flex w-full justify-center">
+                      <Image
+                        src={project.images[0]?.imageUrl}
+                        className="rounded-md"
+                        width={400}
+                        height={0}
+                        alt=""
+                      />
+                    </div>
+                  )}
+                  <div className="mb-1 text-lg font-semibold">HODEI MUSIC</div>
+                  <div className="text-sm opacity-80">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Placeat provident delectus sed odit suscipit, ipsam a?
+                    Ullam, corporis. Minima laudantium vel non aliquid hic illo
+                    modi at neque totam. Tenetur.
                   </div>
-                )}
-                {/* {project.title} */}
+                  <Separator />
+                  <div className="flex items-center gap-1">
+                    <AiOutlineCalendar />
+                    <p className="text-xs">Still in Process</p>
+                  </div>
+                </div>
               </CardBasic>
             );
           })}
           <CardBasic
-            technologies={<TechnologyIcon color="white" variant="local" />}
+            header={<TechnologyIcon color="white" variant="local" />}
             colorHighlight=""
           >
             <SimonsGame />

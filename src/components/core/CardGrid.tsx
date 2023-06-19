@@ -6,6 +6,6 @@ interface Props {
 
 export const CardGrid:FC<Props> = ({children}) => {
   return (
-    <div className="grid grid-cols-3 gap-2 h-full">{children}</div>
+    <div className="grid grid-cols-3 gap-4 h-full">{children}</div>
   )
 }
