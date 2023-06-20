@@ -74,12 +74,12 @@ const ProjectSchema = z.object({
 });
 
 
-const SmallProjectSchema = z.object({
+const CardProjectSchema = z.object({
   _id: z.string(),
   // styles: z.object({ textAccent: z.string(), accent: z.string(), titlePosition: z.string(), }),
   title: z.string(),
   // logo: z.object({ imageUrl: z.string(), alt: z.string() }),
-
+  mainProject:z.boolean(),
   slug: z.string(),
   images: z.array(z.object({ imageUrl: z.string(), bigImage: z.boolean() })),
   technologies: z.array(z.object({ imageUrl: z.string(), title: z.string() })),
@@ -89,5 +89,5 @@ const SmallProjectSchema = z.object({
 
 
 export const ProjectsSchema = z.array(ProjectSchema);
-export const SmallProjectsSchema = z.array(SmallProjectSchema);
-export { ProjectSchema, SmallProjectSchema };
+export const CardProjectsSchema = z.array(CardProjectSchema);
+export { ProjectSchema, CardProjectSchema };

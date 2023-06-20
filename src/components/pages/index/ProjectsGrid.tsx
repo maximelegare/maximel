@@ -9,14 +9,25 @@ import Image from "next/image";
 import { Separator } from "~/components/core/Separator";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { Button } from "~/components/core/Button";
-import { BsArrowRightShort } from "react-icons/bs";
 import { Media } from "~/components/core/Media";
+import { When } from "react-if";
+import { useSetRecoilState } from "recoil";
+import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
-export const ProjectsGrid = () => {
+export const ProjectsGrid = ({ slug }: { slug: string }) => {
   const { locale } = useRouter();
-  const { data } = api.project.smallProjects.useQuery({ lang: locale });
+  const { data } = api.project.allProjects.useQuery({ lang: locale });
+
+  const setDialogVisibility = useSetRecoilState(dialogVisibilityAtom);
 
   if (!data?.res) return <div>no data</div>;
+
+  const handleSeeMoreButton = (categorySlug: string, projectSlug: string) => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [categorySlug]: false, [projectSlug]: true };
+      return obj;
+    });
+  };
 
   const getHeader = (
     technologies: { imageUrl: string; title: string }[],
@@ -29,7 +40,7 @@ export const ProjectsGrid = () => {
             <TechnologyIcon key={idx} color="" tech={tech} />
           ))}
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           {links.map(({ href, type }, idx) => (
             <Media key={idx} href={href} type={type} />
           ))}
@@ -61,7 +72,9 @@ export const ProjectsGrid = () => {
                       />
                     </div>
                   )}
-                  <div className="mb-1 text-lg font-semibold">HODEI MUSIC</div>
+                  <div className="mb-1 text-lg font-semibold">
+                    {project.title.toLocaleUpperCase()}
+                  </div>
                   <div className="text-sm opacity-80">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Placeat provident delectus sed odit suscipit, ipsam a?
@@ -75,14 +88,19 @@ export const ProjectsGrid = () => {
                       <p className="text-xs">Still in Process</p>
                     </div>
                     <div>
-                      <Button
-                        variant="link"
-                        styles="w-fit h-fit zoom-in-animation"
-                      >
-                        <div className="flex items-center backface-hidden text-xs">
-                          see more
-                        </div>
-                      </Button>
+                      <When condition={project.mainProject === true}>
+                        <Button
+                          variant="link"
+                          styles="w-fit h-fit zoom-in-animation"
+                          handleClick={() =>
+                            handleSeeMoreButton(slug, project.slug)
+                          }
+                        >
+                          <div className="flex items-center text-xs backface-hidden">
+                            see more
+                          </div>
+                        </Button>
+                      </When>
                     </div>
                   </div>
                 </div>

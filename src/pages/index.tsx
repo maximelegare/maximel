@@ -15,11 +15,7 @@ import { ContactForm } from "~/components/pages/index/ContactForm";
 import { SimonsGame } from "~/components/games/SimonsGame";
 
 const Home: NextPage = () => {
-  const dialogs = useRecoilValue(dialogVisibilityAtom);
 
-  useEffect(() => {
-    console.log("dialogs", dialogs);
-  }, [dialogs]);
 
   return (
     <>

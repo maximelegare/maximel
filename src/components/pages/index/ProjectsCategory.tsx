@@ -132,7 +132,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
             //     <CardBasic colorHighlight="">hello</CardBasic>
             //   </>
             // </CardGrid>
-            <ProjectsGrid />
+            <ProjectsGrid slug={data.slug}/>
           )}
         </Dialog>
       }

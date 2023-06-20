@@ -30,7 +30,7 @@ export const Button: FC<Props> = ({
         return `btn btn-sm hover:bg-[#3c1155]`;
       }
       case "link":{
-        return `link p-2`
+        return `link p-2 opacity-70 hover:opacity-100`
       }
       default: {
         return `btn-sm btn min-w-[6rem] ${outline ? "btn-outline" : ""}`;

@@ -5,7 +5,7 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 import { getData } from "db/sanity.utils";
 
-import { ProjectsSchema, SmallProjectsSchema } from "../validation/project";
+import { ProjectsSchema, CardProjectsSchema } from "../validation/project";
 
 export const projectRouter = createTRPCRouter({
   mainProjects: publicProcedure
@@ -17,13 +17,13 @@ export const projectRouter = createTRPCRouter({
         res: ProjectsSchema.parse(res),
       };
     }),
-  smallProjects: publicProcedure
+  allProjects: publicProcedure
     .input(z.object({ lang: z.string().default("fr") }))
     .query(async ({ input: { lang } }) => {
-      const res = await getData("smallProjects", lang);
+      const res = await getData("allProjects", lang);
 
       return {
-        res: SmallProjectsSchema.parse(res),
+        res: CardProjectsSchema.parse(res),
       };
     }),
 });
