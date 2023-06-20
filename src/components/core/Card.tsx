@@ -248,7 +248,7 @@ export const CardBasic: FC<CardBasic> = ({
           }   relative h-full w-full overflow-hidden rounded-md bg-black`}
         >
           <div className="absolute duration-700  opacity-40 w-full pointer-events-none h-full z-30 bg-gray-700 group-hover:opacity-0 transition-opacity"></div>
-          <div className="relative h-12 w-full bg-gray-700 px-6 py-3">
+          <div className="relative min-h-[48px] w-full bg-gray-700 px-6 py-3 ">
             <div>{header}</div>
           </div>
           <div className="relative mx-6">{children}</div>

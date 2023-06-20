@@ -8,6 +8,9 @@ import { SimonsGame } from "~/components/games/SimonsGame";
 import Image from "next/image";
 import { Separator } from "~/components/core/Separator";
 import { AiOutlineCalendar } from "react-icons/ai";
+import { Button } from "~/components/core/Button";
+import { BsArrowRightShort } from "react-icons/bs";
+import { Media } from "~/components/core/Media";
 
 export const ProjectsGrid = () => {
   const { locale } = useRouter();
@@ -15,12 +18,22 @@ export const ProjectsGrid = () => {
 
   if (!data?.res) return <div>no data</div>;
 
-  const getTechs = (technologies: { imageUrl: string; title: string }[]) => {
+  const getHeader = (
+    technologies: { imageUrl: string; title: string }[],
+    links: { href: string; type: string }[]
+  ) => {
     return (
-      <div className="flex gap-3">
-        {technologies.map((tech, idx) => (
-          <TechnologyIcon key={idx} color="" tech={tech} />
-        ))}
+      <div className="flex justify-between items-center">
+        <div className="flex gap-3">
+          {technologies.map((tech, idx) => (
+            <TechnologyIcon key={idx} color="" tech={tech} />
+          ))}
+        </div>
+        <div className="flex gap-3">
+          {links.map(({ href, type }, idx) => (
+            <Media key={idx} href={href} type={type} />
+          ))}
+        </div>
       </div>
     );
   };
@@ -32,7 +45,7 @@ export const ProjectsGrid = () => {
           {data?.res.map((project, idx) => {
             return (
               <CardBasic
-                header={getTechs(project.technologies)}
+                header={getHeader(project.technologies, project.links)}
                 key={idx}
                 colorHighlight=""
               >
@@ -56,9 +69,21 @@ export const ProjectsGrid = () => {
                     modi at neque totam. Tenetur.
                   </div>
                   <Separator />
-                  <div className="flex items-center gap-1">
-                    <AiOutlineCalendar />
-                    <p className="text-xs">Still in Process</p>
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-1">
+                      <AiOutlineCalendar />
+                      <p className="text-xs">Still in Process</p>
+                    </div>
+                    <div>
+                      <Button
+                        variant="icon"
+                        styles="w-fit h-fit zoom-in-animation"
+                      >
+                        <div className="flex items-center backface-hidden">
+                          <BsArrowRightShort className="text-4xl text-white" />
+                        </div>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardBasic>
