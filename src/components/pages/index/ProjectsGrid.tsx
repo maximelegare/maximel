@@ -23,7 +23,7 @@ export const ProjectsGrid = () => {
     links: { href: string; type: string }[]
   ) => {
     return (
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <div className="flex gap-3">
           {technologies.map((tech, idx) => (
             <TechnologyIcon key={idx} color="" tech={tech} />
@@ -76,11 +76,11 @@ export const ProjectsGrid = () => {
                     </div>
                     <div>
                       <Button
-                        variant="icon"
+                        variant="link"
                         styles="w-fit h-fit zoom-in-animation"
                       >
-                        <div className="flex items-center backface-hidden">
-                          <BsArrowRightShort className="text-4xl text-white" />
+                        <div className="flex items-center backface-hidden text-xs">
+                          see more
                         </div>
                       </Button>
                     </div>
