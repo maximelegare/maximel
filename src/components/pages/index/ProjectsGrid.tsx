@@ -96,7 +96,7 @@ export const ProjectsGrid = () => {
                           variant="link"
                           styles="w-fit h-fit zoom-in-animation"
                           handleClick={() =>
-                            flipCard(project.slug)
+                            flipCard(project.slug, true)
                           }
                         >
                           <div className="flex items-center text-xs backface-hidden">

@@ -44,8 +44,6 @@ export const BigTitle: FC<Props> = ({
   dotHighlight,
   subtitleString
 }) => {
-  console.log(`[${title ?? ""}]`, styles.titlePosition);
-
   return (
     <div
       className={`${

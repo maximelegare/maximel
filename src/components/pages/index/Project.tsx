@@ -29,6 +29,8 @@ interface Props {
 export const Project: FC<Props> = ({ data }) => {
   const { cardIsFlipped, dialogVisibility, flipCard, closeDialog } = useDialogs();
 
+
+
   const getImagePadding = (imagePadding: string) => {
     switch (imagePadding) {
       case "no-padding-right": {

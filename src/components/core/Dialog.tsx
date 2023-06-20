@@ -24,17 +24,17 @@ export const Dialog: FC<Props> = ({
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
-  const { bodyOverflowHidden, bodyOverflowVisible } = useDom();
+  // const { bodyOverflowHidden, bodyOverflowVisible } = useDom();
 
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(show);
-    if (show === true) {
-      bodyOverflowHidden();
-    } else {
-      bodyOverflowVisible();
-    }
+    // if (show === true) {
+    //   bodyOverflowHidden();
+    // } else {
+    //   bodyOverflowVisible();
+    // }
   }, [show]);
 
   const handleClick = (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
