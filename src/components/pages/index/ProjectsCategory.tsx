@@ -18,43 +18,15 @@ import { SimonsGame } from "~/components/games/SimonsGame";
 import { CardGrid } from "~/components/core/CardGrid";
 import { TechnologyIcon } from "~/components/core/TechnologyIcon";
 import { ProjectsGrid } from "./ProjectsGrid";
-
+import { useDialogs } from "~/hooks/useDialogs";
 interface Props {
   data: CategorySchemaModel;
 }
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
+
+  const {cardIsFlipped, dialogVisibility, flipCard, closeDialog} = useDialogs()
   const { titlePosition } = data.styles;
-  const [cardIsFlipped, setCardIsFlipped] = useState(false);
-  // const [circleIsHovered, setCircleIsHovered] = useState(false)
-
-  const [dialogVisibility, setDialogVisibility] =
-    useRecoilState(dialogVisibilityAtom);
-
-  const handleCardFlip = () => {
-    setTimeout(() => {
-      setDialogVisibility((oldValues) => {
-        const obj = { ...oldValues, [data.slug]: true };
-        return obj;
-      });
-      setCardIsFlipped(true);
-    }, 400);
-  };
-
-  const handleCloseDialog = () => {
-    setDialogVisibility((oldValues) => {
-      const obj = { ...oldValues, [data.slug]: false };
-      return obj;
-    });
-    setCardIsFlipped(false);
-  };
-
-  useEffect(() => {
-    setDialogVisibility((oldValues) => {
-      const obj = { ...oldValues, [data.slug]: false };
-      return obj;
-    });
-  }, []);
 
   return (
     <>
@@ -85,7 +57,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           colorHighlight={data.styles.accent}
           bubbleColor={data.styles.bubbleColor}
           canvas2DBubbles
-          onCardFlip={() => handleCardFlip()}
+          onCardFlip={() => flipCard(data.slug)}
           title={data.title}
           isFlipped={cardIsFlipped}
         >
@@ -110,8 +82,8 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       {
         <Dialog
           header="hello"
-          show={dialogVisibility[data.slug] || false}
-          onDialogClose={() => handleCloseDialog()}
+          show={dialogVisibility || false}
+          onDialogClose={() => closeDialog(data.slug)}
         >
           {data.photographs ? (
             <Gallery photos={data.photographs} />
@@ -132,7 +104,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
             //     <CardBasic colorHighlight="">hello</CardBasic>
             //   </>
             // </CardGrid>
-            <ProjectsGrid slug={data.slug}/>
+            <ProjectsGrid />
           )}
         </Dialog>
       }

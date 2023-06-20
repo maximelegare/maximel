@@ -14,20 +14,23 @@ import { When } from "react-if";
 import { useSetRecoilState } from "recoil";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
-export const ProjectsGrid = ({ slug }: { slug: string }) => {
+import { useDialogs } from "~/hooks/useDialogs";
+
+export const ProjectsGrid = () => {
   const { locale } = useRouter();
   const { data } = api.project.allProjects.useQuery({ lang: locale });
 
-  const setDialogVisibility = useSetRecoilState(dialogVisibilityAtom);
+  const { flipCard } = useDialogs();
+
 
   if (!data?.res) return <div>no data</div>;
 
-  const handleSeeMoreButton = (categorySlug: string, projectSlug: string) => {
-    setDialogVisibility((oldValues) => {
-      const obj = { ...oldValues, [categorySlug]: false, [projectSlug]: true };
-      return obj;
-    });
-  };
+  // const handleSeeMoreButton = (projectSlug: string) => {
+  //   setDialogVisibility((oldValues) => {
+  //     const obj = { ...oldValues, [projectSlug]: true };
+  //     return obj;
+  //   });
+  // };
 
   const getHeader = (
     technologies: { imageUrl: string; title: string }[],
@@ -93,7 +96,7 @@ export const ProjectsGrid = ({ slug }: { slug: string }) => {
                           variant="link"
                           styles="w-fit h-fit zoom-in-animation"
                           handleClick={() =>
-                            handleSeeMoreButton(slug, project.slug)
+                            flipCard(project.slug)
                           }
                         >
                           <div className="flex items-center text-xs backface-hidden">

@@ -20,41 +20,14 @@ import { Dialog } from "~/components/core/Dialog";
 import { BlockContent } from "~/components/core/BlockContent";
 import { Media } from "~/components/core/Media";
 
+import { useDialogs } from "~/hooks/useDialogs";
+
 interface Props {
   data: ProjectSchemaModel;
 }
 
 export const Project: FC<Props> = ({ data }) => {
-  const [cardIsFlipped, setCardIsFlipped] = useState(false);
-  // const [circleIsHovered, setCircleIsHovered] = useState(false)
-
-  const [dialogVisibility, setDialogVisibility] =
-    useRecoilState(dialogVisibilityAtom);
-
-  const handleCardFlip = () => {
-    setTimeout(() => {
-      setDialogVisibility((oldValues) => {
-        const obj = { ...oldValues, [data.slug]: true };
-        return obj;
-      });
-      setCardIsFlipped(true);
-    }, 400);
-  };
-
-  const handleCloseDialog = () => {
-    setDialogVisibility((oldValues) => {
-      const obj = { ...oldValues, [data.slug]: false };
-      return obj;
-    });
-    setCardIsFlipped(false);
-  };
-
-  useEffect(() => {
-    setDialogVisibility((oldValues) => {
-      const obj = { ...oldValues, [data.slug]: false };
-      return obj;
-    });
-  }, []);
+  const { cardIsFlipped, dialogVisibility, flipCard, closeDialog } = useDialogs();
 
   const getImagePadding = (imagePadding: string) => {
     switch (imagePadding) {
@@ -100,20 +73,20 @@ export const Project: FC<Props> = ({ data }) => {
             gradiantBorder
             colorHighlight={data.styles.accent}
             circleHover
-            onCardFlip={() => handleCardFlip()}
+            onCardFlip={() => flipCard(data.slug)}
             // handleCircleMouseEnter={() => setCircleIsHovered(true)}
             // handleCircleMouseLeave={() => setCircleIsHovered(false)}
             isFlipped={cardIsFlipped}
           >
             <div className="flex flex-col items-end justify-end gap-20 ">
               <div className={` flex h-fit gap-2 pr-4 pt-4`}>
-                  <BlockContent
-                    // color={circleIsHovered? "text-black" : ""}
-                    data={data.overviewCard.text}
-                    highlightColor={data.styles.textAccent}
-                    separatorColor={data.styles.accent}
-                    className="text-right"
-                  />
+                <BlockContent
+                  // color={circleIsHovered? "text-black" : ""}
+                  data={data.overviewCard.text}
+                  highlightColor={data.styles.textAccent}
+                  separatorColor={data.styles.accent}
+                  className="text-right"
+                />
                 <span className="w-[3px]  rounded-full bg-white opacity-70"></span>
               </div>
               <div
@@ -140,8 +113,8 @@ export const Project: FC<Props> = ({ data }) => {
               ))}
             </div>
           }
-          show={dialogVisibility[data.slug] || false}
-          onDialogClose={() => handleCloseDialog()}
+          show={dialogVisibility || false}
+          onDialogClose={() => closeDialog(data.slug)}
         >
           <BlockContent
             data={data.body}
