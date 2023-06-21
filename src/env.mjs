@@ -6,7 +6,11 @@ import { z } from "zod";
  */
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
-  SANITY_PROJECT_ID:z.string()
+  SANITY_PROJECT_ID:z.string(),
+  USER_GMAIL:z.string(),
+  USER_GMAIL_PASS:z.string(),
+  USER_PROTONMAIL:z.string()
+
 });
 
 /**
@@ -33,7 +37,10 @@ const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   NEXT_PUBLIC_SANITY_PROJECT_ID:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  SANITY_PROJECT_ID:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  SANITY_PROJECT_ID:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  USER_GMAIL_PASS:process.env.USER_GMAIL_PASS,
+  USER_GMAIL:process.env.USER_GMAIL,
+  USER_PROTONMAIL:process.env.USER_PROTONMAIL
 };
 
 // Don't touch the part below
