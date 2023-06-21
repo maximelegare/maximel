@@ -113,7 +113,7 @@ export const BlockContent: FC<Props> = ({
            className={getLineStyle(el.style as Size)}
            >
             {el.children &&
-              el.children.map((el, idx) => <div key={idx}>{getHtmlElement(el)}</div> )}
+              el.children.map((el, idx) => <div className="inline" key={idx}>{getHtmlElement(el)}</div> )}
             {el.imageUrl && (
               <Image src={el.imageUrl} alt="" width={200} height={200} />
             )}
