@@ -4,6 +4,8 @@ import {projectRouter} from "./routers/project"
 
 import { categoryRouter } from "./routers/category";
 
+import { contactFormRouter } from "./routers/contactform";
+
 /**
  * This is the primary router for your server.
  *
@@ -11,7 +13,8 @@ import { categoryRouter } from "./routers/category";
  */
 export const appRouter = createTRPCRouter({
   project:projectRouter,
-  category:categoryRouter
+  category:categoryRouter,
+  contact:contactFormRouter
 });
 
 // export type definition of API

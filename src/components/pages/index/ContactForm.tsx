@@ -14,7 +14,7 @@ import { IoIosPaperPlane } from "react-icons/io";
 
 import { useTranslation } from "next-i18next";
 
-
+import { api } from "~/utils/api";
 
 export const ContactForm = () => {
 
@@ -38,8 +38,13 @@ export const ContactForm = () => {
     validationSchema: toFormikValidationSchema(ContactSchema),
     // alert(JSON.stringify(values, null, 2));
     onSubmit: (values) => {
+      const {data} = api.contact.sendMessage.useQuery(values)
+      console.log(data) 
+      
       setTimeout(() => {
         resetForm();
+        
+        
       }, 1000);
     },
   });
