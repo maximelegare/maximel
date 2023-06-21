@@ -22,7 +22,6 @@ export const Hero = () => {
 
   const [counterState, setCounterState] = useRecoilState(counterAtomState);
 
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <Section
@@ -37,9 +36,7 @@ export const Hero = () => {
           data-aos-delay="600"
           className="mb-8"
         >
-          <h3 className="text-xl font-semibold">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </h3>
+          
         </div>
         <div data-aos="fade-up-custom" data-aos-easing="ease-in-out-back">
           <h1 className="text-center">

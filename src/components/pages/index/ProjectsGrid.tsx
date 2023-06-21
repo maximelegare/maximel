@@ -18,6 +18,9 @@ import { useDialogs } from "~/hooks/useDialogs";
 
 export const ProjectsGrid = () => {
   const { locale } = useRouter();
+
+  const isTrue = false;
+
   const { data } = api.project.allProjects.useQuery({ lang: locale });
 
   const { flipCard } = useDialogs();
