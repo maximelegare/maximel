@@ -90,7 +90,6 @@ export const BlockContent: FC<Props> = ({
 
   const getHtmlElement = (
     el: { text: string; marks: string[] },
-    idx: number
   ) => {
     switch (el.text) {
       case "//": {
@@ -98,9 +97,9 @@ export const BlockContent: FC<Props> = ({
       }
       default: {
         return (
-          <p key={idx} className="inline">
+          <div  className="inline">
             {getTextContentWithMarkup(el.marks, el.text)}
-          </p>
+          </div>
         );
       }
     }
@@ -110,9 +109,11 @@ export const BlockContent: FC<Props> = ({
     <>
       <div className={className}>
         {lines?.map((el, idx) => (
-          <div key={idx} className={getLineStyle(el.style as Size)}>
+          <div key={idx}
+           className={getLineStyle(el.style as Size)}
+           >
             {el.children &&
-              el.children.map((el, idx) => getHtmlElement(el, idx))}
+              el.children.map((el, idx) => <div key={idx}>{getHtmlElement(el)}</div> )}
             {el.imageUrl && (
               <Image src={el.imageUrl} alt="" width={200} height={200} />
             )}

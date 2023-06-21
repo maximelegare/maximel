@@ -16,10 +16,8 @@ import { SimonsGame } from "~/components/games/SimonsGame";
 
 const Home: NextPage = () => {
 
-
   return (
     <>
-      
         <main>
           <Hero />
           <div id="headerDataAOSAnchor"></div>

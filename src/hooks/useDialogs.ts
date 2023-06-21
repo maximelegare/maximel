@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
 
@@ -72,10 +72,23 @@ export const useDialogs = () => {
     setUsedSlug(slug);
   };
 
+  const setDialogSlug = (slug:string) => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [slug]: false };
+      return obj;
+    });
+    setUsedSlug(slug);
+  }
+
+
+
+
+
   return {
     dialogVisibility: dialogVisibility[usedSlug],
     cardIsFlipped: cardIsFlipped[usedSlug],
     closeDialog,
     flipCard,
+    setDialogSlug
   };
 };

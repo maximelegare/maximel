@@ -27,8 +27,17 @@ interface Props {
 }
 
 export const Project: FC<Props> = ({ data }) => {
-  const { cardIsFlipped, dialogVisibility, flipCard, closeDialog } = useDialogs();
+  const {
+    cardIsFlipped,
+    dialogVisibility,
+    flipCard,
+    closeDialog,
+    setDialogSlug,
+  } = useDialogs();
 
+  useEffect(() => {
+    setDialogSlug(data.slug);
+  }, []);
 
 
   const getImagePadding = (imagePadding: string) => {

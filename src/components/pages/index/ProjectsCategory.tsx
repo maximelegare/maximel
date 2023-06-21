@@ -25,8 +25,12 @@ interface Props {
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
 
-  const {cardIsFlipped, dialogVisibility, flipCard, closeDialog} = useDialogs()
+  const {cardIsFlipped, dialogVisibility, flipCard, closeDialog, setDialogSlug} = useDialogs()
   const { titlePosition } = data.styles;
+
+  useEffect(() => {
+    setDialogSlug(data.slug);
+  }, []);
 
   return (
     <>
