@@ -41,7 +41,7 @@ export class Emailer {
 //   }
 
   public contactMe({email, firstName, lastName, message}:EmailContact) {
-    this.sendEmail(contactMeTemplate({email, firstName, lastName, message}));
+   return this.sendEmail(contactMeTemplate({email, firstName, lastName, message}));
   }
 }
 
