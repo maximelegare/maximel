@@ -9,7 +9,7 @@ import { TfiRulerPencil } from "react-icons/tfi";
 import { Dialog } from "~/components/core/Dialog";
 import { dialogVisibilityAtom } from "atoms/dialogAtom";
 import { useRecoilState } from "recoil";
-import Gallery from "react-photo-gallery";
+import Gallery from "react-photo-album";
 
 import ReactSvg from "../../../../public/assets/SVG/react.svg";
 
@@ -89,7 +89,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
           onDialogClose={() => closeDialog(data.slug)}
         >
           {data.photographs ? (
-            <Gallery photos={data.photographs} />
+            <Gallery layout="rows" photos={data.photographs} />
           ) : (
             // <CardGrid>
             //   <>
