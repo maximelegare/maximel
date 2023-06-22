@@ -23,7 +23,6 @@ export const ProjectsCategories = () => {
 
   if (!data || !data.res) return <div>no data</div>;
 
-  const lastItem = data.res[data.res.length -1]
 
   return (
     <Section styles="bg-black relative z-10" bluredBackground>
@@ -32,17 +31,10 @@ export const ProjectsCategories = () => {
           return (
             <div key={idx}>
               <ProjectsCategory data={el} />
-              
             </div>
           );
         })}
-        {/* {lastItem?.styles.titlePosition === "right" && 
-                <TitleTopLines
-                  styles={lastItem?.styles}
-                  dotHighlight="bg-red-100"
-                ></TitleTopLines>
-              } */}
-        <div>test</div>
+       
       </div>
     </Section>
   );

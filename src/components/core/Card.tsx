@@ -203,13 +203,13 @@ export const FlipCard: FC<FlipCardInterface> = ({
 
   return (
     <div>
-      <div className={`flip-card`}>
+      <div className={`flip-card `}>
         <div
           className={`flip-card-inner backface-hidden ${
             flipState ? "flip-action" : ""
           }`}
         >
-          <div className={`flip-card-front  ${flipState ? "z-[-1]" : ""}`}>
+          <div className={`flip-card-front z-[1000] ${flipState ? "z-[-1]" : ""}`}>
             <Card
               {...props}
               handleCircleClick={() => handleFlip()}
@@ -219,7 +219,6 @@ export const FlipCard: FC<FlipCardInterface> = ({
               {props.children}
             </Card>
           </div>
-          <div></div>
         </div>
       </div>
     </div>
@@ -247,7 +246,7 @@ export const CardBasic: FC<CardBasic> = ({
             styles ? styles : ""
           }   relative h-full w-full overflow-hidden rounded-md bg-black`}
         >
-          <div className="absolute duration-700  opacity-40 w-full pointer-events-none h-full z-30 bg-gray-700 group-hover:opacity-0 transition-opacity"></div>
+          <div className="pointer-events-none absolute  z-30 h-full w-full bg-gray-700 opacity-40 transition-opacity duration-700 group-hover:opacity-0"></div>
           <div className="relative min-h-[48px] w-full bg-gray-700 px-6 py-3 ">
             <div>{header}</div>
           </div>

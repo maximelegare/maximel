@@ -52,7 +52,7 @@ export const ContactForm = () => {
   });
 
   return (
-    <Section bluredBackground styles="bg-black">
+    <Section bluredBackground styles="bg-black z-0">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <BigTitle
@@ -61,7 +61,7 @@ export const ContactForm = () => {
             styles={{
               textAccent: "gradiant-text-green",
               accent: "gradiant-gray",
-              titlePosition: "default",
+              titlePosition: "left",
             }}
             dotHighlight="gradiant-gray"
             title="Interested in what you see?"
@@ -138,7 +138,6 @@ export const ContactForm = () => {
             </button>
           </form>
         </div>
-        <div>test</div>
       </div>
     </Section>
   );

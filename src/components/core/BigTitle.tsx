@@ -126,13 +126,10 @@ export const TitleTopLines = ({
       <div className="relative  w-7 gap-2">
         <div
           className={`${
-            styles?.titlePosition === "right" ||
-            styles?.titlePosition === "left"
-              ? "mt-[600px]"
-              : ""
-          } flex justify-center`}
+            styles?.titlePosition === "right" ? "mt-[600px]" : ""
+          } ${styles?.titlePosition === "left" ? "mt-[100px]" : ""} flex justify-center`}
         >
-          <If condition={styles?.titlePosition === "left"}>
+          <If condition={styles?.titlePosition === "right"}>
             <Then>
               <>
                 <div
@@ -148,7 +145,7 @@ export const TitleTopLines = ({
               </>
             </Then>
           </If>
-          <If condition={styles?.titlePosition === "right"}>
+          <If condition={styles?.titlePosition === "left"}>
             <Then>
               <>
                 <div
@@ -164,9 +161,11 @@ export const TitleTopLines = ({
               </>
             </Then>
           </If>
-          <div className={`${
-                    styles?.accent ? `to-b-${styles?.accent}` : ""
-                  } h-[100px] w-[3px]`}></div>
+          <div
+            className={`${
+              styles?.accent ? `to-b-${styles?.accent}` : ""
+            } h-[100px] w-[3px]`}
+          ></div>
         </div>
       </div>
     </>
