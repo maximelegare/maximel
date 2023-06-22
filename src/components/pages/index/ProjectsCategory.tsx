@@ -24,8 +24,13 @@ interface Props {
 }
 
 export const ProjectsCategory: FC<Props> = ({ data }) => {
-
-  const {cardIsFlipped, dialogVisibility, flipCard, closeDialog, setDialogSlug} = useDialogs()
+  const {
+    cardIsFlipped,
+    dialogVisibility,
+    flipCard,
+    closeDialog,
+    setDialogSlug,
+  } = useDialogs();
   const { titlePosition } = data.styles;
 
   useEffect(() => {
@@ -34,13 +39,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
 
   return (
     <>
-      <div
-        className={
-          titlePosition === "right" || titlePosition === "left"
-            ? "mt-[600px]"
-            : ""
-        }
-      >
+      <div>
         <BigTitle
           styles={data.styles}
           title={"Other projects"}

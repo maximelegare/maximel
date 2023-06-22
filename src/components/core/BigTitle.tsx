@@ -17,7 +17,7 @@ interface Props {
   title?: string;
   paddingBottom?: string;
   subtitle?: BlockContentModel;
-  subtitleString?:string;
+  subtitleString?: string;
   buttons?: LinksModel;
   logoElement?: ReactElement;
   dotHighlight?: string;
@@ -42,52 +42,12 @@ export const BigTitle: FC<Props> = ({
   logo,
   styles,
   dotHighlight,
-  subtitleString
+  subtitleString,
 }) => {
   return (
-    <div
-      className={`${
-        styles.titlePosition === "right" || styles.titlePosition === "left"
-          ? "mt-[600px]"
-          : ""
-      } ml-4`}
-    >
+    <div>
       <div className="flex flex-col gap-6">
-        <div className="flex">
-          <div className="relative flex w-7 flex-col items-center gap-2">
-            {styles.titlePosition === "right"}
-            <If condition={styles.titlePosition === "right"}>
-              <Then>
-                <>
-                  <div
-                    className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
-                  ></div>
-                  <div
-                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
-                      dotHighlight ? `${dotHighlight}` : ""
-                    } `}
-                  ></div>
-                </>
-              </Then>
-            </If>
-            <If condition={styles.titlePosition === "left"}>
-              <Then>
-                <>
-                  <div
-                    className={`absolute to-b-${styles.accent}-reverse left-0 h-[40px] w-[3px] -translate-x-1/2 -translate-y-1/2 rotate-90 pt-5`}
-                  ></div>
-                  <div
-                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full   ${
-                      dotHighlight ? `${dotHighlight}` : ""
-                    } `}
-                  ></div>
-                </>
-              </Then>
-            </If>
-
-            <div className={`to-b-${styles.accent} h-[100px] w-[3px]`}></div>
-          </div>
-        </div>
+        <TitleTopLines styles={styles} dotHighlight={dotHighlight} />
         <div className="flex gap-6">
           <div className="flex">
             <div className="flex w-7 flex-col items-center gap-6">
@@ -147,5 +107,68 @@ export const BigTitle: FC<Props> = ({
         </div>
       </div>
     </div>
+  );
+};
+
+export const TitleTopLines = ({
+  styles,
+  dotHighlight,
+}: {
+  styles?: {
+    textAccent: string;
+    accent: string;
+    titlePosition: string;
+  };
+  dotHighlight?: string;
+}) => {
+  return (
+    <>
+      <div className="relative  w-7 gap-2">
+        <div
+          className={`${
+            styles?.titlePosition === "right" ||
+            styles?.titlePosition === "left"
+              ? "mt-[600px]"
+              : ""
+          } flex justify-center`}
+        >
+          <If condition={styles?.titlePosition === "left"}>
+            <Then>
+              <>
+                <div
+                  className={`absolute z-[-1] ${
+                    styles?.accent ? `to-b-${styles?.accent}-reverse` : ""
+                  }  left-0 h-[50px] w-[3px] origin-top translate-x-2 rotate-90`}
+                ></div>
+                <div
+                  className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full  
+               ${dotHighlight ? `${dotHighlight}` : ""}
+               `}
+                ></div>
+              </>
+            </Then>
+          </If>
+          <If condition={styles?.titlePosition === "right"}>
+            <Then>
+              <>
+                <div
+                  className={`absolute ${
+                    styles?.accent ? `to-b-${styles?.accent}-reverse` : ""
+                  } left-0 h-[700px] w-[3px]  origin-top   translate-x-2 -rotate-90 pt-5`}
+                ></div>
+                <div
+                  className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full  
+               ${dotHighlight ? `${dotHighlight}` : ""}
+               `}
+                ></div>
+              </>
+            </Then>
+          </If>
+          <div className={`${
+                    styles?.accent ? `to-b-${styles?.accent}` : ""
+                  } h-[100px] w-[3px]`}></div>
+        </div>
+      </div>
+    </>
   );
 };

@@ -20,6 +20,9 @@ const backfaceVisibility = plugin(function({addUtilities}:{addUtilities:any}) {
       '-moz-backface-visibility': 'hidden',
       '-webkit-backface-visibility': 'hidden',
       '-ms-backface-visibility': 'hidden'
+    },
+    "items-flex-start":{
+      "align-items":"flex-start"
     }
   })
 });
