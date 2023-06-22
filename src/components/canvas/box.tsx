@@ -1,15 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import { useEffect, useRef } from "react";
 import type { GroupProps } from "@react-three/fiber";
 import { useFrame } from "@react-three/fiber";
 
 import { useState } from "react";
 
-import { type Displace as DisplaceType } from "lamina/vanilla";
+// import { type Displace as DisplaceType } from "lamina/vanilla";
 
 import { lerp } from "three/src/math/MathUtils";
 
@@ -20,15 +16,17 @@ import type { BufferGeometry, Material, Vector3 } from "three";
 import type { Mesh } from "three";
 import { MutableRefObject } from "react";
 
-import type { DisplaceProps } from "lamina/types";
+
+// import { DisplaceProps } from "lamina/types";
+
 
 import { ReactNode } from "react";
 
 export const Box = ({
-  displaceProps,
+  // displaceProps,
   ...props
 }: GroupProps & {
-  displaceProps?: DisplaceProps;
+  // displaceProps?: DisplaceProps;
 }) => {
   // const [ref, api] = useSphere(
   //   () => ({ args: [2], mass: 0 }),
@@ -42,10 +40,10 @@ export const Box = ({
 
   const ref = useRef<Mesh>(null!);
   // const rand = useMemo(() => Math.random(), []);
-  const strength = useRef(0);
-  const displaceRef = useRef<
-    DisplaceType & { strength: number; offset: Vector3 }
-  >(null!);
+  // const strength = useRef(0);
+  // const displaceRef = useRef<
+  //   DisplaceType & { strength: number; offset: Vector3 }
+  // >(null!);
 
   class Bubble {
     public element: ReactNode;
