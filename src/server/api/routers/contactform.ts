@@ -8,13 +8,17 @@ import { ContactFormSchema } from "../validation/contactForm";
 export const contactFormRouter = createTRPCRouter({
   sendMessage: publicProcedure
     .input(ContactFormSchema)
-    .mutation(({ input: { firstName, lastName, email, message } }) => {
-
-      try{
-
-        emailer.contactMe({ email, firstName, lastName, message });
-      }catch(err){
-        console.log(err)
+    .mutation(async ({ input: { firstName, lastName, email, message } }) => {
+      try {
+        const res = await emailer.contactMe({
+          email,
+          firstName,
+          lastName,
+          message,
+        });
+        console.log(res);
+      } catch (err) {
+        console.log(err);
       }
 
       console.log(firstName);
