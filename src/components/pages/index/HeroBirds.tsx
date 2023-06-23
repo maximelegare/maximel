@@ -1,10 +1,10 @@
 import { Suspense, useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Box } from "~/components/canvas/box";
+import { Box, Sphere } from "~/components/canvas/box";
 // import Bird from '../components/Bird'
 
-import { Physics } from "@react-three/cannon";
+import { Manager } from "~/hooks/useYoka";
 
 export function Boxes() {
   const boxes = useMemo(
@@ -40,15 +40,17 @@ export function Boxes() {
   );
 
   return (
-    <Canvas camera={{ position: [0, 0, 35] }}>
-      <ambientLight intensity={2} />
-      <pointLight position={[40, 40, 40]} />
-      <Physics>
-        <Suspense fallback={null}>
-          <Box position={[-2, -0.5, -3]} />
-        </Suspense>
-      </Physics>
-    </Canvas>
+    <div className="h-full w-full">
+      <Canvas orthographic camera={{ zoom: 10, position: [0, 0, 35] }}>
+        <ambientLight intensity={2} />
+        <pointLight position={[40, 40, 40]} />
+        <Manager>
+          <Suspense fallback={null}>
+            <Sphere args={[-2, -0.5, -3]} />
+          </Suspense>
+        </Manager>
+      </Canvas>
+    </div>
   );
 }
 

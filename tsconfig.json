@@ -27,7 +27,17 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
-, "next-i18next.config.js", "src/utils/i18n.js", "src/utils/sanity.js", "db/schemas/schemas.js", "db/schemas/technology.js", "db/schemas/project.js?", "db/schemas/blockContent.js","src/components/games/SimonsGame.js"  ],
+    "**/*.mjs",
+    "next-i18next.config.js",
+    "src/hooks/useYoka.jsx",
+    "src/utils/i18n.js",
+    "src/utils/sanity.js",
+    "db/schemas/schemas.js",
+    "db/schemas/technology.js",
+    "db/schemas/project.js?",
+    "db/schemas/blockContent.js",
+    "src/components/games/SimonsGame.js",
+    "src/hooks/useYoka.jsx"
+  ],
   "exclude": ["node_modules"]
 }
