@@ -15,8 +15,7 @@ import { counterAtomState } from "atoms/counterAtom";
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Boxes } from "./HeroBirds";
-
+import { Bubble3DCanvas } from "~/components/canvas/Bubble3DCanvas";
 export const Hero = () => {
   const { t } = useTranslation("common");
 
@@ -26,9 +25,10 @@ export const Hero = () => {
   return (
     <Section
       styles="gradiant-purple"
-      noContainerElements={<Boxes />}
+      noContainerElements={<Bubble3DCanvas />}
     >
-      <div className="flex h-full flex-col items-center pt-[15%]">
+      <div></div>
+      {/* <div className="flex h-full flex-col items-center pt-[15%]">
         <div
           data-aos="zoom-in"
           data-aos-duration="500"
@@ -68,7 +68,7 @@ export const Hero = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </Section>
   );
 };

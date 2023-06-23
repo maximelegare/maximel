@@ -3,7 +3,7 @@
 
 import React, { useRef, useEffect, useState, useContext, createContext } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { GameEntity, EntityManager, Vehicle, WanderBehavior } from 'yuka'
+import { GameEntity, EntityManager, Vehicle, WanderBehavior,  } from 'yuka'
 
 const context = createContext()
 
@@ -16,7 +16,10 @@ export function Manager({ children }) {
     vehicle.steering.add(new WanderBehavior())
   }, [])
   
-  useFrame((state, delta) => mgr.update(delta))
+  useFrame((state, delta) =>{
+    // console.log("[cameraPosition]", state.camera.position)
+    mgr.update(delta)} )
+
   return <context.Provider value={mgr}>{children}</context.Provider>
 }
 
@@ -34,7 +37,6 @@ export function useYuka({ position = [0, 0, 0] }) {
     entity.position.set(...position)
     entity.setRenderComponent(ref, (entity) => {
       ref.current.position.copy(entity.position)
-      ref.current.quaternion.copy(entity.rotation)
     })
     mgr.add(entity)
     return () => mgr.remove(entity)
@@ -44,7 +46,7 @@ export function useYuka({ position = [0, 0, 0] }) {
 }
 
 
-
+//https://codesandbox.io/s/interesting-tree-f0rqo?file=/src/App.js
 
 
 
@@ -121,4 +123,4 @@ export function useYuka({ position = [0, 0, 0] }) {
 //   return [ref, entity];
 // }
 
-//https://codesandbox.io/s/interesting-tree-f0rqo?file=/src/App.js
+
