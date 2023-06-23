@@ -1,66 +1,59 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
 
-import React, { useRef, useEffect, useState, useContext, createContext } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { GameEntity, EntityManager, Vehicle, WanderBehavior,  } from 'yuka'
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useContext,
+  createContext,
+} from "react";
+import { useFrame } from "@react-three/fiber";
+import { GameEntity, EntityManager, Vehicle, WanderBehavior } from "yuka";
 
-const context = createContext()
+const context = createContext();
 
 export function Manager({ children }) {
-  const [mgr] = useState(() => new EntityManager(), [])
+  const [mgr] = useState(() => new EntityManager(), []);
   useEffect(() => {
     // This is called after all game entities are present, the manager should maintain game logic,
     // not the individual entities
-    const vehicle = mgr.entities.find((item) => item instanceof Vehicle)
-    vehicle.steering.add(new WanderBehavior())
-  }, [])
-  
-  useFrame((state, delta) =>{
+
+    const vehicles = mgr.entities;
+
+    console.log("[managerEntities]", vehicles);
+    mgr.entities.forEach((vehicle) => {
+      vehicle.steering.add(new WanderBehavior());
+    });
+  }, []);
+
+  useFrame((state, delta) => {
     // console.log("[cameraPosition]", state.camera.position)
-    mgr.update(delta)} )
+    mgr.update(delta);
+  });
 
-  return <context.Provider value={mgr}>{children}</context.Provider>
+  return <context.Provider value={mgr}>{children}</context.Provider>;
 }
-
-
 
 export function useYuka({ position = [0, 0, 0] }) {
+  const ref = useRef();
+  const mgr = useContext(context);
 
-  const ref = useRef()
-  const mgr = useContext(context)
-
-  const [entity] = useState(() => new Vehicle())
+  const [entity] = useState(() => new Vehicle());
 
   useEffect(() => {
-
-    entity.position.set(...position)
+    entity.position.set(...position);
     entity.setRenderComponent(ref, (entity) => {
-      ref.current.position.copy(entity.position)
-    })
-    mgr.add(entity)
-    return () => mgr.remove(entity)
-  }, [])
+      ref.current.position.copy(entity.position);
+    });
+    mgr.add(entity);
+    return () => mgr.remove(entity);
+  }, []);
 
-  return [ref, entity]
+  return [ref, entity];
 }
 
-
 //https://codesandbox.io/s/interesting-tree-f0rqo?file=/src/App.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, {
 //   useRef,
@@ -84,7 +77,6 @@ export function useYuka({ position = [0, 0, 0] }) {
 
 //   useEffect(() => {
 
-
 //     // This is called after all game entities are present, the manager should maintain game logic,
 //     // not the individual entities
 //     const vehicle = mgr.entities.find((item) => item instanceof Vehicle);
@@ -94,7 +86,7 @@ export function useYuka({ position = [0, 0, 0] }) {
 //     vehicleAsVehicleType.steering.add(new WanderBehavior());
 //   }, []);
 //   useFrame((state, delta) => mgr.update(delta));
-  
+
 //   return <context.Provider value={mgr}>{children}</context.Provider>;
 // }
 
@@ -116,11 +108,9 @@ export function useYuka({ position = [0, 0, 0] }) {
 //       ref.current.position.copy(entity.position as unknown as THREE.Vector3);
 //       ref.current.quaternion.copy(entity.rotation as unknown as THREE.Quaternion);
 //     });
-    
+
 //     mgr?.add(entity);
 //     return () => mgr?.remove(entity);
 //   }, []);
 //   return [ref, entity];
 // }
-
-

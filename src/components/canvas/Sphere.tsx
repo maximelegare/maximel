@@ -20,25 +20,23 @@ import { ReactNode } from "react";
 import { useYuka } from "~/hooks/useYoka";
 import { Vehicle } from "yuka/src/steering/Vehicle";
 
-
-
-
-
-
-export const Sphere = ({args}:{args:number[]}) => {
+export const Sphere = ({
+  args,
+  position = [80, 0, 40],
+}: {
+  args: number[];
+  position: number[];
+}) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const [ref] = useYuka({position:[40,30,10]})
+  const [ref] = useYuka({ position });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-  const myRef = ref as any
+  const myRef = ref as any;
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <mesh ref={myRef}>
-          <sphereBufferGeometry args={args} />
-          <meshStandardMaterial
-            attach="material"
-            color={"#720b23"}
-          />
-        </mesh>
-  )
-}
+      <sphereBufferGeometry args={args} />
+      <meshStandardMaterial attach="material" color={"#720b23"} />
+    </mesh>
+  );
+};
