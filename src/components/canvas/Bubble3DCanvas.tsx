@@ -5,6 +5,10 @@ import { Sphere } from "~/components/canvas/Sphere";
 
 import { Manager } from "~/hooks/useYoka";
 
+import { Bubble } from "./Bubble";
+
+import { ImageLoader } from "three";
+
 export function Bubble3DCanvas() {
   const randomizeSelfOrOposite = (num: number) => {
     const val = Math.floor(Math.random() * 2);
@@ -14,6 +18,9 @@ export function Bubble3DCanvas() {
       return num;
     }
   };
+
+
+
 
   const x = randomizeSelfOrOposite(Math.floor(Math.random() * 80));
   const y = 0;
@@ -28,22 +35,32 @@ export function Bubble3DCanvas() {
         const y = 0;
         const z = randomizeSelfOrOposite(Math.floor(Math.random() * 40));
 
-        return <Sphere key={idx} args={[4, 64, 64]} position={[x, y, z]} />;
+        return (
+          <Bubble
+            key={idx}
+            path="../../../public/assets/3D_models/bubble.glb"
+            position={[x, y, z]}
+          />
+        );
       }),
     []
   );
 
   return (
     <div className="h-full w-full">
-      <Canvas orthographic camera={{ zoom: 10, position: [0, 80, 0] }}>
-        <ambientLight intensity={2} />
-        <pointLight position={[40, 40, 40]} />
+      <Canvas  orthographic camera={{ zoom: 10, position: [0, 80, 0] }}>
+        <color attach="background" args={["#000"]} />
+        {/* <ambientLight intensity={1000} color={""} /> */}
+        <pointLight position={[100, 500, 0]} intensity={500} />
+        <pointLight position={[200, 200, 0]} intensity={0} />
         <Manager>
           <Suspense fallback={null}>
-            <Sphere args={[4, 64, 64]} position={[x, y, z]} />
+            {/* <Sphere args={[4, 64, 64]} position={[x, y, z]} /> */}
             {bubbles.map((bubble) => bubble)}
           </Suspense>
         </Manager>
+        {/* <OrbitControls /> */}
+        <axesHelper scale={500}/>
       </Canvas>
     </div>
   );

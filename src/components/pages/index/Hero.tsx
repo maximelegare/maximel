@@ -24,7 +24,7 @@ export const Hero = () => {
 
   return (
     <Section
-      styles="gradiant-purple"
+      styles=""
       noContainerElements={<Bubble3DCanvas />}
     >
       <div></div>

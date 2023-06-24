@@ -18,7 +18,6 @@ import { MutableRefObject } from "react";
 import { ReactNode } from "react";
 
 import { useYuka } from "~/hooks/useYoka";
-import { Vehicle } from "yuka/src/steering/Vehicle";
 
 export const Sphere = ({
   args,
