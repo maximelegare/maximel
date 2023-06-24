@@ -42,6 +42,7 @@ export function useYuka({ position = [0, 0, 0] }) {
   const [entity] = useState(() => new Vehicle());
 
   useEffect(() => {
+
     entity.position.set(...position);
     entity.setRenderComponent(ref, (entity) => {
       ref.current.position.copy(entity.position);

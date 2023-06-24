@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Suspense, useMemo } from "react";
 import { Canvas, AxesHelperProps } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -7,7 +8,12 @@ import { Manager } from "~/hooks/useYoka";
 
 import { Bubble } from "./Bubble";
 
-import { ImageLoader } from "three";
+import {useEffect, useState} from "react"
+
+import { TextureLoader } from "three/src/Three";
+
+import { Environment } from "@react-three/drei";
+
 
 export function Bubble3DCanvas() {
   const randomizeSelfOrOposite = (num: number) => {
@@ -21,6 +27,8 @@ export function Bubble3DCanvas() {
 
 
 
+
+  
 
   const x = randomizeSelfOrOposite(Math.floor(Math.random() * 80));
   const y = 0;
@@ -48,11 +56,15 @@ export function Bubble3DCanvas() {
 
   return (
     <div className="h-full w-full">
-      <Canvas  orthographic camera={{ zoom: 10, position: [0, 80, 0] }}>
-        <color attach="background" args={["#000"]} />
+      <Canvas
+        orthographic
+        camera={{ zoom: 10, position: [0, 80, 0] }}
+      >
+        <color attach="background" args={["#d24dff"]} />
         {/* <ambientLight intensity={1000} color={""} /> */}
-        <pointLight position={[100, 500, 0]} intensity={500} />
-        <pointLight position={[200, 200, 0]} intensity={0} />
+        <pointLight position={[0, -1000000, 0]} intensity={500} />
+        <pointLight position={[0, 1000000, 0]} intensity={200} />
+        {/* <Environment files="/hdr.hdr" /> */}
         <Manager>
           <Suspense fallback={null}>
             {/* <Sphere args={[4, 64, 64]} position={[x, y, z]} /> */}
@@ -60,7 +72,7 @@ export function Bubble3DCanvas() {
           </Suspense>
         </Manager>
         {/* <OrbitControls /> */}
-        <axesHelper scale={500}/>
+        <axesHelper scale={500} />
       </Canvas>
     </div>
   );
