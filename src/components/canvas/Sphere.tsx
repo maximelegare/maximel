@@ -37,7 +37,7 @@ export const Sphere = ({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <mesh ref={myRef} renderOrder={renderOrder}>
       <sphereBufferGeometry args={args} />
-      <meshPhysicalMaterial  attach="material"  roughness={0} metalness={0} transmission={1}  />
+      
     </mesh>
   );
 };

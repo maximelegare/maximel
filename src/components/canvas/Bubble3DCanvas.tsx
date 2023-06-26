@@ -32,7 +32,7 @@ export function Bubble3DCanvas() {
   // let renderOrder = 0;
 
   const bubbles = useMemo(() => {
-    return Array.from(Array(10).keys()).map((_, idx) => {
+    return Array.from(Array(30).keys()).map((_, idx) => {
       const x = randomizeSelfOrOposite(Math.floor(Math.random() * 80));
       const y = 0;
       const z = randomizeSelfOrOposite(Math.floor(Math.random() * 40));
@@ -48,6 +48,7 @@ export function Bubble3DCanvas() {
       );
     });
   }, []);
+  
 
   return (
     <div className="h-full w-full">
@@ -63,11 +64,10 @@ export function Bubble3DCanvas() {
             <Sphere position={[x, y, z]} args={[10, 64, 64]} renderOrder={2}/> */}
             {/* <Sphere position={[x, y, z]} args={[10, 64, 64]} /> */}
             {/* <Sphere position={[x, y, z]} args={[10, 64, 64]} /> */}
-            <Sphere position={[x, y, z]} args={[10, 64, 64]} />
+            {/* <Sphere position={[x, y, z]} args={[10, 64, 64]} /> */}
             {bubbles.map((bubble) => bubble)}
           </Suspense>
         </Manager>
-        <axesHelper scale={500} />
       </Canvas>
     </div>
   );

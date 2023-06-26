@@ -13,12 +13,12 @@ import { useEnvironment, useGLTF } from "@react-three/drei";
 import { useYuka } from "~/hooks/useYoka";
 
 
-export const Bubble = (props, path, position) => {
+export const Bubble = (props, path, position, scale=1) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [ref] = useYuka({ position });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
 
-  const { nodes, materials } = useGLTF("/bubble.glb");
+  const { nodes, materials } = useGLTF("/bubble_animation_02.glb");
 
 
   if (!ref) return <></>;
@@ -30,6 +30,7 @@ export const Bubble = (props, path, position) => {
         ref={ref}
         geometry={nodes.Sphere.geometry}
         material={materials["Material.001"]}
+        scale={scale}
       />
       {/* <meshPhysicalMaterial
         attach="material"
