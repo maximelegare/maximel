@@ -12,6 +12,7 @@ import { useEnvironment, useGLTF } from "@react-three/drei";
 
 import { useYuka } from "~/hooks/useYoka";
 
+
 export const Bubble = (props, path, position) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [ref] = useYuka({ position });
@@ -19,21 +20,23 @@ export const Bubble = (props, path, position) => {
 
   const { nodes, materials } = useGLTF("/bubble.glb");
 
-  if(!ref) return <></>
 
-
-  // const envMap = useEnvironment({files:"/bubble_reflection.hdr"})
+  if (!ref) return <></>;
 
   return (
     <group {...props} dispose={null}>
       <mesh
-        
+        renderOrder={0}
         ref={ref}
         geometry={nodes.Sphere.geometry}
-        scale={4}
         material={materials["Material.001"]}
       />
-      <pointLight position={[0, 0, 0]} intensity={20} color="#fff" />
+      {/* <meshPhysicalMaterial
+        attach="material"
+        roughness={0}
+        metalness={0}
+      /> */}
+      {/* <pointLight position={[0, 0, 0]} intensity={20} color="#fff" /> */}
       {/* <ambientLight intensity={100000} color="#ededde" /> */}
     </group>
   );

@@ -22,9 +22,11 @@ import { useYuka } from "~/hooks/useYoka";
 export const Sphere = ({
   args,
   position = [80, 0, 40],
+  renderOrder
 }: {
   args: number[];
   position: number[];
+  renderOrder?:number
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [ref] = useYuka({ position });
@@ -33,9 +35,9 @@ export const Sphere = ({
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    <mesh ref={myRef}>
+    <mesh ref={myRef} renderOrder={renderOrder}>
       <sphereBufferGeometry args={args} />
-      <meshStandardMaterial attach="material" color={"#720b23"} />
+      <meshPhysicalMaterial  attach="material"  roughness={0} metalness={0} transmission={1}  />
     </mesh>
   );
 };
