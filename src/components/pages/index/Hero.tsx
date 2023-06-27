@@ -16,7 +16,7 @@ export const Hero = () => {
     <div className="relative flex h-screen flex-col justify-between">
       <div className="relative z-10 h-full">hello</div>
       <Section topSection bluredBackground>
-        <div className="pt-6">
+        <div className="pt-10">
           <TitleTopLines
             dotHighlight="bg-[#3c1155]"
             topWithDot
