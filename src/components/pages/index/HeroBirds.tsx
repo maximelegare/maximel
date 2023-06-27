@@ -49,7 +49,7 @@ export function Boxes() {
         <pointLight position={[40, 40, 40]} />
         <Manager>
           <Suspense fallback={null}>
-            <Sphere args={[4, 64, 64]} />
+            {/* <Sphere args={[4, 64, 64]} /> */}
           </Suspense>
         </Manager>
         <axesHelper args={[5]} />

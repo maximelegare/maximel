@@ -13,7 +13,7 @@ import { useEnvironment, useGLTF } from "@react-three/drei";
 import { useYuka } from "~/hooks/useYoka";
 
 
-export const Bubble = (props, path, position, scale=1) => {
+export const Bubble = (props, path, position, scale=1.3) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [ref] = useYuka({ position });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment

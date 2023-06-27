@@ -29,6 +29,10 @@ body {
   @apply bg-gradient-to-b from-[#3d1381] from-20% via-[#39155a] via-60% to-transparent to-100% opacity-70;
 }
 
+.to-b-gradiant-purple-same{
+  @apply bg-[#3c1155] opacity-70;
+}
+
 .gradiant-text-green {
   @apply inline-block bg-gradient-to-r from-[#0de7da]  from-5% to-[#2de282] to-100% bg-clip-text text-transparent;
 }
@@ -50,6 +54,12 @@ body {
 .to-b-gradiant-gray-reverse {
   @apply bg-gradient-to-b from-gray-800 from-0% to-transparent to-100%;
 }
+
+.to-b-white {
+  @apply bg-[#fff];
+}
+
+
 
 .gradiant-gray {
   @apply bg-gray-800;

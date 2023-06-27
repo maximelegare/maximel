@@ -51,7 +51,7 @@ export function Bubble3DCanvas() {
   
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full top-0 left-0 absolute z-0">
       <Canvas orthographic camera={{ zoom: 10, position: [0, 80, 0] }}>
         <color attach="background" args={["#000"]} />
         {/* <ambientLight intensity={1000} color={""} /> */}

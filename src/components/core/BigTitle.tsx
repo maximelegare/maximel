@@ -113,6 +113,7 @@ export const BigTitle: FC<Props> = ({
 export const TitleTopLines = ({
   styles,
   dotHighlight,
+  topWithDot = false,
 }: {
   styles?: {
     textAccent: string;
@@ -120,14 +121,30 @@ export const TitleTopLines = ({
     titlePosition: string;
   };
   dotHighlight?: string;
+  topWithDot?: boolean;
 }) => {
   return (
     <>
       <div className="relative  w-7 gap-2">
+        <>
+          <If condition={styles?.titlePosition === "default" && topWithDot}>
+            <Then>
+              <div className="flex justify-center">
+                <div
+                  className={`z-40 h-4 w-4 rounded-full  
+               ${dotHighlight ? `${dotHighlight}` : ""}
+               `}
+                ></div>
+              </div>
+            </Then>
+          </If>
+        </>
         <div
           className={`${
             styles?.titlePosition === "right" ? "mt-[600px]" : ""
-          } ${styles?.titlePosition === "left" ? "mt-[100px]" : ""} flex justify-center`}
+          } ${
+            styles?.titlePosition === "left" ? "mt-[100px]" : ""
+          } flex justify-center`}
         >
           <If condition={styles?.titlePosition === "right"}>
             <Then>
