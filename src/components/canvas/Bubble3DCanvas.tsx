@@ -32,7 +32,7 @@ export function Bubble3DCanvas() {
   // let renderOrder = 0;
 
   const bubbles = useMemo(() => {
-    return Array.from(Array(30).keys()).map((_, idx) => {
+    return Array.from(Array(15).keys()).map((_, idx) => {
       const x = randomizeSelfOrOposite(Math.floor(Math.random() * 80));
       const y = 0;
       const z = randomizeSelfOrOposite(Math.floor(Math.random() * 40));

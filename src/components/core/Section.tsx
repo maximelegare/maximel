@@ -26,32 +26,24 @@ export const Section: FC<Props> = ({
           >
             <div className="container relative  min-h-screen">
               <div className="relative z-40 px-6">{children}</div>
-              <div
-                className={
-                  bluredBackground
-                    ? "container absolute left-0 top-0 z-20 h-full w-full"
-                    : ""
-                }
-              >
+              <div className="container absolute left-0 top-0 z-20 h-full w-full">
                 <div className="h-full w-full border-x-[1px] border-gray-500 bg-gray-900"></div>
               </div>
             </div>
           </section>
         </Then>
         <Else>
-        <section
+          <section
             className={`relative  flex justify-center ${styles ? styles : ""}`}
           >
             <div className="container relative  h-fit">
               <div className="relative z-40 px-6">{children}</div>
-              <div
-                className={
-                  bluredBackground
-                    ? "container absolute left-0 top-0 z-20 h-full w-full"
-                    : ""
-                }
-              >
-                <div className={`h-full w-full border-x-[1px] border-gray-500 bg-gray-900 ${topSection? "rounded-t-2xl" : ""}`}></div>
+              <div className="container absolute left-0 top-0 z-20 h-full w-full">
+                <div
+                  className={`h-full w-full border-x-[1px] border-gray-500 ${
+                    bluredBackground ? "backdrop-blur-[2px]" : ""
+                  } bg-gray-900 ${topSection ? "rounded-t-2xl" : ""}`}
+                ></div>
               </div>
             </div>
           </section>

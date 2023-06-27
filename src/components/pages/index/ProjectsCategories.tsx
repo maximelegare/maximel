@@ -25,7 +25,7 @@ export const ProjectsCategories = () => {
 
 
   return (
-    <Section styles="bg-black relative z-10" bluredBackground>
+    <Section styles="bg-black relative z-10">
       <div className="grid auto-rows-auto grid-cols-2 grid-rows-1 gap-x-4 pb-5" style={{alignItems:"flex-start"}}>
         {data?.res.map((el, idx, arr) => {
           return (
