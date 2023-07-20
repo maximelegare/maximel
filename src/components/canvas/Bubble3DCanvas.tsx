@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Suspense, useMemo } from "react";
 import { Canvas, useLoader, AxesHelperProps } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -41,7 +40,7 @@ export function Bubble3DCanvas() {
         // <></>
         <Bubble
           key={idx}
-          path="../../../public/assets/3D_models/bubble.glb"
+          path="/bubble_animation_02.glb"
           position={[x, y, z]}
         />
         // <Sphere renderOrder={1} key={idx} args={[10, 64, 64]} position={[x, y, z]} />
