@@ -18,10 +18,10 @@ export const Hero = () => {
       <div className="container relative z-10 mx-auto h-full">
         <div className="flex h-full px-6">
           <div className="mt-28 w-full">
-            <h1 className="text-7xl leading-normal">
+            <h1>
               Hi, I&apos;m Maxime<span className="gradiant-text-green">.</span>
             </h1>
-            <h1 className="leading-tight tracking-wide">
+            <h2 className="tracking-wide">
               <span className="opacity-70">
                 And if I&apos;m not coding,
                 <br /> I&apos;m in a{" "}
@@ -30,10 +30,10 @@ export const Hero = () => {
                 Really big
               </span>{" "}
               <span className="opacity-70">bubble.</span>
-            </h1>
+            </h2>
           </div>
           <div className="relative w-full">
-            <HeroBubble3D />
+            {/* <HeroBubble3D /> */}
             <video
               autoPlay
               loop

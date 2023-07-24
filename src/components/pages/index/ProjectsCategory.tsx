@@ -42,7 +42,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
       <div>
         <BigTitle
           styles={data.styles}
-          title={"Other projects"}
+          title={"Other stuff"}
           subtitle={data.headline}
           dotHighlight={data.styles.accent}
           logoElement={

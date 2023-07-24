@@ -15,6 +15,33 @@ body {
 
 :root {
   --primary-gradiant-color: 90deg, #0de7da 3%, #2de282 95%;
+  --fs-xl: clamp(3rem, 4vw + 1rem, 8rem);
+}
+
+h1,
+.h1 {
+  font-size: var(--fs-xl);
+  @apply pb-7 font-semibold leading-normal;
+}
+
+h2,
+.h2 {
+  @apply pb-6 text-3xl lg:text-4xl xl:text-5xl;
+}
+
+h3,
+.h3 {
+  @apply  text-lg lg:text-2xl xl:text-3xl;
+}
+
+h4,
+.h4 {
+  @apply text-base lg:text-lg xl:text-xl;
+}
+
+p,
+.p {
+  @apply opacity-80 pb-3 text-sm lg:text-base;
 }
 
 .gradiant-purple {
@@ -29,7 +56,7 @@ body {
   @apply bg-gradient-to-b from-[#3d1381] from-20% via-[#39155a] via-60% to-transparent to-100% opacity-70;
 }
 
-.to-b-gradiant-purple-same{
+.to-b-gradiant-purple-same {
   @apply bg-[#3c1155] opacity-70;
 }
 
@@ -59,36 +86,12 @@ body {
   @apply bg-[#fff];
 }
 
-
-
 .gradiant-gray {
   @apply bg-gray-800;
 }
 
 .gradiant-text-yellow {
   @apply text-[#EFCB1D];
-}
-
-h1,
-.h1 {
-  @apply text-4xl;
-}
-
-h2,
-.h2 {
-  @apply text-2xl font-semibold;
-}
-h3,
-.h3 {
-  @apply text-xl font-semibold;
-}
-
-h3,
-.h3 {
-}
-
-p,
-.p {
 }
 
 .clip-path {
@@ -149,7 +152,6 @@ p,
   transform: translate(0);
 }
 
-
 /**
 * Flip card styles
 */
@@ -163,7 +165,7 @@ p,
 
 .flip-card-inner {
   position: relative;
-  
+
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
@@ -207,8 +209,6 @@ p,
   transform: rotateY(180deg);
 }
 
-
-
 /**
 * Dialog animations
 */
@@ -219,7 +219,7 @@ p,
 .dialog-enter-active {
   opacity: 1;
   transition: opacity 300ms, margin-top 800ms;
-  transition-timing-function: cubic-bezier(.16,.65,.5,.96);
+  transition-timing-function: cubic-bezier(0.16, 0.65, 0.5, 0.96);
   margin-top: 80px;
 }
 .dialog-exit {
@@ -229,7 +229,7 @@ p,
 .dialog-exit-active {
   opacity: 0;
   transition: opacity 300ms, margin-top 400ms;
-  transition-timing-function: cubic-bezier(.4,.26,.11,.99);
+  transition-timing-function: cubic-bezier(0.4, 0.26, 0.11, 0.99);
   margin-top: 60px;
 }
 
@@ -239,21 +239,20 @@ p,
 .dialog-bg-enter-active {
   opacity: 1;
   transition: opacity 300ms;
-  transition-timing-function: cubic-bezier(.16,.65,.5,.96);
+  transition-timing-function: cubic-bezier(0.16, 0.65, 0.5, 0.96);
 }
 .dialog-bg-exit {
   opacity: 1;
 }
 .dialog-bg-exit-active {
   opacity: 0;
-  transition: opacity 300ms, ;
-  transition-timing-function: cubic-bezier(.4,.26,.11,.99);
+  transition: opacity 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0.26, 0.11, 0.99);
 }
 
-.gray-border{
-  @apply  border-x-[1px];
+.gray-border {
+  @apply border-x-[1px];
 }
-
 
 /**
 * Zoom-in animation
@@ -274,8 +273,6 @@ p,
   }
 }
 
-
-
 /* 
 * Games styles
 */
@@ -292,9 +289,8 @@ p,
   background-color: rgb(20, 38, 138);
 }
 
-
 .SIMON__flashing-animation {
-  animation-name: flashing 1s  infinite;
+  animation-name: flashing 1s infinite;
 }
 @keyframes flashing {
   0% {
@@ -313,7 +309,6 @@ p,
     opacity: 100%;
   }
 }
-
 
 .animationButton {
   visibility: hidden;
@@ -358,45 +353,40 @@ p,
 }
 
 /* explanation section */
-#explanationSection{
+#explanationSection {
   display: flex;
   justify-content: center;
 }
 
-.visibilityExplanation{
+.visibilityExplanation {
   visibility: hidden;
 }
-.explanationContainer{
+.explanationContainer {
   position: absolute;
   background-color: rgba(8, 5, 5);
   width: 40%;
   height: 620px;
   margin-top: 150px;
   border-radius: 40px;
-  border: 6px solid white ;
+  border: 6px solid white;
   display: flex;
   justify-content: center;
 }
 
-.explanationTextContainer{
+.explanationTextContainer {
   margin-top: 20px;
   width: 90%;
-  
 }
-.explanationTextContainer h2{
+.explanationTextContainer h2 {
   margin-bottom: 30px;
 }
 
-
-
-table{
-  
+table {
   margin: 30px auto;
 }
-td{
+td {
   /* border: solid white 2px; */
   padding: 15px 5px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   color: rgb(148, 148, 148);
-
 }

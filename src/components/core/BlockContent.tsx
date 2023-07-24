@@ -36,16 +36,16 @@ export const BlockContent: FC<Props> = ({
   const getLineStyle = (size: Size) => {
     switch (size as string) {
       case "h1": {
-        return `h1 pb-2 ${color ?? ""}`;
+        return `h1 ${color ?? ""}`;
       }
       case "h2": {
-        return `h2 pb-3 ${color ?? ""}`;
+        return `h2  ${color ?? ""}`;
       }
       case "h3": {
-        return `h3 pb-3 ${color ?? ""}`;
+        return `h3  ${color ?? ""}`;
       }
-      case "p": {
-        return `p pb-3 ${color ?? ""}`;
+      case "normal": {
+        return `p ${color ?? ""}`;
       }
       default: {
         return `text-sm ${color ?? ""}`;
@@ -82,9 +82,9 @@ export const BlockContent: FC<Props> = ({
     const classes = marksToAdd.join().replaceAll(",", " ");
 
     return (
-      <p className={`inline ${classes}`}>
+      <div className={`inline ${classes}`}>
         {element !== undefined ? element : <>{text}&thinsp;</>}
-      </p>
+      </div>
     );
   };
 

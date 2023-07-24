@@ -81,20 +81,20 @@ export const BigTitle: FC<Props> = ({
                 {smallTitle}
               </h2>
               <h4 className="mt-6 justify-self-stretch">{text}</h4> */}
-              <h1
-                data-aos="fade-left-custom"
-                data-aos-duration="300"
-                data-aos-easing="ease-out"
-                className="mb-1 text-lg font-medium"
+              <h4
+                // data-aos="fade-left-custom"
+                // data-aos-duration="300"
+                // data-aos-easing="ease-out"
+                className="mb-3 opacity-60"
               >
                 {title}
-              </h1>
+              </h4>
               <BlockContent
                 separatorColor={styles.accent}
                 data={subtitle}
                 highlightColor={styles.textAccent}
               />
-              <h1 className="text-4xl">{subtitleString}</h1>
+              <h2 >{subtitleString}</h2>
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (
                   <div key={idx}>
@@ -188,7 +188,7 @@ export const TitleTopLines = ({
         </div>
         <If condition={topWithDot}>
           <Then>
-            <div className="text-4xl font-semibold -translate-y-1/3 h-fit">Explore my Projects</div>
+            <h3 className=" -translate-y-1/3 h-fit">Explore my Projects</h3>
           </Then>
         </If>
       </div>
