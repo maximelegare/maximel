@@ -64,7 +64,7 @@ export const ProjectsGrid = () => {
               <CardBasic
                 header={getHeader(project.technologies, project.links)}
                 key={idx}
-                colorHighlight=""
+                colorHighlight={project.styles.singleColorAccent}
               >
                 <div className="py-6">
                   {project.images[0] && (
@@ -91,7 +91,7 @@ export const ProjectsGrid = () => {
                   <div className="flex justify-between">
                     <div className="flex items-center gap-1">
                       <AiOutlineCalendar />
-                      <p className="text-xs">Still in Process</p>
+                      <p className="text-xs pb-0">Still in Process</p>
                     </div>
                     <div>
                       <When condition={project.mainProject === true}>
