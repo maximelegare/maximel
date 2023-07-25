@@ -125,7 +125,7 @@ export const SimonsGame = () => {
   return (
     <div className="flex h-full flex-col items-center gap-5">
       <div id="headingSection" className="SIMON__header pb-3">
-        <h1 className="SIMON__header__h1">{header}</h1>
+        <h2 className="SIMON__header__h1">{header}</h2>
       </div>
       <div className="SIMON__game-section gap-3 mb-3">
         <button

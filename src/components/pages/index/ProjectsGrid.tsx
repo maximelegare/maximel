@@ -91,7 +91,7 @@ export const ProjectsGrid = () => {
                   <div className="flex justify-between">
                     <div className="flex items-center gap-1">
                       <AiOutlineCalendar />
-                      <p className="text-xs">Still in Process</p>
+                      <p className="text-xs pb-0">Still in Process</p>
                     </div>
                     <div>
                       <When condition={project.mainProject === true}>

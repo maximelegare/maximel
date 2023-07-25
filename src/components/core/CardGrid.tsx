@@ -1,11 +1,9 @@
-import React, {ReactElement, type FC} from 'react'
+import React, { ReactElement, type FC } from "react";
 
 interface Props {
-  children:ReactElement  
+  children: ReactElement;
 }
 
-export const CardGrid:FC<Props> = ({children}) => {
-  return (
-    <div className="grid grid-cols-3 gap-4 h-full">{children}</div>
-  )
-}
+export const CardGrid: FC<Props> = ({ children }) => {
+  return <div className="flex flex-wrap justify-between">{children}</div>;
+};

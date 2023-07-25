@@ -86,7 +86,7 @@ export const Card: FC<CardProps> = ({
           colorHighlight ? colorHighlight : ""
         } h-fit w-full rounded-lg ${
           gradiantBorder ? "p-[2px]" : ""
-        } backface-hidden`}
+        } relative backface-hidden`}
       >
         <div
           className={` relative z-[1] flex   w-full items-center justify-center rounded-md ${
@@ -168,12 +168,14 @@ export const Card: FC<CardProps> = ({
             </When>
           </div>
         </div>
+        <When condition={messageUnderneath !== undefined}>
+          <div
+            className={`absolute -bottom-8 z-[2000] left-1/2 -translate-x-1/2  flex animate-pulse justify-center text-center`}
+          >
+            <div className={textHiglight}>{messageUnderneath}</div>
+          </div>
+        </When>
       </article>
-      <When condition={messageUnderneath !== undefined}>
-        <div className={`mt-4 flex animate-pulse justify-center text-center`}>
-          <div className={textHiglight}>{messageUnderneath}</div>
-        </div>
-      </When>
     </>
   );
 };
@@ -203,13 +205,15 @@ export const FlipCard: FC<FlipCardInterface> = ({
 
   return (
     <div>
-      <div className={`flip-card `}>
+      <div className={`flip-card`}>
         <div
           className={`flip-card-inner backface-hidden ${
             flipState ? "flip-action" : ""
           }`}
         >
-          <div className={`flip-card-front z-[1000] ${flipState ? "z-[-1]" : ""}`}>
+          <div
+            className={`flip-card-front  z-[1000] ${flipState ? "z-[-1]" : ""}`}
+          >
             <Card
               {...props}
               handleCircleClick={() => handleFlip()}
@@ -239,7 +243,7 @@ export const CardBasic: FC<CardBasic> = ({
   header,
 }) => {
   return (
-    <div className="group relative min-h-[400px] w-full transition-all duration-500 ease-in-out hover:-translate-y-1 hover:scale-[101%]">
+    <div className="group relative basis-[300px]  transition-all duration-500 ease-in-out hover:-translate-y-1 hover:scale-[101%]">
       <div className="box-content h-full w-full overflow-hidden rounded-md bg-gradient-to-tl from-gray-800  via-gray-300 to-yellow-400 bg-size-200 bg-pos-100 p-[2px]    transition-all duration-1000 group-hover:bg-pos-0">
         <div
           className={`${
