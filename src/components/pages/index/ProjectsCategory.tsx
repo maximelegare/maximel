@@ -84,7 +84,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
 
       {
         <Dialog
-          header="hello"
+          header={data.title}
           show={dialogVisibility || false}
           onDialogClose={() => closeDialog(data.slug)}
         >

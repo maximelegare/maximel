@@ -59,7 +59,7 @@ export const Project: FC<Props> = ({ data }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         <BigTitle
           styles={data.styles}
           title={data.title}
@@ -69,7 +69,7 @@ export const Project: FC<Props> = ({ data }) => {
         />
       </div>
       <Card imageUrl={data.images[0]?.imageUrl} colorHighlight="" />
-      <div className="grid grid-cols-2 grid-rows-1 gap-x-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-1 gap-x-6">
         <BigTitle
           styles={data.styles}
           logo={data.logo}

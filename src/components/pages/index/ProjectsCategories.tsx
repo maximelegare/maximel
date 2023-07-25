@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import { When } from "react-if";
 
 export const ProjectsCategories = () => {
-  const [dialogs, setDialogs] = useRecoilState(dialogVisibilityAtom);
+  // const [dialogs, setDialogs] = useRecoilState(dialogVisibilityAtom);
   const { locale } = useRouter();
 
   const { data } = api.category.allCategories.useQuery({ lang: locale });
@@ -26,7 +26,7 @@ export const ProjectsCategories = () => {
 
   return (
     <Section styles="bg-black relative z-10">
-      <div className="grid auto-rows-auto grid-cols-2 grid-rows-1 gap-x-4 pb-5" style={{alignItems:"flex-start"}}>
+      <div className="grid auto-rows-auto lg:grid-cols-2 lg:grid-rows-1 gap-x-4 pb-5" style={{alignItems:"flex-start"}}>
         {data?.res.map((el, idx, arr) => {
           return (
             <div key={idx}>
