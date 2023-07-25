@@ -124,8 +124,8 @@ export const SimonsGame = () => {
 
   return (
     <div className="flex h-full flex-col items-center gap-5">
-      <div id="headingSection" className="SIMON__header pb-3">
-        <h1 className="SIMON__header__h1">{header}</h1>
+      <div id="headingSection" className="">
+        <h2 className="p-2 text-center">{header}</h2>
       </div>
       <div className="SIMON__game-section gap-3 mb-3">
         <button
@@ -161,7 +161,7 @@ export const SimonsGame = () => {
           onClick={(e) => handleClick(e)}
         ></button>
       </div>
-      <button className=" btn btn-primary btn-sm" disabled={startGame} onClick={init}>
+      <button className=" btn btn-primary btn-sm mb-3" disabled={startGame} onClick={init}>
         Play!
       </button>
     </div>
