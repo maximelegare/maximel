@@ -94,7 +94,7 @@ export const BigTitle: FC<Props> = ({
                 data={subtitle}
                 highlightColor={styles.textAccent}
               />
-              <h2 >{subtitleString}</h2>
+              <h2>{subtitleString}</h2>
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (
                   <div key={idx}>
@@ -130,7 +130,7 @@ export const TitleTopLines = ({
           <>
             <If condition={styles?.titlePosition === "default" && topWithDot}>
               <Then>
-                <div className="flex justify-center">
+                <div className="flex justify-center ">
                   <div
                     className={`z-40 h-4 w-4 rounded-full  
                ${dotHighlight ? `${dotHighlight}` : ""}
@@ -142,24 +142,25 @@ export const TitleTopLines = ({
           </>
           <div
             className={`${
-              styles?.titlePosition === "right" ? "mt-[600px]" : ""
+              styles?.titlePosition === "right" ? "mt-0 lg:mt-[600px]" : ""
             } ${
-              styles?.titlePosition === "left" ? "mt-[100px]" : ""
+              styles?.titlePosition === "left" ? "mt-0 lg:mt-[100px]" : ""
             } flex justify-center`}
           >
             <If condition={styles?.titlePosition === "right"}>
               <Then>
                 <>
                   <div
-                    className={`absolute z-[-1] ${
+                    className={`absolute z-[-1] hidden lg:block ${
                       styles?.accent ? `to-b-${styles?.accent}-reverse` : ""
                     }  left-0 h-[50px] w-[3px] origin-top translate-x-2 rotate-90`}
                   ></div>
                   <div
-                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full  
+                    className={`absolute z-40 hidden h-4 w-4 -translate-y-1/2 rounded-full lg:block  
                ${dotHighlight ? `${dotHighlight}` : ""}
                `}
                   ></div>
+            
                 </>
               </Then>
             </If>
@@ -167,15 +168,16 @@ export const TitleTopLines = ({
               <Then>
                 <>
                   <div
-                    className={`absolute ${
+                    className={`absolute  hidden lg:block ${
                       styles?.accent ? `to-b-${styles?.accent}-reverse` : ""
-                    } left-0 h-[700px] w-[3px]  origin-top   translate-x-2 -rotate-90 pt-5`}
+                    } left-0 h-[700px] w-[3px]  origin-top  translate-x-2 -rotate-90 pt-5`}
                   ></div>
                   <div
-                    className={`absolute z-40 h-4 w-4 -translate-y-1/2 rounded-full  
+                    className={`absolute z-40 hidden h-4 w-4 -translate-y-1/2 rounded-full lg:block  
                ${dotHighlight ? `${dotHighlight}` : ""}
                `}
                   ></div>
+               
                 </>
               </Then>
             </If>
@@ -188,7 +190,7 @@ export const TitleTopLines = ({
         </div>
         <If condition={topWithDot}>
           <Then>
-            <h3 className=" -translate-y-1/3 h-fit">Explore my Projects</h3>
+            <h3 className="h-fit -translate-y-1/3">Explore my Projects</h3>
           </Then>
         </If>
       </div>
