@@ -34,6 +34,11 @@ const project = {
           type: "string",
         },
         {
+          name:"singleColorAccent",
+          title:"Single color accent",
+          type:"string"
+        },
+        {
           name: "titlePosition",
           title: "Title Position",
           type: "string",

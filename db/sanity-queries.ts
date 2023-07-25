@@ -78,6 +78,7 @@ const getQuery = (query: Query, lang: string) => {
           _id,
           title,
           mainProject,
+          styles,
           "slug":slug.current,
           images[]{
             "imageUrl":asset->url,
