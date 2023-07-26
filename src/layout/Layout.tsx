@@ -3,7 +3,7 @@ import type { ReactElement, FC } from "react";
 
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { Burger } from "~/components/core/Burger";
+import { Burger } from "~/components/core/BurgerMenu/BurgerMenu";
 
 
 type Props = {

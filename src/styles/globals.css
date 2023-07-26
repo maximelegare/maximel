@@ -31,7 +31,7 @@ h2,
 
 h3,
 .h3 {
-  @apply  text-lg lg:text-2xl xl:text-3xl;
+  @apply text-lg lg:text-2xl xl:text-3xl;
 }
 
 h4,
@@ -41,7 +41,7 @@ h4,
 
 p,
 .p {
-  @apply opacity-80 pb-3 text-sm lg:text-base;
+  @apply pb-3 text-sm opacity-80 lg:text-base;
 }
 
 .gradiant-purple {
@@ -165,8 +165,6 @@ p,
   height: fit-content;
 }
 
-
-
 .flip-card-front {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -267,7 +265,7 @@ p,
   }
 }
 
-/* 
+/** 
 * Games styles
 */
 .red {
@@ -308,36 +306,6 @@ p,
   visibility: hidden;
 }
 
-/* footer Section */
-#footerSection {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.logo-interrogation {
-  display: flex;
-  justify-content: center;
-  width: 30%;
-}
-
-.interrogation {
-  width: 18px;
-  height: auto;
-  position: absolute;
-  margin-top: 12px;
-}
-
-.cercle {
-  height: 55px;
-  width: 55px;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  /* transform:rotate(45deg); */
-}
-
-/* animations */
 .lose {
   background-color: rgb(173, 26, 26);
 }
@@ -346,41 +314,69 @@ p,
   background-color: rgb(255, 255, 255);
 }
 
-/* explanation section */
-#explanationSection {
-  display: flex;
-  justify-content: center;
+/** 
+* BurgerMenu icon 
+*/
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #000;
+  stroke-width: 5.5;
+  stroke-linecap: round;
 }
 
-.visibilityExplanation {
-  visibility: hidden;
+.ham7 .top {
+  stroke-dasharray: 40 82;
 }
-.explanationContainer {
-  position: absolute;
-  background-color: rgba(8, 5, 5);
-  width: 40%;
-  height: 620px;
-  margin-top: 150px;
-  border-radius: 40px;
-  border: 6px solid white;
-  display: flex;
-  justify-content: center;
+.ham7 .middle {
+  stroke-dasharray: 40 111;
 }
-
-.explanationTextContainer {
-  margin-top: 20px;
-  width: 90%;
+.ham7 .bottom {
+  stroke-dasharray: 40 161;
 }
-.explanationTextContainer h2 {
-  margin-bottom: 30px;
+.ham7.active .top {
+  stroke-dasharray: 17 82;
+  stroke-dashoffset: -62px;
+}
+.ham7.active .middle {
+  stroke-dashoffset: 23px;
+}
+.ham7.active .bottom {
+  stroke-dashoffset: -83px;
 }
 
-table {
-  margin: 30px auto;
+@keyframes circle-animation {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.1;
+  }
+  100% {
+    scale: 1;
+  }
 }
-td {
-  /* border: solid white 2px; */
-  padding: 15px 5px;
-  font-family: "Roboto";
-  color: rgb(148, 148, 148);
+
+.circle-burger {
+  scale:0;
+  animation-name: circle-animation;
+  animation-timing-function: ease-in-out;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
 }
