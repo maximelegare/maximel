@@ -15,7 +15,7 @@ body {
 
 :root {
   --primary-gradiant-color: 90deg, #0de7da 3%, #2de282 95%;
-  --fs-xl: clamp(3rem, 4vw + 1rem, 8rem);
+  --fs-xl: clamp(3rem, 3.5vw + 1rem, 8rem);
 }
 
 h1,
@@ -61,7 +61,7 @@ p,
 }
 
 .gradiant-text-green {
-  @apply inline-block bg-gradient-to-r from-[#0de7da]  from-5% to-[#2de282] to-100% bg-clip-text text-transparent;
+  @apply inline bg-gradient-to-r from-[#0de7da]  from-5% to-[#2de282] to-100% bg-clip-text text-transparent;
 }
 
 .gradiant-yellow {

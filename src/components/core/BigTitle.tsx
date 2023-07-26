@@ -144,7 +144,7 @@ export const TitleTopLines = ({
             className={`${
               styles?.titlePosition === "right" ? "mt-0 lg:mt-[600px]" : ""
             } ${
-              styles?.titlePosition === "left" ? "mt-0 lg:mt-[100px]" : ""
+              styles?.titlePosition === "left" ? "mt-0 lg:mt-[200px]" : ""
             } flex justify-center`}
           >
             <If condition={styles?.titlePosition === "right"}>
