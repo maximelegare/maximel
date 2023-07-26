@@ -14,7 +14,7 @@ const Layout: FC<Props> = ({ children, }) => {
 
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <Burger></Burger>
       <main>{children}</main>
       {/* <Footer></Footer> */}

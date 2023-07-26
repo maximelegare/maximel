@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, type ReactElement } from "react";
 import { BurgerIcon } from "./BurgerIcon";
 import { If, Then } from "react-if";
+import { CSSTransition } from "react-transition-group";
+
+import { FaGlobeAmericas } from "react-icons/fa";
+import { ImBriefcase } from "react-icons/im";
+import Me from "../../../../public/assets/SVG/me.svg"
 export const Burger = () => {
   const [isActive, setIsAcvive] = useState(false);
 
@@ -18,13 +23,61 @@ export const Burger = () => {
       <div className="absolute right-0 ">
         <BurgerIcon handleClick={handleClick} />
       </div>
-      <If condition={isActive === true}>
-        <Then>
-          <div className="circle-burger absolute right-20 top-[4px] h-[50px] w-[50px] rounded-full bg-red-300"></div>
-          <div className="circle-burger absolute right-12 top-[60px] h-10 w-10 rounded-full bg-red-300"></div>
-          <div className="circle-burger absolute right-[4px] top-[84px] h-8 w-8 rounded-full bg-red-300"></div>
-        </Then>
-      </If>
+
+      <BurgerCicle
+        isActive={isActive}
+        styles="right-[90px] top-[4px] h-[50px] w-[50px]"
+        delay={0}
+        icon={<ImBriefcase className="text-3xl text-black" />}
+      />
+      <BurgerCicle
+        icon={
+          <div className="w-[26px] h-[26px] flex items-center">
+            <Me/>
+          </div>
+        }
+        delay={150}
+        isActive={isActive}
+        styles="right-[56px] top-[66px] h-10 w-10"
+      />
+      <BurgerCicle
+        delay={300}
+        icon={<FaGlobeAmericas className="text-lg text-black" />}
+        isActive={isActive}
+        styles="right-[4px] top-[94px] h-8 w-8"
+      />
     </div>
+  );
+};
+
+const BurgerCicle = ({
+  isActive,
+  styles,
+  delay,
+  icon,
+}: {
+  isActive: boolean;
+  styles: string;
+  delay: number;
+  icon: ReactElement;
+}) => {
+  const nodeRef = useRef(null);
+
+  return (
+    <CSSTransition
+      in={isActive}
+      nodeRef={nodeRef}
+      timeout={500 + delay}
+      classNames="burger-circle"
+      unmountOnExit
+    >
+      <div
+        ref={nodeRef}
+        className={`absolute flex items-center justify-center rounded-full bg-white ${styles} cursor-pointer transition-all duration-300 ease-in-out hover:scale-110`}
+        style={{ transitionDelay: `${delay}ms` }}
+      >
+        {icon}
+      </div>
+    </CSSTransition>
   );
 };

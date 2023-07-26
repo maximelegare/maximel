@@ -242,6 +242,46 @@ p,
   transition-timing-function: cubic-bezier(0.4, 0.26, 0.11, 0.99);
 }
 
+/**
+* Burger-animations 
+ */
+
+ .burger-circle-enter {
+  scale:0;
+  animation-name: circle-animation;
+  animation-timing-function: ease-in-out;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards; 
+}
+
+@keyframes circle-animation {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.1;
+  }
+  100% {
+    scale: 1;
+  }
+
+}
+
+/* .burger-circle-active {
+  scale:1;
+  
+  transition: scale 400ms;
+  transition-timing-function: cubic-bezier(0.16, 0.65, 0.5, 0.96);
+} */
+.burger-circle-exit {
+  scale:1;
+}
+.burger-circle-exit-active {
+  scale: 0;
+  transition: scale 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0.26, 0.11, 0.99);
+}
+
 .gray-border {
   @apply border-x-[1px];
 }
@@ -359,24 +399,4 @@ p,
 }
 .ham7.active .bottom {
   stroke-dashoffset: -83px;
-}
-
-@keyframes circle-animation {
-  0% {
-    scale: 0;
-  }
-  50% {
-    scale: 1.1;
-  }
-  100% {
-    scale: 1;
-  }
-}
-
-.circle-burger {
-  scale:0;
-  animation-name: circle-animation;
-  animation-timing-function: ease-in-out;
-  animation-duration: 500ms;
-  animation-fill-mode: forwards;
 }
