@@ -34,8 +34,10 @@ export const useDialogs = () => {
         truthyValues.push(val);
       }
     });
+    console.log("truthyValues",truthyValues)
     if (truthyValues.length === 0) {
       bodyOverflowVisible();
+      console.log("overflow-hidden")
     }
   };
 
@@ -57,6 +59,14 @@ export const useDialogs = () => {
       noTimeout ? 0 : 400
     );
   };
+  const openDialog = (slug:string) => {
+    setDialogVisibility((oldValues) => {
+      const obj = { ...oldValues, [slug]: true };
+      checkIfDialogOpen(obj);
+      return obj;
+    });
+    setUsedSlug(slug);
+  }
 
   const closeDialog = (slug: string) => {
     setDialogVisibility((oldValues) => {
@@ -88,6 +98,7 @@ export const useDialogs = () => {
     dialogVisibility: dialogVisibility[usedSlug],
     cardIsFlipped: cardIsFlipped[usedSlug],
     closeDialog,
+    openDialog,
     flipCard,
     setDialogSlug
   };
