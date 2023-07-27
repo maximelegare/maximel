@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import React, { useEffect } from "react";
 
 import { api } from "~/utils/api";
@@ -21,7 +20,6 @@ export const Projects = () => {
   const { data } = api.project.mainProjects.useQuery({ lang: locale });
 
   if (!data?.res) return <div>no data</div>;
-
 
   return (
     <Section styles="bg-black" id="portfolio">

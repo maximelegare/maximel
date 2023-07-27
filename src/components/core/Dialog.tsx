@@ -61,15 +61,15 @@ export const Dialog: FC<Props> = ({
           >
             <>
               <div
-                className="fixed bottom-0 left-0 right-0 top-0 z-50"
+                className="fixed bottom-0 left-0 right-0 top-0 z-50 bg-[#0000009a]"
                 onClick={(e) => handleClick(e)}
               >
                 <div
-                  className="absolute left-1/2 mt-20 flex h-3/4 w-2/3 -translate-x-1/2 overflow-hidden rounded-md"
+                  className="absolute left-1/2 mt-20 flex h-3/4  w-5/6 -translate-x-1/2 overflow-hidden rounded-md lg:w-2/3"
                   ref={nodeRef}
                 >
-                  <Scrollbars className="relative overflow-x-hidden h-full w-full bg-graySuperDark">
-                    <div className="py-6 mt-12">
+                  <Scrollbars className="relative h-full w-full overflow-x-hidden bg-graySuperDark">
+                    <div className="mt-12 py-6">
                       <div className="px-6">{children}</div>
                     </div>
                     <div className="fixed top-0 z-[100] flex h-12 w-full items-center justify-between bg-gray-700 px-6">

@@ -243,14 +243,14 @@ export const CardBasic: FC<CardBasic> = ({
   header,
 }) => {
   return (
-    <div className="group relative basis-[300px]  transition-all duration-500 ease-in-out hover:-translate-y-1 hover:scale-[101%]">
+    <div className="group relative  grow md:basis-[290px] transition-all duration-500 ease-in-out">
       <div className={`box-content h-full w-full overflow-hidden rounded-md bg-gradient-to-tl from-gray-800  via-gray-300 ${colorHighlight? `to-[${colorHighlight}]`:"to-[#2de282]"}  bg-size-200 bg-pos-100 p-[2px] transition-all duration-1000 group-hover:bg-pos-0`}>
         <div
           className={`${
             styles ? styles : ""
           }   relative h-full w-full overflow-hidden rounded-md bg-black`}
         >
-          <div className="pointer-events-none absolute  z-30 h-full w-full bg-gray-700 opacity-40 transition-opacity duration-700 group-hover:opacity-0"></div>
+          {/* <div className="pointer-events-none absolute  z-30 h-full w-full bg-gray-700 opacity-40 transition-opacity duration-700 group-hover:opacity-0 hidden sm:visible"></div> */}
           <div className="relative min-h-[48px] w-full bg-gray-700 px-6 py-3 ">
             <div>{header}</div>
           </div>

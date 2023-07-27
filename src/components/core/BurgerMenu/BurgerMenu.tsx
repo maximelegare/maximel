@@ -18,7 +18,7 @@ export const Burger = () => {
   };
 
   return (
-    <div className="zoom-in-animation group fixed right-0 z-[3000]">
+    <div className="zoom-in-animation group fixed right-0 z-[48]">
       <div
         className={`absolute h-40 w-40 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white transition-all duration-300 ease-in-out group-hover:scale-[1.1] ${
           isActive ? "scale-[1.1] group-hover:scale-[1.1]" : ""
