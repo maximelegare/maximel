@@ -8,6 +8,7 @@ type Props = {
   // noContainerElements?: ReactNode;
   bluredBackground?: boolean;
   topSection?: boolean;
+  id?:string
 };
 
 export const Section: FC<Props> = ({
@@ -16,6 +17,7 @@ export const Section: FC<Props> = ({
   // noContainerElements,
   bluredBackground = false,
   topSection = false,
+  id
 }) => {
   return (
     <>
@@ -23,6 +25,7 @@ export const Section: FC<Props> = ({
         <Then>
           <section
             className={`relative flex justify-center ${styles ? styles : ""}`}
+            id={id}
           >
             <div className="container relative">
               <div className="relative z-40 px-6">{children}</div>
@@ -35,6 +38,7 @@ export const Section: FC<Props> = ({
         <Else>
           <section
             className={`relative  flex justify-center ${styles ? styles : ""}`}
+            id={id}
           >
             <div className="container relative  h-fit">
               <div className="relative z-40 px-6">{children}</div>

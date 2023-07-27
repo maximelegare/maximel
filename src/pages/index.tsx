@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     <>
         <main>
           <Hero />
-          <div id="headerDataAOSAnchor"></div>
+          {/* <div id="headerDataAOSAnchor"></div> */}
           <Projects />
           <ProjectsCategories />
           <ContactForm />

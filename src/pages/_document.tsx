@@ -5,7 +5,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 class myDocument extends Document {
   render() {
     return (
-      <Html data-theme="myTheme">
+      <Html data-theme="myTheme" className="scroll-smooth">
         <Head>
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#9a9a9a" />
           <meta name="msapplication-TileColor" content="#da532c" />

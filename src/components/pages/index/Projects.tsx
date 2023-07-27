@@ -24,7 +24,7 @@ export const Projects = () => {
 
 
   return (
-    <Section styles="bg-black" >
+    <Section styles="bg-black" id="portfolio">
     <div>
       {data.res.map((project, idx) => {
          

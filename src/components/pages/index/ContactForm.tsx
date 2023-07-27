@@ -52,7 +52,7 @@ export const ContactForm = () => {
   });
 
   return (
-    <Section styles="bg-black z-0">
+    <Section styles="bg-black z-0" id="contact">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
           <BigTitle
