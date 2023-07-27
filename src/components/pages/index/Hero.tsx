@@ -46,7 +46,7 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <Section topSection bluredBackground>
+      <Section layout="top" bluredBackground>
         <div className="pt-10">
           <TitleTopLines
             dotHighlight="bg-[#3c1155]"

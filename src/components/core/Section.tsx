@@ -7,8 +7,8 @@ type Props = {
   styles?: string;
   // noContainerElements?: ReactNode;
   bluredBackground?: boolean;
-  topSection?: boolean;
-  id?:string
+  layout?: "top" | "default" | "bottom";
+  id?: string;
 };
 
 export const Section: FC<Props> = ({
@@ -16,12 +16,12 @@ export const Section: FC<Props> = ({
   styles,
   // noContainerElements,
   bluredBackground = false,
-  topSection = false,
-  id
+  layout = "default",
+  id,
 }) => {
   return (
     <>
-      <If condition={!topSection}>
+      <If condition={layout === "default"}>
         <Then>
           <section
             className={`relative flex justify-center ${styles ? styles : ""}`}
@@ -35,7 +35,9 @@ export const Section: FC<Props> = ({
             </div>
           </section>
         </Then>
-        <Else>
+      </If>
+      <If condition={layout === "top"}>
+        <Then>
           <section
             className={`relative  flex justify-center ${styles ? styles : ""}`}
             id={id}
@@ -44,14 +46,33 @@ export const Section: FC<Props> = ({
               <div className="relative z-40 px-6">{children}</div>
               <div className="container absolute left-0 top-0 z-20 h-full w-full">
                 <div
-                  className={`h-full w-full border-x-[1px] border-gray-500 ${
+                  className={`h-full w-full rounded-t-2xl border-x-[1px] border-gray-500 ${
                     bluredBackground ? "backdrop-blur-[2px]" : ""
-                  } bg-gray-900 ${topSection ? "rounded-t-2xl" : ""}`}
+                  } bg-gray-900`}
                 ></div>
               </div>
             </div>
           </section>
-        </Else>
+        </Then>
+      </If>
+      <If condition={layout === "bottom"}>
+        <Then>
+        <section
+            className={`relative  flex justify-center ${styles ? styles : ""}`}
+            id={id}
+          >
+            <div className="container relative  h-48">
+              <div className="relative z-40 px-6">{children}</div>
+              <div className="container absolute left-0 top-0 z-20 h-full w-full">
+                <div
+                  className={`h-36 w-full rounded-b-2xl border-x-[1px] border-gray-500  ${
+                    bluredBackground ? "backdrop-blur-[2px]" : ""
+                  } bg-gray-900`}
+                ></div>
+              </div>
+            </div>
+          </section>
+        </Then>
       </If>
     </>
   );

@@ -13,19 +13,20 @@ import { dialogVisibilityAtom } from "atoms/dialogAtom";
 
 import { ContactForm } from "~/components/pages/index/ContactForm";
 import { SimonsGame } from "~/components/games/SimonsGame";
+import { Footer } from "~/components/pages/index/Footer";
+
 
 const Home: NextPage = () => {
-
   return (
     <>
-        <main>
-          <Hero />
-          {/* <div id="headerDataAOSAnchor"></div> */}
-          <Projects />
-          <ProjectsCategories />
-          <ContactForm />
-        </main>
-      
+      <main>
+        <Hero />
+        {/* <div id="headerDataAOSAnchor"></div> */}
+        <Projects />
+        <ProjectsCategories />
+        <ContactForm />
+        <Footer />
+      </main>
     </>
   );
 };
