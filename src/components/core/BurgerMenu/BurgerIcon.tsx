@@ -2,13 +2,12 @@ import React, { type FC, useState } from "react";
 
 interface Props {
   handleClick: () => void;
+  isActive:boolean
 }
 
-export const BurgerIcon: FC<Props> = ({ handleClick }) => {
-  const [isActive, setIsActive] = useState(false);
+export const BurgerIcon: FC<Props> = ({ handleClick, isActive = false }) => {
 
   const onClick = () => {
-    setIsActive(!isActive);
     handleClick();
   };
 

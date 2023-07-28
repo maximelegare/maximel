@@ -15,12 +15,14 @@ import { Languages } from "./Languages";
 
 export const Burger = () => {
   const [isActive, setIsAcvive] = useState(false);
+  const [burgerIsActive, setBurgerIsActive] = useState(false)
 
-  const handleClick = () => {
+
+  const toggleBurger = () => {
     setIsAcvive(!isActive);
+    setBurgerIsActive(!burgerIsActive)
   };
 
- 
 
   const { dialogVisibility, openDialog, closeDialog, setDialogSlug } =
     useDialogs();
@@ -38,7 +40,7 @@ export const Burger = () => {
           }`}
         ></div>
         <div className="absolute right-0 ">
-          <BurgerIcon handleClick={handleClick} />
+          <BurgerIcon isActive={burgerIsActive} handleClick={toggleBurger} />
         </div>
 
         <BurgerCicle
@@ -47,7 +49,7 @@ export const Burger = () => {
           styles="right-[88px] top-[2px] h-[50px] w-[50px]"
           delay={0}
           icon={<ImBriefcase className="text-3xl text-black" />}
-          handleClick={() => setIsAcvive(false)}
+          handleClick={toggleBurger}
         />
         <BurgerCicle
           icon={
@@ -58,7 +60,7 @@ export const Burger = () => {
           delay={150}
           isActive={isActive}
           styles="right-[67px] top-[49px] h-[43px] w-[43px]"
-          handleClick={() => setIsAcvive(false)}
+          handleClick={toggleBurger}
         />
         <BurgerCicle
           icon={<BsFillEnvelopeAtFill className="text-lg text-black" />}
@@ -66,7 +68,7 @@ export const Burger = () => {
           isActive={isActive}
           styles="right-[35px] top-[77px] h-[37px] w-[37px]"
           href="#contact"
-          handleClick={() => setIsAcvive(false)}
+          handleClick={toggleBurger}
         />
         <BurgerCicle
           delay={300}
@@ -75,7 +77,7 @@ export const Burger = () => {
           styles="right-[2px] top-[91px] h-8 w-8"
           handleClick={() => {
             openDialog("change-lang");
-            setIsAcvive(false)
+            toggleBurger()
           }}
         />
       </div>
