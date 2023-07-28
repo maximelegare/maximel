@@ -22,7 +22,7 @@ export const Projects = () => {
   if (!data?.res) return <div>no data</div>;
 
   return (
-    <Section styles="bg-black" id="portfolio">
+    <Section styles="bg-black" >
     <div>
       {data.res.map((project, idx) => {
          

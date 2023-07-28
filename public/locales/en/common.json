@@ -1,19 +1,37 @@
 {
   "index": {
     "hero": {
-      "h1":{
-        "hi-im-maxime":"Hi, I'm Maxime",
-        "dot":"."
+      "h1": {
+        "hi-im-maxime": "Hi, I'm Maxime",
+        "dot": "."
       },
-      "h2":{
-        "and-if-im-not-coding-im-in-a":"And if I'm not coding, I'm in a ",
-        "really-big":"Really big",
-        "bubble":"bubble."  
+      "h2": {
+        "and-if-im-not-coding-im-in-a": "And if I'm not coding, I'm in a ",
+        "really-big": "Really big",
+        "bubble": "bubble."
       },
-      "explore-my-projects":"Explore my Projects"
+      "explore-my-portfolio": "Explore my Portfolio"
     },
-    
+    "categories": {
+      "photography": {
+        "photography": "Photography",
+        "some-of-my": "Some of my",
+        "photograhs": "Photographs"
+      },
+      "web-dev":{
+        "web-dev":"Web dev",
+        "Some other":"Some other",
+        "projects":"projects",
+        "worth-showing":"worth showing"
+      },
+      "click-the-bubble":"Click the bubble!"
+    },
+
     "contactForm": {
+      "header":{
+        "interested-in-what-you-see":"Interested in what you see?",
+        "dont-be-shy-contact-me":"Don't be shy, contact me."
+      },
       "firstName": {
         "label": "firstname",
         "placeholder": "Enter your firstname"

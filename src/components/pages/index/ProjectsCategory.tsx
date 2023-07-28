@@ -19,6 +19,9 @@ import { CardGrid } from "~/components/core/CardGrid";
 import { TechnologyIcon } from "~/components/core/TechnologyIcon";
 import { ProjectsGrid } from "./ProjectsGrid";
 import { useDialogs } from "~/hooks/useDialogs";
+import { useTranslation } from "next-i18next";
+
+
 interface Props {
   data: CategorySchemaModel;
 }
@@ -37,6 +40,9 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
     setDialogSlug(data.slug);
   }, []);
 
+  const { t } = useTranslation("common")
+
+
   return (
     <>
       <div>
@@ -54,7 +60,7 @@ export const ProjectsCategory: FC<Props> = ({ data }) => {
         />
 
         <FlipCard
-          messageUnderneath="CLICK THE BUBBLE!"
+          messageUnderneath={t("index.categories.click-the-bubble") ?? ""}
           gradiantBorder
           textHiglight={data.styles.textAccent}
           colorHighlight={data.styles.accent}

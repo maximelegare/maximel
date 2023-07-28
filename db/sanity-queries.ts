@@ -35,7 +35,7 @@ const getQuery = (query: Query, lang: string) => {
                 imagePadding
               },
               text{
-              fr[]{
+              ${lang}[]{
                 style,
                 children[]{
                   text,

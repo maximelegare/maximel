@@ -71,6 +71,10 @@ export const BlockContent: FC<Props> = ({
           marksToAdd.push("opacity-70");
           break;
         }
+        case "em": {
+          marksToAdd.push("italic");
+          break;
+        }
         case "nbsp": {
           if (text === " ") {
             element = <span className="whitespace-nowrap">&thinsp;</span>;

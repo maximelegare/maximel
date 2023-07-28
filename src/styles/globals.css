@@ -27,7 +27,7 @@ h1,
 
 h2,
 .h2 {
-  @apply pb-6 text-3xl lg:text-4xl xl:text-5xl ;
+  @apply pb-7 text-3xl  lg:text-4xl xl:text-5xl;
 }
 
 h3,

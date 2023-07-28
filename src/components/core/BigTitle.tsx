@@ -89,11 +89,13 @@ export const BigTitle: FC<Props> = ({
               >
                 {title}
               </h4>
-              <BlockContent
-                separatorColor={styles.accent}
-                data={subtitle}
-                highlightColor={styles.textAccent}
-              />
+              <div className="sm:w-3/4">
+                <BlockContent
+                  separatorColor={styles.accent}
+                  data={subtitle}
+                  highlightColor={styles.textAccent}
+                />
+              </div>
               <h2>{subtitleString}</h2>
               <div className="mt-6 flex gap-2">
                 {buttons?.map(({ href, type }, idx) => (
@@ -114,7 +116,7 @@ export const TitleTopLines = ({
   styles,
   dotHighlight,
   topWithDot = false,
-  title
+  title,
 }: {
   styles?: {
     textAccent: string;
@@ -123,7 +125,7 @@ export const TitleTopLines = ({
   };
   dotHighlight?: string;
   topWithDot?: boolean;
-  title?:string
+  title?: string;
 }) => {
   return (
     <>
@@ -162,7 +164,6 @@ export const TitleTopLines = ({
                ${dotHighlight ? `${dotHighlight}` : ""}
                `}
                   ></div>
-            
                 </>
               </Then>
             </If>
@@ -179,7 +180,6 @@ export const TitleTopLines = ({
                ${dotHighlight ? `${dotHighlight}` : ""}
                `}
                   ></div>
-               
                 </>
               </Then>
             </If>

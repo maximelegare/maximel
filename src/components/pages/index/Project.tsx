@@ -43,10 +43,10 @@ export const Project: FC<Props> = ({ data }) => {
   const getImagePadding = (imagePadding: string) => {
     switch (imagePadding) {
       case "no-padding-right": {
-        return "pr-0";
+        return "pl-4 pr-0";
       }
       case "no-padding-left": {
-        return "pl-0";
+        return "pl-0 pr-4";
       }
       case "default": {
         return "pr-4 pl-4";
@@ -80,17 +80,17 @@ export const Project: FC<Props> = ({ data }) => {
         />
         {data.overviewCard && (
           <FlipCard
-            styles="mt-8"
-            gradiantBorder
-            colorHighlight={data.styles.accent}
-            circleHover
-            onCardFlip={() => flipCard(data.slug)}
-            // handleCircleMouseEnter={() => setCircleIsHovered(true)}
-            // handleCircleMouseLeave={() => setCircleIsHovered(false)}
-            isFlipped={cardIsFlipped}
+          styles="mt-8"
+          gradiantBorder
+          colorHighlight={data.styles.accent}
+          circleHover
+          onCardFlip={() => flipCard(data.slug)}
+          // handleCircleMouseEnter={() => setCircleIsHovered(true)}
+          // handleCircleMouseLeave={() => setCircleIsHovered(false)}
+          isFlipped={cardIsFlipped}
           >
-            <div className="flex flex-col items-end justify-end gap-20 ">
-              <div className={` flex h-fit gap-2 pr-4 pt-4`}>
+            <div className="flex flex-col items-end justify-end gap-20 w-full">
+              <div className={` flex h-fit gap-2 pr-4 pt-4 w-2/3`}>
                 <BlockContent
                   // color={circleIsHovered? "text-black" : ""}
                   data={data.overviewCard.text}

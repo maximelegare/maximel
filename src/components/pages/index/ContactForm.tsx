@@ -64,8 +64,8 @@ export const ContactForm = () => {
               titlePosition: "left",
             }}
             dotHighlight="gradiant-gray"
-            title="Interested in what you see?"
-            subtitleString="Don't be shy, contact me."
+            title={t("index.contactForm.header.interested-in-what-you-see")|| ""}
+            subtitleString={t("index.contactForm.header.dont-be-shy-contact-me")??""}
           />
           <form
             onSubmit={handleSubmit}

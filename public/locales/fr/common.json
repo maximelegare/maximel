@@ -10,9 +10,16 @@
         "really-big":"très grosse",
         "bubble":"bulle."  
       },
-      "explore-my-projects":"Voici mes projets"
+      "explore-my-portfolio":"Voici mon portfolio"
+    },
+    "categories": {
+      "click-the-bubble":"Clickez la bulle!"
     },
     "contactForm": {
+      "header":{
+        "interested-in-what-you-see":"Intéressé par mon travail?",
+        "dont-be-shy-contact-me":"N'hésitez pas à me contacter!"
+      },
       "firstName": {
         "label": "prénom",
         "placeholder": "Entrez votre prénom"

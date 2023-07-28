@@ -50,12 +50,12 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <Section layout="top" bluredBackground>
+      <Section id="portfolio" layout="top" bluredBackground>
         <div className="pt-10">
           <TitleTopLines
             dotHighlight="bg-[#3c1155]"
             topWithDot
-            title={t("index.hero.explore-my-projects")??""}
+            title={t("index.hero.explore-my-portfolio")??""}
             styles={{
               accent: "gradiant-purple-same",
               textAccent: "",
