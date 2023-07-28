@@ -11,6 +11,7 @@ import { BsFillEnvelopeAtFill } from "react-icons/bs";
 import Link from "next/link";
 import { useDialogs } from "~/hooks/useDialogs";
 import { Dialog } from "../Dialog";
+import { Languages } from "./Languages";
 
 export const Burger = () => {
   const [isActive, setIsAcvive] = useState(false);
@@ -81,7 +82,7 @@ export const Burger = () => {
         onDialogClose={() => closeDialog("change-lang")}
         small
       >
-        <div>Languages</div>
+        <Languages />
       </Dialog>
     </>
   );
