@@ -1,12 +1,16 @@
 {
   "index": {
     "hero": {
-      "this-is-my": "Voici mon",
-      "template": "Template",
-      "for": "pour mes",
-      "future": "futurs",
-      "projects": "projets",
-      "add-one": "plus un"
+      "h1":{
+        "hi-im-maxime":"Salut, moi c'est Maxime",
+        "dot":"."
+      },
+      "h2":{
+        "and-if-im-not-coding-im-in-a":"Et lorsque je ne code pas, je suis dans une ",
+        "really-big":"très grosse",
+        "bubble":"bulle."  
+      },
+      "explore-my-projects":"Voici mes projets"
     },
     "contactForm": {
       "firstName": {

@@ -10,6 +10,8 @@ import { SvgWrapper } from "~/components/core/SvgWrapper";
 import { Bubble3DCanvas } from "~/components/canvas/Bubble3DCanvas";
 import { TitleTopLines } from "~/components/core/BigTitle";
 import { HeroBubble3D } from "~/components/canvas/HeroBubble3D";
+
+
 export const Hero = () => {
   const { t } = useTranslation("common");
 
@@ -18,18 +20,20 @@ export const Hero = () => {
       <div className="container relative z-10 mx-auto h-full">
         <div className="flex h-full px-6">
           <div className="mt-28 w-full">
-            <h1>
-              Hi, I&apos;m Maxime<span className="gradiant-text-green">.</span>
+            <h1 className="leading-[5rem]">
+              {t("index.hero.h1.hi-im-maxime")}
+              <span className="gradiant-text-green">
+                {t("index.hero.h1.dot")}
+              </span>
             </h1>
             <h2 className="tracking-wide">
               <span className="opacity-70">
-                And if I&apos;m not coding,
-                <br /> I&apos;m in a{" "}
+                {t("index.hero.h2.and-if-im-not-coding-im-in-a")}
               </span>
               <span className="gradiant-text-green opacity-100">
-                Really big
+                {t("index.hero.h2.really-big")}
               </span>{" "}
-              <span className="opacity-70">bubble.</span>
+              <span className="opacity-70">{t("index.hero.h2.bubble")}</span>
             </h2>
           </div>
           <div className="relative w-full">
@@ -38,7 +42,7 @@ export const Hero = () => {
               autoPlay
               loop
               muted
-              className="absolute z-[-1] h-[300px] w-[230px] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 rotate-3"
+              className="absolute left-1/2 top-1/2 z-[-1] h-[300px] w-[230px] -translate-x-1/2 -translate-y-1/2 rotate-3"
             >
               <source src="/avatar_portfolio.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -51,6 +55,7 @@ export const Hero = () => {
           <TitleTopLines
             dotHighlight="bg-[#3c1155]"
             topWithDot
+            title={t("index.hero.explore-my-projects")??""}
             styles={{
               accent: "gradiant-purple-same",
               textAccent: "",

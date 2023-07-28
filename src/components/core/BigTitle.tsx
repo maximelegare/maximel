@@ -114,6 +114,7 @@ export const TitleTopLines = ({
   styles,
   dotHighlight,
   topWithDot = false,
+  title
 }: {
   styles?: {
     textAccent: string;
@@ -122,6 +123,7 @@ export const TitleTopLines = ({
   };
   dotHighlight?: string;
   topWithDot?: boolean;
+  title?:string
 }) => {
   return (
     <>
@@ -190,7 +192,7 @@ export const TitleTopLines = ({
         </div>
         <If condition={topWithDot}>
           <Then>
-            <h3 className="h-fit -translate-y-1/3">Explore my Projects</h3>
+            <h3 className="h-fit -translate-y-1/3">{title}</h3>
           </Then>
         </If>
       </div>
