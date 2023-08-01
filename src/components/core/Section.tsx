@@ -39,7 +39,7 @@ export const Section: FC<Props> = ({
       <If condition={layout === "top"}>
         <Then>
           <section
-            className={`relative  flex justify-center ${styles ? styles : ""}`}
+            className={`relative h-fit flex justify-center ${styles ? styles : ""}`}
             id={id}
           >
             <div className="container relative  h-fit">

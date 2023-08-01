@@ -22,7 +22,7 @@ body {
 h1,
 .h1 {
   font-size: var(--fs-xl);
-  @apply pb-7 font-semibold leading-tight;
+  @apply pb-7 font-semibold leading-loose md:leading-tight;
 }
 
 h2,
