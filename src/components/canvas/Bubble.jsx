@@ -11,9 +11,9 @@ export function Model(props) {
   const { actions, mixer } = useAnimations(animations, group);
   const [screenWidth, setScreenWidth] = useState()
 
-  useEffect(() => {
-    actions.KeyAction.play();
-  }, [mixer]);
+  // useEffect(() => {
+  //   actions.KeyAction.play();
+  // }, [mixer]);
 
   useEffect(() => {
     setScreenWidth(screen.width) 
@@ -31,7 +31,7 @@ export function Model(props) {
           morphTargetDictionary={nodes.Sphere.morphTargetDictionary}
           morphTargetInfluences={nodes.Sphere.morphTargetInfluences}
           // rotation={[0, 0, -Math.PI]}
-          scale={screenWidth< 1024? 13 : 20}
+          scale={props.small? 1 : screenWidth< 1024? 13 : 20}
           rotation={[14,22, 0]}
         />
       </group>

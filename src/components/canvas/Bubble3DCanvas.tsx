@@ -42,6 +42,7 @@ export function Bubble3DCanvas() {
           key={idx}
           path="/bubble_animation_02.glb"
           position={[x, y, z]}
+          small
         />
         // <Sphere renderOrder={1} key={idx} args={[10, 64, 64]} position={[x, y, z]} />
       );
@@ -55,7 +56,7 @@ export function Bubble3DCanvas() {
         <color attach="background" args={["#000"]} />
         {/* <ambientLight intensity={1000} color={""} /> */}
 
-        <Environment files="/coloredSky.hdr" />
+        <Environment files="/gym_entrance_1k_blue_black.hdr" />
         <Manager>
           <Suspense fallback={null}>
             {/* <Sphere position={[x, y, z]} args={[10, 64, 64]} renderOrder={0}/>

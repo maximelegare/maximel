@@ -65,7 +65,7 @@ export const Hero = () => {
           ></TitleTopLines>
         </div>
       </Section>
-      <Bubble3DCanvas />
+      {/* <Bubble3DCanvas /> */}
     </div>
   );
 };
