@@ -38,7 +38,7 @@ export const Hero = () => {
             </h2>
           </div>
           <div className="relative h-[300px] sm:h-[450px] w-full opacity-70 ">
-            <HeroBubble3D />
+            {/* <HeroBubble3D /> */}
             <video
               autoPlay
               loop
@@ -65,7 +65,7 @@ export const Hero = () => {
           ></TitleTopLines>
         </div>
       </Section>
-      {/* <Bubble3DCanvas /> */}
+      <Bubble3DCanvas />
     </div>
   );
 };

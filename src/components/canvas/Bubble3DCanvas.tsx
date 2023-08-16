@@ -5,7 +5,7 @@ import { Sphere } from "~/components/canvas/Sphere";
 
 import { Manager } from "~/hooks/useYoka";
 
-import { Bubble } from "./Bubble";
+import { Model } from "./Bubble";
 
 import { useEffect, useState } from "react";
 
@@ -38,7 +38,7 @@ export function Bubble3DCanvas() {
       // renderOrder = renderOrder + 100;
       return (
         // <></>
-        <Bubble
+        <Model
           key={idx}
           path="/bubble_animation_02.glb"
           position={[x, y, z]}
