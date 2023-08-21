@@ -21,13 +21,13 @@ export const Hero = () => {
           <div 
           className="mt-10 w-full md:mt-28"
           >
-            <h1 className="leading-[3rem] sm:leading3">
+            <h1 className="">
               {t("index.hero.h1.hi-im-maxime")}
               <span className="gradiant-text-green">
                 {t("index.hero.h1.dot")}
               </span>
             </h1>
-            <h2 className="tracking-wide max-w-[400px] lg:max-w-[500px]">
+            <h2 className="tracking-wide max-w-[400px] lg:max-w-[500px] ">
               <span className="opacity-70">
                 {t("index.hero.h2.and-if-im-not-coding-im-in-a")}
               </span>

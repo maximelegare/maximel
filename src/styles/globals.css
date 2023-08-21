@@ -22,12 +22,12 @@ body {
 h1,
 .h1 {
   font-size: var(--fs-xl);
-  @apply pb-7 font-semibold leading-loose md:leading-tight;
+  @apply pb-7 font-semibold leading-[1];
 }
 
 h2,
 .h2 {
-  @apply pb-7 text-3xl  lg:text-4xl xl:text-5xl;
+  @apply pb-7 text-3xl lg:text-4xl xl:text-5xl;
 }
 
 h3,
